@@ -16,8 +16,8 @@ var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'O
 
 function init() {
     updateCal();
-    window.setInterval(updateCal, 10000);
-    //window.setInterval(updateCal, getRefreshInterval());
+    //window.setInterval(updateCal, 10000);
+    window.setInterval(updateCal, getRefreshInterval());
 }
 /**
  * Add leading 0 to a single digit number
@@ -75,7 +75,7 @@ function getFeed(feedUrl, handler) {
 	var xhr = new XMLHttpRequest()
 	var abortTimerId = window.setTimeout(function() {
 		xhr.abort();
-		onError();
+		//onError();
 	}, REQUEST_TIMEOUT_MS);
 
 	function handleError(is401) {
@@ -174,25 +174,30 @@ function encode(s, notime) {
 }
 function displayData(entries) {
 	var today = new Date();
-	var s = '<ul class="entries">';
+	var s = '<dl class="entries">';
 	for (var i in entries) {
 		for (var j = 0; j < entries[i].length; j++) {
 			var e = entries[i][j];
-			s += '<li>' + '<span class="day">';
-			s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
-			s += '&nbsp;</span>';
-			if (e.fullday) {
-			s += '<span class="full-day">' + encode(e.title, e.fullday) + '</span>'; 
+			s += '<dt>';
+			if (j == 0) {
+				// first event of a day
+				s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
 			} else {
-				s += '<span class="entry">';
+				s += '&nbsp;';
+			}
+			s += '</dt>';
+			if (e.fullday) {
+				s += '<dd class="full-day">' + encode(e.title, e.fullday); 
+			} else {
+				s += '<dd class="entry">';
 				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
 					+ pad(e.start.getMinutes()) + "</span> ";
-				s += encode(e.title, e.fullday) + "</span>"; 
+				s += encode(e.title, e.fullday); 
 			}
-			s += '</li>';
+			s += '</dd>';
 		}
 	};
-	s += "</ul>";
+	s += "</dl>";
 	
 	document.getElementById('cal').innerHTML = s; 
 }

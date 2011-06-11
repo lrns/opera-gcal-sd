@@ -11,38 +11,39 @@ html,body {
 body {
 	font-family: Verdana,sans-serif;
 }	
-ul.entries {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-}
 #cal {
 	font-size: 11px;
 	line-height: 14px;
 }
-ul li {
-	padding: 2px;
+dl {
+	padding: 0px;
+	margin: 0px;
 }
-span.entry {
+dt {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	clear: left;
+	width: 40px;
+	/*text-align: right;*/
+	color: #668CB3;
+	/*background-color: #F8F9FF;*/
+	/*font-weight: bold;*/
+}
+dd {
+	margin: 0 0 0 42;
+	padding: 0 0 0.5em 0;
+}
+dd.entry {
 	color: #668CB3;
 	padding: 2px;
 }
 span.entry-time {
 	font-weight: bold;
 }
-span.full-day {
+dd.full-day {
 	background-color: #668CB3;
 	color: #fff;
 	padding: 1px 5px;
 	border-radius: 3px;
-	margin-left: 3px;
 }
-span.day {
-	width: 40px;
-	float: left;
-	padding-left: 2px;
-	color: #668CB3;
-	/*background-color: #F8F9FF;*/
-	/*font-weight: bold;*/
-}
-

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets" id="https://addons.opera.com/addons/extensions/details/earthporn-in-your-speed-dial/" defaultlocale="en" viewmodes="minimized" version="1.0.0">
-  <name short="Gcal-sd">Google Calendar in your Speed Dial</name>
+  <name short="Gcal-sd">Google Calendar</name>
   <icon src="icon.png"/>
   <access origin="http://www.google.com" subdomains="true"/>
   <access origin="https://www.google.com" subdomains="true"/>
