@@ -5,11 +5,44 @@ html,body {
 	padding: 0px;
 	margin: 0px;
 	background-repeat: no-repeat;
-}
-
-html {
 	/*background-image: url(ajax-loader.gif);*/
-}
-html,body {
 	background: #fff;
 }
+body {
+	font-family: Verdana,sans-serif;
+}	
+ul.entries {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+#cal {
+	font-size: 11px;
+	line-height: 14px;
+}
+ul li {
+	padding: 2px;
+}
+span.entry {
+	color: #668CB3;
+	padding: 2px;
+}
+span.entry-time {
+	font-weight: bold;
+}
+span.full-day {
+	background-color: #668CB3;
+	color: #fff;
+	padding: 1px 5px;
+	border-radius: 3px;
+	margin-left: 3px;
+}
+span.day {
+	width: 40px;
+	float: left;
+	padding-left: 2px;
+	color: #668CB3;
+	/*background-color: #F8F9FF;*/
+	/*font-weight: bold;*/
+}
+

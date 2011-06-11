@@ -12,6 +12,7 @@ var REQUEST_TIMEOUT_MS = 30 * 1000; // 30 seconds
 var lastCountText = 'start';
 var requestTimeout;
 console={log:function(m){window.opera.postError(m)}}
+var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 
 function init() {
     updateCal();
@@ -121,9 +122,15 @@ function parseFeed(xml) {
 	var allEntries = new Array(xmlEntries.length);
 	for (var i = 0; i < xmlEntries.length; i++) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-		var start = xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue;
-		var end = xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue;
-		allEntries[i] = { 'title' : title, 'start' : new Date(start), 'end' : new Date(end) };
+		var start = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue);
+		var end = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue);
+		// full day event
+		//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
+						//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
+		var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
+						end.getHours() === 0 && end.getMinutes() === 0;
+
+		allEntries[i] = { 'title' : title, 'start' : start, 'end' : end, 'fullday' : fullday };
 	}
 	var entries = {};
 	for (var i = 0; i < allEntries.length; i++) {
@@ -148,16 +155,41 @@ function parseCalendars(xml) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 		var url = xmlEntries[i].getElementsByTagName('content')[0].attributes["src"].nodeValue;
 		var color = xmlEntries[i].getElementsByTagName('color')[0].attributes["value"].nodeValue;
+
 		entries[i] = { 'url' : url, 'title' : title, 'color' : color };
 	}
 	return entries;
 }
+
+function encode(s, notime) {
+	// remove date and time from title
+	console.log('Before: ' + s);
+	if (notime) {
+		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} /i, "");
+	} else {
+		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} \d{1,2}:\d{1,2} /i, "");
+	}
+	console.log('After: ' + s);
+	return s;
+}
 function displayData(entries) {
 	var today = new Date();
-	var s = "<ul>";
+	var s = '<ul class="entries">';
 	for (var i in entries) {
 		for (var j = 0; j < entries[i].length; j++) {
-			s += "<li>" + entries[i][j].title + "</li>";
+			var e = entries[i][j];
+			s += '<li>' + '<span class="day">';
+			s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+			s += '&nbsp;</span>';
+			if (e.fullday) {
+			s += '<span class="full-day">' + encode(e.title, e.fullday) + '</span>'; 
+			} else {
+				s += '<span class="entry">';
+				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
+					+ pad(e.start.getMinutes()) + "</span> ";
+				s += encode(e.title, e.fullday) + "</span>"; 
+			}
+			s += '</li>';
 		}
 	};
 	s += "</ul>";

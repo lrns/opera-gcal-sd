@@ -20,8 +20,8 @@ function init() {
 	var allEntries = new Array(xmlEntries.length);
 	for (var i = 0; i < xmlEntries.length; i++) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-		var start = xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue;
-		var end = xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue;
+		var start = xmlEntries[i].getElementsByTagName('gd:when')[0].attributes["startTime"].nodeValue;
+		var end = xmlEntries[i].getElementsByTagName('gd:when')[0].attributes["endTime"].nodeValue;
 		allEntries[i] = { 'title' : title, 'start' : new Date(start), 'end' : new Date(end) };
 	}
 	entries = {};
