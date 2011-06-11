@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Preferences</title>
+<link href="options.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="prefs.js"></script>
+<script type="text/javascript" src="options.js"></script>
+</head>
+
+<body>
+<center>
+  <div id="page">
+    <div class="header">
+      <table width="100%" border="0">
+        <tr>
+          <td align="center" valign="middle" width="64"><img src="icon-64.png"/></td>
+          <td align="left"><div class="name"><span id="w-name"></span></div>
+            <div class="info">Version <span id="w-version"></span>, by <span id="w-author"></span></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="main-border">
+      <div class="backgrnd">
+        <div id="main-signin"> <span style="font-size: small">Sign in with your</span>
+          <table border="0">
+            <tr>
+              <td align="right"><img src="google_transparent.gif" alt="Google"/></td>
+              <td align="left"><span class="account">Account</span></td>
+            </tr>
+          </table>
+          <table width="100%" border="0">
+            <tr>
+              <td align="right" width="40%"><label for="email">Email:</label></td>
+              <td align="left"><input type="text" name="email" id="email" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="left" valign="top"><span class="hint">e.g. user@gmail.com</span></td>
+            </tr>
+            <tr>
+              <td align="right"><label for="password">Password:</label></td>
+              <td align="left"><input type="password" name="password" id="password" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="left"><div id="error-area"></div>
+                <input type="button" name="signin" id="signin" value="Sign In" /></td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"><span style="font-size: 80%;"><a href="https://www.google.com/accounts/recovery">Can't access your account?</a></span></td>
+            </tr>
+          </table>
+        </div>
+        <div id="main-signout"> <span style="font-size: small">You are signed in with</span>
+          <table border="0">
+            <tr>
+              <td align="right"><img src="google_transparent.gif" alt="Google"/></td>
+              <td align="left"><span class="account">Account</span></td>
+            </tr>
+          </table>
+          <table width="100%" border="0">
+            <tr>
+              <td align="right"  width="40%">Email:</td>
+              <td align="left"><span id="useremail"></span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="left"><input type="button" name="signout" id="signout" value="Sign Out" /></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-border">
+      <div class="backgrnd">
+        <table width="100%" border="0">
+          <tr>
+            <td align="right" width="40%">Update every:</td>
+            <td align="left"><select id="refresh-interval">
+                <option value="10000">10 seconds</option>
+                <option value="60000">1 minute</option>
+                <option value="300000">5 minutes</option>
+                <option value="600000">10 minutes</option>
+                <option value="900000">15 minutes</option>
+                <option value="1800000">30 minutes</option>
+                <option value="3600000">1 hour</option>
+                <option value="18000000">5 hours</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td align="right" width="40%">Max. entries to display:</td>
+            <td align="left"><input type="text" id="max-entries" />
+            </td>
+          </tr>
+          <!--<tr>-->
+            <!--<td align="right" width="40%">Calendar type:</td>-->
+            <!--<td align="left"><select id="calendar-type">-->
+                <!--<option value="single">Default (single cal.)</option>-->
+                <!--<option value="own">Own calendars</option>-->
+				<!--<option value="all">All calendars</option>-->
+              <!--</select></td>-->
+          <!--</tr>-->
+        </table>
+      </div>
+    </div>
+    <div id="fll"> <a href="https://www.google.com/accounts/NewAccount">Create a Google Account</a> </div>
+  </div>
+</center>
+</body>
+</html>
