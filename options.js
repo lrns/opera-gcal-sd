@@ -31,8 +31,14 @@ function init(){
 		}
 	}
 
-	meElement = id('max-entries').value = getMaxEntries();
-	meElement.onchange = function(){
+	refreshIntervalElement.onchange = function(){
+		setRefreshInterval(refreshIntervalElement.options[refreshIntervalElement.selectedIndex].value);
+	}
+
+
+	meElement = id('max-entries');
+	meElement.value = getMaxEntries();
+	meElement.oninput = function(){
 		setMaxEntries(meElement.value);
 	}
 

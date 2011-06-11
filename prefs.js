@@ -32,7 +32,7 @@ function setCalendarType(value) {
 	widget.preferences.setItem(CALENDAR_TYPE, value);
 }
 
-function getMaxEntries(value) {
+function setMaxEntries(value) {
 	widget.preferences.setItem(MAX_ENTRIES, value);
 }
 
