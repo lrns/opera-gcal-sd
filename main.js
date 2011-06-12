@@ -13,6 +13,9 @@ var lastCountText = 'start';
 var requestTimeout;
 console={log:function(m){window.opera.postError(m)}}
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+var numCalendars = 1;
+var numChecked = 0;
+var fullEntries = {};
 
 function init() {
     updateCal();
@@ -27,6 +30,8 @@ function pad(s) {
 }
 function updateCal() {
 	console.log("update calendar...");
+	numChecked = 0;
+
 	if (getUserAuth()) {
 		if (getCalendarType() === 'all') {
 			getFeed(ALL_FEEDS_URL, handleCalendars);
@@ -54,15 +59,47 @@ function handleFeed(data) {
 		
 }
 function handleMultiFeeds(data) {
-	//TODO merge entries with allEntries
-	//var entries = parseFeed(data);
-	displayData(entries);
+	numChecked++;
+	var entries = parseFeed(data);
+	// merge this calendar's entries with existing entries
+	
+	for (var key in entries) {
+		if (key in fullEntries) {
+			// this day has some entries, add new entries to the end
+			for (var i = 0; i < entries[key].length; i++) {
+				fullEntries[key].push(entries[key][i]);
+			}
+		} else {
+			fullEntries[key] = entries[key];
+		}
+	}
+	
+	if (numChecked >= numCalendars) {
+		//TODO sort each day's entries
+		if (numCalendars > 1) {
+			
+			for (var key in fullEntries) {
+				if (fullEntries[key].length > 1) {
+					// sort day's entries by the start time
+					fullEntries[key] = fullEntries[key].sort(
+							function(a, b) {
+								return a.start < b.start;
+							});
+				}
+			}
+		}
+		// all calendars checked
+		displayData(fullEntries);
+	}
 }
 
 function handleCalendars(data) {
+	fullEntries = {};
 	var calendars = parseCalendars(data);
-	for (var i = 0; i < entries.length; i++) {
-		getFeed(entries[i].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
+	numCalendars = calendars.length;
+	console.log('Calendars: ' + calendars.length);
+	for (var i = 0; i < calendars.length; i++) {
+		getFeed(calendars[i].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
 	}
 		
 }
@@ -84,6 +121,7 @@ function getFeed(feedUrl, handler) {
 		if (is401) {
 			text = 'Please log in!';
 		}
+
 		document.getElementById('cal').innerHTML = text;
 	}
 
@@ -94,7 +132,7 @@ function getFeed(feedUrl, handler) {
 
 			if (xhr.status >= 400) {
 				console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
-				handleError(xhr.status == 401);
+				handleError(,xhr.status == 401);
 			} else if (xhr.responseXML) {
 				console.log('responseXML: ' + xhr.responseText.substring(0, 200) + '...');
 				handler(xhr.responseXML);
