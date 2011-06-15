@@ -15,13 +15,24 @@ console={log:function(m){window.opera.postError(m)}}
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 var numCalendars = 1;
 var numChecked = 0;
-var fullEntries = {};
+var allEntries = [];
+var timerId;
 
 function init() {
     updateCal();
     //window.setInterval(updateCal, 10000);
-    window.setInterval(updateCal, getRefreshInterval());
+    timerId = window.setInterval(updateCal, getRefreshInterval());
+
+	addEventListener( 'storage', 
+        function(){
+			console.log('storage event');
+			window.clearInterval(timerId);
+			// reschedule update
+			timerId = window.setInterval(updateCal, getRefreshInterval());
+        }
+    , false )
 }
+
 /**
  * Add leading 0 to a single digit number
  */
@@ -60,41 +71,32 @@ function handleFeed(data) {
 }
 function handleMultiFeeds(data) {
 	numChecked++;
+	console.log("Checked " + numChecked + "/"+ numCalendars);
 	var entries = parseFeed(data);
 	// merge this calendar's entries with existing entries
 	
-	for (var key in entries) {
-		if (key in fullEntries) {
-			// this day has some entries, add new entries to the end
-			for (var i = 0; i < entries[key].length; i++) {
-				fullEntries[key].push(entries[key][i]);
-			}
-		} else {
-			fullEntries[key] = entries[key];
-		}
+	for (var i = 0; i < entries.length; i++) {
+		allEntries.push(entries[i]);
 	}
 	
 	if (numChecked >= numCalendars) {
-		//TODO sort each day's entries
-		if (numCalendars > 1) {
-			
-			for (var key in fullEntries) {
-				if (fullEntries[key].length > 1) {
-					// sort day's entries by the start time
-					fullEntries[key] = fullEntries[key].sort(
-							function(a, b) {
-								return a.start < b.start;
-							});
-				}
-			}
+		// sort each day's entries
+//		console.log("Calendar entries:");
+
+		if (numCalendars > 1 && allEntries.length > 1) {
+			// sort entries by the start time
+			allEntries = allEntries.sort(
+					function(a, b) {
+						return a.start > b.start;
+					});
 		}
 		// all calendars checked
-		displayData(fullEntries);
+		displayData(allEntries);
 	}
 }
 
 function handleCalendars(data) {
-	fullEntries = {};
+	allEntries = [];
 	var calendars = parseCalendars(data);
 	numCalendars = calendars.length;
 	console.log('Calendars: ' + calendars.length);
@@ -132,7 +134,7 @@ function getFeed(feedUrl, handler) {
 
 			if (xhr.status >= 400) {
 				console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
-				handleError(,xhr.status == 401);
+				handleError(xhr.status == 401);
 			} else if (xhr.responseXML) {
 				console.log('responseXML: ' + xhr.responseText.substring(0, 200) + '...');
 				handler(xhr.responseXML);
@@ -157,7 +159,7 @@ function parseFeed(xml) {
 	//var parser = new DOMParser();
 	//xml = parser.parseFromString(feed,"text/xml");
 	var xmlEntries = xml.getElementsByTagName("entry");
-	var allEntries = new Array(xmlEntries.length);
+	var entries = new Array(xmlEntries.length);
 	for (var i = 0; i < xmlEntries.length; i++) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 		var start = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue);
@@ -168,19 +170,9 @@ function parseFeed(xml) {
 		var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
 						end.getHours() === 0 && end.getMinutes() === 0;
 
-		allEntries[i] = { 'title' : title, 'start' : start, 'end' : end, 'fullday' : fullday };
+		entries[i] = { title : title, start : start, end : end, fullday : fullday };
 	}
-	var entries = {};
-	for (var i = 0; i < allEntries.length; i++) {
-		var e = allEntries[i];
-		var key = e.start.getFullYear() + '-' + pad(e.start.getMonth()) + '-' + pad(e.start.getDate());
-		if (key in entries) {
-			entries[key].push(e);
-		} else {
-			entries[key] = [e];
-		}
-	}
-	console.log("All: "+ allEntries.length + " XML Entries: " + xmlEntries.length);
+	console.log("All: "+ entries.length + " XML Entries: " + xmlEntries.length);
 	return entries;
 }
 function parseCalendars(xml) {
@@ -201,40 +193,38 @@ function parseCalendars(xml) {
 
 function encode(s, notime) {
 	// remove date and time from title
-	console.log('Before: ' + s);
 	if (notime) {
 		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} /i, "");
 	} else {
 		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} \d{1,2}:\d{1,2} /i, "");
 	}
-	console.log('After: ' + s);
 	return s;
 }
 function displayData(entries) {
 	var today = new Date();
 	var s = '<dl class="entries">';
-	for (var i in entries) {
-		for (var j = 0; j < entries[i].length; j++) {
-			var e = entries[i][j];
-			s += '<dt>';
-			if (j == 0) {
-				// first event of a day
-				s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
-			} else {
-				s += '&nbsp;';
-			}
-			s += '</dt>';
-			if (e.fullday) {
-				s += '<dd class="full-day">' + encode(e.title, e.fullday); 
-			} else {
-				s += '<dd class="entry">';
-				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
-					+ pad(e.start.getMinutes()) + "</span> ";
-				s += encode(e.title, e.fullday); 
-			}
-			s += '</dd>';
+	for (var i = 0; i < entries.length; i++) {
+		var e = entries[i];
+		s += '<dt>';
+		//if (j == 0) {
+			//// first event of a day
+			//s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+		//} else {
+			//s += '&nbsp;';
+		//}
+		//TODO check if it is the first event of a day 
+		s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+		s += '</dt>';
+		if (e.fullday) {
+			s += '<dd class="full-day">' + encode(e.title, e.fullday); 
+		} else {
+			s += '<dd class="entry">';
+			s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
+				+ pad(e.start.getMinutes()) + "</span> ";
+			s += encode(e.title, e.fullday); 
 		}
-	};
+		s += '</dd>';
+	}
 	s += "</dl>";
 	
 	document.getElementById('cal').innerHTML = s; 

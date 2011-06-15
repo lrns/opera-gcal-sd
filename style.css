@@ -24,14 +24,14 @@ dt {
 	margin: 0px;
 	float: left;
 	clear: left;
-	width: 40px;
+	width: 42px;
 	/*text-align: right;*/
 	color: #668CB3;
 	/*background-color: #F8F9FF;*/
 	/*font-weight: bold;*/
 }
 dd {
-	margin: 0 0 0 42;
+	margin: 0 0 0 44px;
 	padding: 0 0 0.5em 0;
 }
 dd.entry {

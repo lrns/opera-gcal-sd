@@ -42,20 +42,22 @@ function init(){
 		setMaxEntries(meElement.value);
 	}
 
-	//var calendarType = getCalendarType();
-    //var calendarTypeElement = id('calendar-type');
-	//for(i in calendarType)
-	//{
-		//var calendarValue = calendarTypeElement.options[i];
-		//if(calendarValue.value == calendarType){
-			//calendarValue.selected = true;
-			//break;
-		//}
-	//}
+	var calendarType = getCalendarType();
+	var calendarTypeElement = id('calendar-type');
+	for(i in calendarType)
+	{
+		var calendarValue = calendarTypeElement.options[i];
+		if(calendarValue.value == calendarType){
+			calendarValue.selected = true;
+			break;
+		}
+	}
 	
-	//calendarTypeElement.onchange = function(){
-		//setCalendarType(calendarTypeElement.options[calendarTypeElement.selectedIndex].value);
-	//}
+	calendarTypeElement.onchange = function(){
+		setCalendarType(calendarTypeElement.options[calendarTypeElement.selectedIndex].value);
+	}
+
+
 	var signInButton = id('signin')
 	signInButton.onclick = function() {
 		tryLogIn(id('email').value, id('password').value);

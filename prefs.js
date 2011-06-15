@@ -10,7 +10,7 @@ var SIGN_IN_BADGE_COLOR = 'sign-in-badge-color';
 var SIGN_OUT_BADGE_COLOR = 'sign-out-badge-color';
 
 function getRefreshInterval() {
-	return parseInt(widget.preferences.getItem(REFRESH_INTERVAL_KEY) || '1800000', 10);
+	return parseInt(widget.preferences.getItem(REFRESH_INTERVAL_KEY) || '300000', 10);
 }
 
 function setRefreshInterval(value) {
