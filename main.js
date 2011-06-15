@@ -17,6 +17,9 @@ var numCalendars = 1;
 var numChecked = 0;
 var allEntries = [];
 var timerId;
+var defaultColor = '#668CB3';
+// calID |-> color
+var colors = {};
 
 function init() {
     updateCal();
@@ -147,9 +150,9 @@ function getFeed(feedUrl, handler) {
 			console.log('XHR error\n' + error);
 			handleError();
 		}
-		xhr.open("GET", feedUrl, true)
-		xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth())
-		xhr.send(null)
+		xhr.open("GET", feedUrl, true);
+		xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
+		xhr.send(null);
 	} catch(e) {
 		console.log('XHR exception: ' + e);
 		handleError();
@@ -158,6 +161,12 @@ function getFeed(feedUrl, handler) {
 function parseFeed(xml) {
 	//var parser = new DOMParser();
 	//xml = parser.parseFromString(feed,"text/xml");
+	var calID = extractID(xml.getElementsByTagName("id")[0].childNodes[0].nodeValue);
+	var color = defaultColor;
+	if (calID in colors) {
+		color = colors[calID];
+	}
+
 	var xmlEntries = xml.getElementsByTagName("entry");
 	var entries = new Array(xmlEntries.length);
 	for (var i = 0; i < xmlEntries.length; i++) {
@@ -170,7 +179,9 @@ function parseFeed(xml) {
 		var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
 						end.getHours() === 0 && end.getMinutes() === 0;
 
-		entries[i] = { title : title, start : start, end : end, fullday : fullday };
+
+		entries[i] = { title : title, start : start, end : end, 
+			color: color, fullday : fullday };
 	}
 	console.log("All: "+ entries.length + " XML Entries: " + xmlEntries.length);
 	return entries;
@@ -185,12 +196,15 @@ function parseCalendars(xml) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 		var url = xmlEntries[i].getElementsByTagName('content')[0].attributes["src"].nodeValue;
 		var color = xmlEntries[i].getElementsByTagName('color')[0].attributes["value"].nodeValue;
-
+		colors[extractID(url)] = color;
 		entries[i] = { 'url' : url, 'title' : title, 'color' : color };
 	}
 	return entries;
 }
 
+function extractID(url) {
+	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i,"");
+}
 function encode(s, notime) {
 	// remove date and time from title
 	if (notime) {
@@ -216,9 +230,10 @@ function displayData(entries) {
 		s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
 		s += '</dt>';
 		if (e.fullday) {
-			s += '<dd class="full-day">' + encode(e.title, e.fullday); 
+			s += '<dd class="full-day" style="background-color: '+ e.color
+				+';">' + encode(e.title, e.fullday); 
 		} else {
-			s += '<dd class="entry">';
+			s += '<dd class="entry" style="color: ' + e.color +';">';
 			s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
 				+ pad(e.start.getMinutes()) + "</span> ";
 			s += encode(e.title, e.fullday); 
