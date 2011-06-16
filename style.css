@@ -26,7 +26,7 @@ dt {
 	clear: left;
 	width: 42px;
 	/*text-align: right;*/
-	color: #668CB3;
+	color: #29527A;
 	/*background-color: #F8F9FF;*/
 	/*font-weight: bold;*/
 }
@@ -42,7 +42,7 @@ span.entry-time {
 	font-weight: bold;
 }
 dd.full-day {
-	background-color: #668CB3;
+	background-color: #29527A;
 	color: #fff;
 	padding: 1px 5px;
 	border-radius: 3px;

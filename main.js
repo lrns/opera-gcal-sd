@@ -13,27 +13,24 @@ var lastCountText = 'start';
 var requestTimeout;
 console={log:function(m){window.opera.postError(m)}}
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
-var numCalendars = 1;
-var numChecked = 0;
 var allEntries = [];
 var timerId;
 var defaultColor = '#668CB3';
-// calID |-> color
-var colors = {};
+var calendars = {};
 
 function init() {
     updateCal();
     //window.setInterval(updateCal, 10000);
     timerId = window.setInterval(updateCal, getRefreshInterval());
 
-	addEventListener( 'storage', 
+	addEventListener('storage', 
         function(){
-			console.log('storage event');
 			window.clearInterval(timerId);
+			updateCal();
 			// reschedule update
 			timerId = window.setInterval(updateCal, getRefreshInterval());
         }
-    , false )
+    , false);
 }
 
 /**
@@ -44,8 +41,7 @@ function pad(s) {
 }
 function updateCal() {
 	console.log("update calendar...");
-	numChecked = 0;
-
+	calendars = {};
 	if (getUserAuth()) {
 		if (getCalendarType() === 'all') {
 			getFeed(ALL_FEEDS_URL, handleCalendars);
@@ -57,54 +53,69 @@ function updateCal() {
 		}
 		
 	} else {
-		console.log('no auth!!!');
 		displayNoAuth();
 	}
-		//xhr.open("GET", REQUEST_URL_, true)
-		//xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth())
-		//xhr.send(null)
 }
 function displayNoAuth(){
 	document.getElementById('cal').innerHTML = 'Please log in!';
 }
+
+/**
+ * Parse feed of a default calendar and display entries
+ */
 function handleFeed(data) {
 	var entries = parseFeed(data);
 	displayData(entries);
 		
 }
+
+/**
+ * Multi calendar mode.
+ *
+ * Parse feed of one of calendars and display entries only if all calendars
+ * are updated
+ */
 function handleMultiFeeds(data) {
-	numChecked++;
-	console.log("Checked " + numChecked + "/"+ numCalendars);
 	var entries = parseFeed(data);
 	// merge this calendar's entries with existing entries
-	
+
 	for (var i = 0; i < entries.length; i++) {
 		allEntries.push(entries[i]);
 	}
-	
-	if (numChecked >= numCalendars) {
-		// sort each day's entries
-//		console.log("Calendar entries:");
-
+	var allSynced = true;
+	var numCalendars = 0;
+	var numSync = 0;
+	for (id in calendars) {
+		numCalendars++;
+		if (!calendars[id].synced) {
+			allSynced = false;
+			//break;	
+		} else {
+			numSync++;
+		}
+	}
+	console.log('Synced: ' + numSync +'/'+numCalendars);
+	if (allSynced) {
+		// Feeds of all calendars are retrieved
+		
 		if (numCalendars > 1 && allEntries.length > 1) {
 			// sort entries by the start time
 			allEntries = allEntries.sort(
 					function(a, b) {
-						return a.start > b.start;
+						if (a.start > b.start) return 1;
+						if (a.start < b.start) return -1;
+						return 0;
 					});
 		}
-		// all calendars checked
 		displayData(allEntries);
 	}
 }
 
 function handleCalendars(data) {
 	allEntries = [];
-	var calendars = parseCalendars(data);
-	numCalendars = calendars.length;
-	console.log('Calendars: ' + calendars.length);
-	for (var i = 0; i < calendars.length; i++) {
-		getFeed(calendars[i].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
+	calendars = parseCalendars(data);
+	for (id in calendars) {
+		getFeed(calendars[id].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
 	}
 		
 }
@@ -163,41 +174,50 @@ function parseFeed(xml) {
 	//xml = parser.parseFromString(feed,"text/xml");
 	var calID = extractID(xml.getElementsByTagName("id")[0].childNodes[0].nodeValue);
 	var color = defaultColor;
-	if (calID in colors) {
-		color = colors[calID];
+	if (calID in calendars) {
+		color = calendars[calID].color;
+		calendars[calID].synced = true;
 	}
 
-	var xmlEntries = xml.getElementsByTagName("entry");
-	var entries = new Array(xmlEntries.length);
-	for (var i = 0; i < xmlEntries.length; i++) {
-		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-		var start = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue);
-		var end = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue);
-		// full day event
-		//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
-						//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
-		var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
-						end.getHours() === 0 && end.getMinutes() === 0;
+	try {
+		// Parse calendar's feed
+		var xmlEntries = xml.getElementsByTagName("entry");
+		var entries = new Array(xmlEntries.length);
+		for (var i = 0; i < xmlEntries.length; i++) {
+			var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
+			var start = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue);
+			var end = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue);
+			// full day event
+			//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
+							//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
+			var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
+							end.getHours() === 0 && end.getMinutes() === 0;
 
 
-		entries[i] = { title : title, start : start, end : end, 
-			color: color, fullday : fullday };
+			entries[i] = { title : title, start : start, end : end, 
+				color: color, fullday : fullday };
+		}
+		return entries;
+	} catch (err) {
+		if (calID in calendars) {
+			// calendar's feed failed
+			calendars[calID].synced = false;
+		}
+		return {};
 	}
-	console.log("All: "+ entries.length + " XML Entries: " + xmlEntries.length);
-	return entries;
 }
 function parseCalendars(xml) {
 	//var parser = new DOMParser();
 	//var xml = parser.parseFromString(feed,"text/xml");
 	var xmlEntries = xml.getElementsByTagName("entry");
-	var entries = new Array(xmlEntries.length);
-
+	var entries = {};
+	
 	for (var i = 0; i < xmlEntries.length; i++) {
 		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 		var url = xmlEntries[i].getElementsByTagName('content')[0].attributes["src"].nodeValue;
 		var color = xmlEntries[i].getElementsByTagName('color')[0].attributes["value"].nodeValue;
-		colors[extractID(url)] = color;
-		entries[i] = { 'url' : url, 'title' : title, 'color' : color };
+		entries[extractID(url)] = { url : url, title : title, color : color, 
+			synced : false };
 	}
 	return entries;
 }
@@ -217,7 +237,8 @@ function encode(s, notime) {
 function displayData(entries) {
 	var today = new Date();
 	var s = '<dl class="entries">';
-	for (var i = 0; i < entries.length; i++) {
+	var num = entries.length < getMaxEntries() ? entries.length : getMaxEntries();
+	for (var i = 0; i < num; i++) {
 		var e = entries[i];
 		s += '<dt>';
 		//if (j == 0) {
