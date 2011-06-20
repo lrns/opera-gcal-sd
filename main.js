@@ -9,9 +9,7 @@ var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/
 
 var REQUEST_TIMEOUT_MS = 30 * 1000; // 30 seconds
 
-var lastCountText = 'start';
 var requestTimeout;
-console={log:function(m){window.opera.postError(m)}}
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 var allEntries = [];
 var timerId;
@@ -55,9 +53,6 @@ function updateCal() {
 	} else {
 		displayNoAuth();
 	}
-}
-function displayNoAuth(){
-	document.getElementById('cal').innerHTML = 'Please log in!';
 }
 
 /**
@@ -111,18 +106,37 @@ function handleMultiFeeds(data) {
 	}
 }
 
+/**
+ * Update multiple calendars
+ */
 function handleCalendars(data) {
 	allEntries = [];
 	calendars = parseCalendars(data);
 	for (id in calendars) {
+		console.log("GET " + id);
 		getFeed(calendars[id].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
 	}
 		
 }
 function onError() {
-	document.getElementById('cal').innerHTML = 'Unknown Error!';
-	
+	document.getElementById('error').innerHTML = 'Unknown Error!';
+	document.getElementById('error').style.display = 'block';
+	document.getElementById('cal').style.display = 'none';
+	document.getElementById('loading').style.display = 'none';	
 }
+
+function showLoading() {
+	document.getElementById('error').style.display = 'none';
+	document.getElementById('cal').style.display = 'none';
+	document.getElementById('loading').style.display = 'block';	
+}
+function displayNoAuth(){
+	document.getElementById('error').innerHTML = 'Please login in Preferences!';
+	document.getElementById('error').style.display = 'block';
+	document.getElementById('cal').style.display = 'none';
+	document.getElementById('loading').style.display = 'none';	
+}
+
 function getFeed(feedUrl, handler) {
 
 	var xhr = new XMLHttpRequest()
@@ -133,18 +147,17 @@ function getFeed(feedUrl, handler) {
 
 	function handleError(is401) {
 		window.clearTimeout(abortTimerId);
-		var text = 'Error while updating calendar!';
 		if (is401) {
-			text = 'Please log in!';
+			// not logged in
+			displayNoAuth();
 		}
 
-		document.getElementById('cal').innerHTML = text;
 	}
 
 	try{
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState != 4)
-				return
+				return;
 
 			if (xhr.status >= 400) {
 				console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
@@ -173,8 +186,10 @@ function parseFeed(xml) {
 	//var parser = new DOMParser();
 	//xml = parser.parseFromString(feed,"text/xml");
 	var calID = extractID(xml.getElementsByTagName("id")[0].childNodes[0].nodeValue);
+	console.log("Received: " + calID + ", in: " + (calID in calendars));
 	var color = defaultColor;
 	if (calID in calendars) {
+
 		color = calendars[calID].color;
 		calendars[calID].synced = true;
 	}
@@ -182,27 +197,35 @@ function parseFeed(xml) {
 	try {
 		// Parse calendar's feed
 		var xmlEntries = xml.getElementsByTagName("entry");
-		var entries = new Array(xmlEntries.length);
+		var entries = [];
+		console.log('ENTRIES: ' + xmlEntries.length);
 		for (var i = 0; i < xmlEntries.length; i++) {
 			var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-			var start = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["startTime"].nodeValue);
-			var end = new Date(xmlEntries[i].getElementsByTagName('when')[0].attributes["endTime"].nodeValue);
-			// full day event
-			//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
-							//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
-			var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
-							end.getHours() === 0 && end.getMinutes() === 0;
+			var when = xmlEntries[i].getElementsByTagName('when');
+			if (when.length > 0) {
+				// calendar entry must have 'when' element
+				var start = new Date(when[0].attributes["startTime"].nodeValue);
+				var end = new Date(when[0].attributes["endTime"].nodeValue);
+				// full day event
+				//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
+								//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
+				var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
+								end.getHours() === 0 && end.getMinutes() === 0;
 
 
-			entries[i] = { title : title, start : start, end : end, 
-				color: color, fullday : fullday };
+				entries.push({ title : title, start : start, end : end, 
+					color: color, fullday : fullday });
+			}
 		}
+		
+		console.log('GOOD ENTRIES: ' + entries.length);
 		return entries;
 	} catch (err) {
-		if (calID in calendars) {
+		console.log("Error: " + err); 
+		//if (calID in calendars) {
 			// calendar's feed failed
-			calendars[calID].synced = false;
-		}
+			//calendars[calID].synced = false;
+		//}
 		return {};
 	}
 }
@@ -263,5 +286,8 @@ function displayData(entries) {
 	}
 	s += "</dl>";
 	
-	document.getElementById('cal').innerHTML = s; 
+	document.getElementById('cal').innerHTML = s;
+	document.getElementById('cal').style.display = 'block';
+	document.getElementById('error').style.display = 'none';
+	document.getElementById('loading').style.display = 'none';	
 }

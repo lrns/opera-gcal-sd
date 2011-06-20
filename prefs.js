@@ -10,20 +10,13 @@ var SIGN_IN_BADGE_COLOR = 'sign-in-badge-color';
 var SIGN_OUT_BADGE_COLOR = 'sign-out-badge-color';
 
 function getRefreshInterval() {
-	return parseInt(widget.preferences.getItem(REFRESH_INTERVAL_KEY) || '300000', 10);
+	return parseInt(widget.preferences.getItem(REFRESH_INTERVAL_KEY) || '1800000', 10);
 }
 
 function setRefreshInterval(value) {
 	widget.preferences.setItem(REFRESH_INTERVAL_KEY, value);
 }
 
-function getTabRefreshInterval() {
-	return parseInt(widget.preferences.getItem(TAB_REFRESH_INTERVAL_KEY) || '1000', 10);
-}
-
-function setTabRefreshInterval(value) {
-	widget.preferences.setItem(TAB_REFRESH_INTERVAL_KEY, value);
-}
 function getCalendarType() {
 	return widget.preferences.getItem(CALENDAR_TYPE) || 'single';
 }
@@ -37,7 +30,7 @@ function setMaxEntries(value) {
 }
 
 function getMaxEntries() {
-	return widget.preferences.getItem(MAX_ENTRIES) || 5;
+	return widget.preferences.getItem(MAX_ENTRIES) || 10;
 }
 function getUserAuth() {
 	return widget.preferences.getItem(USER_AUTH);
@@ -60,18 +53,6 @@ function resetPrefs(){
 function dropAuth(){
 	delete widget.preferences[USER_AUTH];
 	delete widget.preferences[USER_EMAIL];
-}
-function getSignInIcon(){
-	return widget.preferences.getItem(SIGN_IN_ICON) || 'icon-signed-in.png';
-}
-function setSignInIcon(value){
-	widget.preferences.setItem(SIGN_IN_ICON,value);
-}
-function getSignOutIcon(){
-	return widget.preferences.getItem(SIGN_OUT_ICON) || 'icon-signed-out.png';
-}
-function setSignOutIcon(value){
-	widget.preferences.setItem(SIGN_OUT_ICON,value);
 }
 
 function getSignInBadgeColor() {
