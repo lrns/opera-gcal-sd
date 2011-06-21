@@ -38,30 +38,30 @@ dl {
 	margin: 0px;
 }
 dt {
-	padding: 0px;
-	margin: 0px;
+	padding: 0 0 1px 0;
+	margin: 0 0 1px 0;
+	
 	float: left;
 	clear: left;
 	width: 42px;
 	/*text-align: right;*/
-	color: #29527A;
+	color: #182C57;
 	/*background-color: #F8F9FF;*/
 	/*font-weight: bold;*/
 }
 dd {
-	margin: 0 0 0 44px;
-	padding: 0 0 0.5em 0;
+	margin: 0 0 1px 44px;
+	padding: 0 0 1px 0;
 }
 dd.entry {
-	color: #668CB3;
-	padding: 2px;
+	color: #182C57;
 }
 span.entry-time {
 	font-weight: bold;
 }
 dd.full-day {
-	background-color: #29527A;
+	background-color: #182C57;
 	color: #fff;
-	padding: 1px 5px;
+	padding: 0 0 1px 5px;
 	border-radius: 3px;
 }

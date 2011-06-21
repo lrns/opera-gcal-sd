@@ -13,7 +13,7 @@ var requestTimeout;
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 var allEntries = [];
 var timerId;
-var defaultColor = '#668CB3';
+var defaultColor = '#182C57';
 var calendars = {};
 
 function init() {
@@ -264,14 +264,14 @@ function displayData(entries) {
 	for (var i = 0; i < num; i++) {
 		var e = entries[i];
 		s += '<dt>';
-		//if (j == 0) {
-			//// first event of a day
-			//s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
-		//} else {
-			//s += '&nbsp;';
-		//}
-		//TODO check if it is the first event of a day 
-		s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+		if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
+				e.start.getMonth() == entries[i-1].start.getMonth()) {
+			// same day as for previous entry
+			s += '&nbsp;';
+		} else {
+			// first event of a day
+			s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+		}
 		s += '</dt>';
 		if (e.fullday) {
 			s += '<dd class="full-day" style="background-color: '+ e.color
