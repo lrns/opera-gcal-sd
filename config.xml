@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="https://addons.opera.com/addons/extensions/details/earthporn-in-your-speed-dial/" defaultlocale="en" viewmodes="minimized" version="1.0.0">
-  <name short="Gcal-sd">Google Calendar</name>
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.0" viewmodes="minimized" defaultlocale="en">
+  <name short="Gcal-sd">Google Calendar SD</name>
   <icon src="icon.png"/>
   <access origin="http://www.google.com" subdomains="true"/>
   <access origin="https://www.google.com" subdomains="true"/>
@@ -20,9 +20,8 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</license>
-  <author href="http://www.twitter.com/lsukys" email="laurynas.sukys@gmail.com">Laurynas Sukys</author>
-  <update-description href=""/>
+  <author href="http://www.sukys.net" email="laurynas.sukys@gmail.com">Laurynas Sukys</author>
   <description xml:lang="en">
-	  Shows Google Calendar entries.
-</description>
+	  Extensions displays Google Calendar entries in a Speed Dial tile.
+  </description>
 </widget>

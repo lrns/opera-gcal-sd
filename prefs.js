@@ -30,7 +30,7 @@ function setMaxEntries(value) {
 }
 
 function getMaxEntries() {
-	return widget.preferences.getItem(MAX_ENTRIES) || 10;
+	return widget.preferences.getItem(MAX_ENTRIES) || 15;
 }
 function getUserAuth() {
 	return widget.preferences.getItem(USER_AUTH);

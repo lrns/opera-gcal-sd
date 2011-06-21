@@ -18,7 +18,6 @@ var calendars = {};
 
 function init() {
     updateCal();
-    //window.setInterval(updateCal, 10000);
     timerId = window.setInterval(updateCal, getRefreshInterval());
 
 	addEventListener('storage', 
@@ -37,6 +36,7 @@ function init() {
 function pad(s) {
 	return s < 10 ? '0'+s : s;
 }
+
 function updateCal() {
 	console.log("update calendar...");
 	calendars = {};
@@ -183,13 +183,14 @@ function getFeed(feedUrl, handler) {
 	}
 }
 function parseFeed(xml) {
-	//var parser = new DOMParser();
-	//xml = parser.parseFromString(feed,"text/xml");
 	var calID = extractID(xml.getElementsByTagName("id")[0].childNodes[0].nodeValue);
-	console.log("Received: " + calID + ", in: " + (calID in calendars));
+	console.log("Received: " + calID);
 	var color = defaultColor;
 	if (calID in calendars) {
-
+		// prevent doubled entries
+		if (calendars[calID].synced) {
+			return {};
+		}
 		color = calendars[calID].color;
 		calendars[calID].synced = true;
 	}
@@ -198,7 +199,6 @@ function parseFeed(xml) {
 		// Parse calendar's feed
 		var xmlEntries = xml.getElementsByTagName("entry");
 		var entries = [];
-		console.log('ENTRIES: ' + xmlEntries.length);
 		for (var i = 0; i < xmlEntries.length; i++) {
 			var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 			var when = xmlEntries[i].getElementsByTagName('when');
@@ -218,7 +218,6 @@ function parseFeed(xml) {
 			}
 		}
 		
-		console.log('GOOD ENTRIES: ' + entries.length);
 		return entries;
 	} catch (err) {
 		console.log("Error: " + err); 
@@ -229,9 +228,10 @@ function parseFeed(xml) {
 		return {};
 	}
 }
+/**
+ * Parse feed of calendars
+ */
 function parseCalendars(xml) {
-	//var parser = new DOMParser();
-	//var xml = parser.parseFromString(feed,"text/xml");
 	var xmlEntries = xml.getElementsByTagName("entry");
 	var entries = {};
 	
