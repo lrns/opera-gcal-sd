@@ -6,8 +6,42 @@
 		<script type="text/javascript" src="debug.js"></script>
 		<script type="text/javascript" src="prefs.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<!--<script type="text/javascript" src="http://www.google.com/jsapi"></script>-->
 		<script>
-			window.addEventListener('load', init, false);
+			window.addEventListener('load', init, false);			
+			/*google.load("gdata", "1");
+			google.setOnLoadCallback(getMyFeed);
+			var myService;
+			var scope = "https://www.google.com/calendar/feeds/";
+
+			function getMyFeed() {
+				console.log("start getmyFeed");
+				myService = new google.gdata.calendar.CalendarService('opera-gcal-sd');
+				console.log("service started");
+				console.log(scope);
+					
+				//var token = google.accounts.user.login(scope);
+				//console.log("token: " + token);
+				window.setInterval(getFeed, 60000);
+
+
+			}
+
+			function getFeed() {
+				console.log("Get Fedd---------");
+				console.log("Check login=" + google.accounts.user.checkLogin(scope));
+				console.log(google.accounts.user.getInfo());
+				var feedUrl = "https://www.google.com/calendar/feeds/lorenco@gmail.com/private/full";
+				myService.getEventsFeed(feedUrl, handleMyFeed, handleError);
+			}
+			function handleMyFeed(myResultsFeedRoot) {
+				console.log("This feed's title is: " + myResultsFeedRoot.feed.getTitle().getText());
+			}
+
+			function handleError(e) {
+				console.log("There was an error!");
+				console.log(e.cause ? e.cause.statusText : e.message);
+			}*/
 		</script>
 	</head>
 	<body>

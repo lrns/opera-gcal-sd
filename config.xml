@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.0" viewmodes="minimized" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.1" viewmodes="minimized" defaultlocale="en">
   <name short="Gcal-sd">Google Calendar SD</name>
   <icon src="icon.png"/>
   <access origin="http://www.google.com" subdomains="true"/>
@@ -22,6 +22,6 @@ See the License for the specific language governing permissions and
 limitations under the License.</license>
   <author href="http://www.sukys.net" email="laurynas.sukys@gmail.com">Laurynas Sukys</author>
   <description xml:lang="en">
-	  Extensions displays Google Calendar entries in a Speed Dial tile.
+	  Google Calendar events in your Speed Dial.
   </description>
 </widget>
