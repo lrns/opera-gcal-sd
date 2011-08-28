@@ -17,14 +17,16 @@ body {
 	display: none;
 	width: 100%;
 }
-#error {
+#error, .centertext {
 	font-size: 14px;
 	line-height: 14px;
 	position: absolute;
-	display: none;
 	top:50%;
 	width: 100%;
 	text-align: center;
+}
+#error {
+	display: none;
 }
 #loading {
 	background-image: url('ajax-loader.gif');

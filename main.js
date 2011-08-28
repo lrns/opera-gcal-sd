@@ -2,8 +2,8 @@ var LOGIN_URL = 'https://www.google.com/accounts/ClientLogin'
 var LOGIN_ADDITIONAL_PARAMS = 'accountType=HOSTED_OR_GOOGLE&service=cal'
 var TITLE_UNREAD_COUNT_RE = /\s+\((\d+)(\+?)\)$/; 
 var CAL_URL = 'http://www.google.com/reader/view/';
-var SINGLE_FEED_URL = 'https://www.google.com/calendar/feeds/default/private/embed';
-var FEED_URL_SUFFIX = '?toolbar=true&max-results=';
+var SINGLE_FEED_URL = 'https://www.google.com/calendar/feeds/default/private/full';
+var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending&futureevents=true&max-results=';
 var ALL_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/allcalendars/full';
 var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/full';
 
@@ -207,8 +207,6 @@ function parseFeed(xml) {
 				var start = new Date(when[0].attributes["startTime"].nodeValue);
 				var end = new Date(when[0].attributes["endTime"].nodeValue);
 				// full day event
-				//var fullday = start.getUTCHours() === 0 && start.getUTCMinutes() === 0 &&
-								//end.getUTCHours() === 0 && end.getUTCMinutes() === 0;
 				var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
 								end.getHours() === 0 && end.getMinutes() === 0;
 
@@ -248,43 +246,39 @@ function parseCalendars(xml) {
 function extractID(url) {
 	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i,"");
 }
-function encode(s, notime) {
-	// remove date and time from title
-	if (notime) {
-		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} /i, "");
-	} else {
-		s = s.replace(/[A-Za-z]{3} \d{1,2} [A-Za-z]{3} \d{1,2}:\d{1,2} /i, "");
-	}
-	return s;
-}
 function displayData(entries) {
-	var today = new Date();
-	var s = '<dl class="entries">';
-	var num = entries.length < getMaxEntries() ? entries.length : getMaxEntries();
-	for (var i = 0; i < num; i++) {
-		var e = entries[i];
-		s += '<dt>';
-		if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
-				e.start.getMonth() == entries[i-1].start.getMonth()) {
-			// same day as for previous entry
-			s += '&nbsp;';
-		} else {
-			// first event of a day
-			s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+	if (entries.length > 0) {
+		var today = new Date();
+		var s = '<dl class="entries">';
+		var num = entries.length < getMaxEntries() ? entries.length : getMaxEntries();
+		for (var i = 0; i < num; i++) {
+			var e = entries[i];
+			s += '<dt>';
+			if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
+					e.start.getMonth() == entries[i-1].start.getMonth()) {
+				// same day as for previous entry
+				s += '&nbsp;';
+			} else {
+				// first event of a day
+				s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+			}
+			s += '</dt>';
+			if (e.fullday) {
+				s += '<dd class="full-day" style="background-color: '+ e.color
+					+';">' + e.title; 
+			} else {
+				s += '<dd class="entry" style="color: ' + e.color +';">';
+				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
+					+ pad(e.start.getMinutes()) + "</span> ";
+				s += e.title; 
+			}
+			s += '</dd>';
 		}
-		s += '</dt>';
-		if (e.fullday) {
-			s += '<dd class="full-day" style="background-color: '+ e.color
-				+';">' + encode(e.title, e.fullday); 
-		} else {
-			s += '<dd class="entry" style="color: ' + e.color +';">';
-			s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
-				+ pad(e.start.getMinutes()) + "</span> ";
-			s += encode(e.title, e.fullday); 
-		}
-		s += '</dd>';
+		s += "</dl>";
+	} else {
+		// no events 
+		s = '<div class="centertext">No events in your calendar(s)</div>';
 	}
-	s += "</dl>";
 	
 	document.getElementById('cal').innerHTML = s;
 	document.getElementById('cal').style.display = 'block';
