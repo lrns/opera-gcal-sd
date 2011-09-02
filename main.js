@@ -202,17 +202,19 @@ function parseFeed(xml) {
 		for (var i = 0; i < xmlEntries.length; i++) {
 			var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
 			var when = xmlEntries[i].getElementsByTagName('when');
-			if (when.length > 0) {
-				// calendar entry must have 'when' element
-				var start = new Date(when[0].attributes["startTime"].nodeValue);
-				var end = new Date(when[0].attributes["endTime"].nodeValue);
-				// full day event
-				var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
-								end.getHours() === 0 && end.getMinutes() === 0;
+			for (var j = 0; j < when.length; j++) {
+				if (when[j].parentNode == xmlEntries[i]) {
+					// calendar entry must have 'when' element
+					var start = new Date(when[j].attributes["startTime"].nodeValue);
+					var end = new Date(when[j].attributes["endTime"].nodeValue);
+					// full day event
+					var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
+									end.getHours() === 0 && end.getMinutes() === 0;
 
 
-				entries.push({ title : title, start : start, end : end, 
-					color: color, fullday : fullday });
+					entries.push({ title : title, start : start, end : end, 
+						color: color, fullday : fullday });
+				}
 			}
 		}
 		

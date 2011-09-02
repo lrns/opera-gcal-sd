@@ -23,6 +23,7 @@ User authentication and preferences page is based on the code of [Google Reader 
 
 ## Changelog
 
+* 1.0.2 - fix for recurring events
 * 1.0.1 - small fixes 
 * 1.0 - Initial release
 

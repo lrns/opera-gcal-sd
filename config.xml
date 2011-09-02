@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.1" viewmodes="minimized" defaultlocale="en">
-  <name short="Gcal-sd">Google Calendar SD</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.2" viewmodes="minimized" defaultlocale="en">
+  <name short="Gcal-sd">Google Calendar</name>
   <icon src="icon.png"/>
   <access origin="http://www.google.com" subdomains="true"/>
   <access origin="https://www.google.com" subdomains="true"/>
