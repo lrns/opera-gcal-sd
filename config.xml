@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.0.2" viewmodes="minimized" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="1.1" viewmodes="minimized" defaultlocale="en">
   <name short="Gcal-sd">Google Calendar</name>
   <icon src="icon.png"/>
+  <feature name="opera:share-cookies" required="false"/>
   <access origin="http://www.google.com" subdomains="true"/>
   <access origin="https://www.google.com" subdomains="true"/>
   <feature name="opera:speeddial" required="true">
     <param name="url" value="http://www.google.com/calendar/b/0/render"/>
   </feature>
-  <license>Copyright 2011 Laurynas Sukys
+  <license href="http://www.apache.org/licenses/LICENSE-2.0">Copyright 2011 Laurynas Sukys
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

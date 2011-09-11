@@ -20,16 +20,17 @@ function init() {
     updateCal();
     timerId = window.setInterval(updateCal, getRefreshInterval());
 
-	addEventListener('storage', 
-        function(){
-			window.clearInterval(timerId);
-			updateCal();
-			// reschedule update
-			timerId = window.setInterval(updateCal, getRefreshInterval());
-        }
-    , false);
 }
-
+/**
+ * Update calendar and reschedule future updates.
+ * Function called when options are changed
+ */
+function refresh() {
+	window.clearInterval(timerId);
+	updateCal();
+	// reschedule update
+	timerId = window.setInterval(updateCal, getRefreshInterval());
+}
 /**
  * Add leading 0 to a single digit number
  */
@@ -38,20 +39,16 @@ function pad(s) {
 }
 
 function updateCal() {
+	opera.extension.broadcastMessage('refresh-start');
 	console.log("update calendar...");
 	calendars = {};
-	if (getUserAuth()) {
-		if (getCalendarType() === 'all') {
-			getFeed(ALL_FEEDS_URL, handleCalendars);
-		} else if(getCalendarType() === 'own') {
-			getFeed(OWN_FEEDS_URL, handleCalendars);
-		
-		} else {
-			getFeed(SINGLE_FEED_URL + FEED_URL_SUFFIX + getMaxEntries(), handleFeed);
-		}
-		
+	if (getCalendarType() === 'all') {
+		getFeed(ALL_FEEDS_URL, handleCalendars);
+	} else if(getCalendarType() === 'own') {
+		getFeed(OWN_FEEDS_URL, handleCalendars);
+
 	} else {
-		displayNoAuth();
+		getFeed(SINGLE_FEED_URL + FEED_URL_SUFFIX + getMaxEntries(), handleFeed);
 	}
 }
 
@@ -62,6 +59,7 @@ function handleFeed(data) {
 	var entries = parseFeed(data);
 	displayData(entries);
 		
+	opera.extension.broadcastMessage('refresh-end');
 }
 
 /**
@@ -103,6 +101,7 @@ function handleMultiFeeds(data) {
 					});
 		}
 		displayData(allEntries);
+		opera.extension.broadcastMessage('refresh-end');
 	}
 }
 
@@ -123,6 +122,7 @@ function onError() {
 	document.getElementById('error').style.display = 'block';
 	document.getElementById('cal').style.display = 'none';
 	document.getElementById('loading').style.display = 'none';	
+	opera.extension.broadcastMessage('refresh-end');
 }
 
 function showLoading() {
@@ -131,10 +131,11 @@ function showLoading() {
 	document.getElementById('loading').style.display = 'block';	
 }
 function displayNoAuth(){
-	document.getElementById('error').innerHTML = 'Please login in Preferences!';
+	document.getElementById('error').innerHTML = 'Click to sign in...';
 	document.getElementById('error').style.display = 'block';
 	document.getElementById('cal').style.display = 'none';
 	document.getElementById('loading').style.display = 'none';	
+	opera.extension.broadcastMessage('refresh-end');
 }
 
 function getFeed(feedUrl, handler) {
@@ -158,10 +159,12 @@ function getFeed(feedUrl, handler) {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState != 4)
 				return;
-
-			if (xhr.status >= 400) {
+			
+			console.log('XHR status: ' + xhr.status);
+			console.log('XHR ready state: ' + xhr.readyState);
+			if (xhr.status >= 400 || xhr.status == 0) {
 				console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
-				handleError(xhr.status == 401);
+				handleError(xhr.status == 401 || xhr.status == 0);
 			} else if (xhr.responseXML) {
 				console.log('responseXML: ' + xhr.responseText.substring(0, 200) + '...');
 				handler(xhr.responseXML);
@@ -175,7 +178,7 @@ function getFeed(feedUrl, handler) {
 			handleError();
 		}
 		xhr.open("GET", feedUrl, true);
-		xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
+//		xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
 		xhr.send(null);
 	} catch(e) {
 		console.log('XHR exception: ' + e);
