@@ -9,7 +9,6 @@ var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/
 
 var REQUEST_TIMEOUT_MS = 30 * 1000; // 30 seconds
 
-var requestTimeout;
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 var allEntries = [];
 var timerId;
@@ -131,7 +130,11 @@ function showLoading() {
 	document.getElementById('loading').style.display = 'block';	
 }
 function displayNoAuth(){
-	document.getElementById('error').innerHTML = 'Click to sign in...';
+	var text = 'Click to sign in ...';
+	if (getAccountType() != 'share') {
+		text = 'Please sign in inside extension preferences';
+	}
+	document.getElementById('error').innerHTML = text;
 	document.getElementById('error').style.display = 'block';
 	document.getElementById('cal').style.display = 'none';
 	document.getElementById('loading').style.display = 'none';	
@@ -144,6 +147,7 @@ function getFeed(feedUrl, handler) {
 	var abortTimerId = window.setTimeout(function() {
 		xhr.abort();
 		//onError();
+		opera.extension.broadcastMessage('refresh-end');
 	}, REQUEST_TIMEOUT_MS);
 
 	function handleError(is401) {
@@ -152,6 +156,7 @@ function getFeed(feedUrl, handler) {
 			// not logged in
 			displayNoAuth();
 		}
+		opera.extension.broadcastMessage('refresh-end');
 
 	}
 
@@ -160,13 +165,10 @@ function getFeed(feedUrl, handler) {
 			if (xhr.readyState != 4)
 				return;
 			
-			console.log('XHR status: ' + xhr.status);
-			console.log('XHR ready state: ' + xhr.readyState);
 			if (xhr.status >= 400 || xhr.status == 0) {
-				console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
+				console.log('Error response code: ' + xhr.status + ' ' + xhr.statusText);
 				handleError(xhr.status == 401 || xhr.status == 0);
 			} else if (xhr.responseXML) {
-				console.log('responseXML: ' + xhr.responseText.substring(0, 200) + '...');
 				handler(xhr.responseXML);
 			} else {
 				console.log('No responseText!');
@@ -178,7 +180,10 @@ function getFeed(feedUrl, handler) {
 			handleError();
 		}
 		xhr.open("GET", feedUrl, true);
-//		xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
+		if (getAccountType() != 'share') { 
+			// use separate account
+			xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
+		}
 		xhr.send(null);
 	} catch(e) {
 		console.log('XHR exception: ' + e);

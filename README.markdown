@@ -18,6 +18,8 @@ Please leave comments/issues here in comments of an extension, in my blog page [
 
 ## Acknowledgements
 Thanks to [Damon][http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
+Google authentication is based on the code of [Google Reader Notifier][https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
+
 
 ## TODO
 * Selective sync (only sync selected calendars)
@@ -26,6 +28,7 @@ Thanks to [Damon][http://achey.net/] for finding and fixing an issue with recurr
 
 ## Changelog
 
+* 1.1.1 - option to choose whether to share browser's session or sign in to another Google account 
 * 1.1.0 - sharing browser's session (no separe sign in needed), new options page, 'refresh calendars' button in options page
 * 1.0.2 - fix for recurring events
 * 1.0.1 - fixed parameters for URL of feeds

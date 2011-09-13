@@ -12,7 +12,6 @@
 		<header>
 		<h1 id="widget-name">Google Calendar SD</h1>
 		</header>
-
 		<section>
 		<fieldset>
 			<p>
@@ -20,6 +19,50 @@
 				<img id="refresh-img" src="ajax-loader-small.gif" />
 			</p>
 		</fieldset>
+		<h3>Account</h3>
+		<fieldset>
+			<p>
+				<input name="account-type" id="share-session" value="share-session" type="radio" selected="selected"></input>
+				<label for="share-session">Share browser's session</label>
+			</p>
+			<p>
+				<input name="account-type" id="separate-signin" value="separate" type="radio"></input>
+				<label for="separate-signin">Sign in another Google account:</label>
+			</p>
+
+		</fieldset>
+		<div id="signin-pane">
+			<div id="main-signin">
+				<fieldset>
+					<p>
+						<input type="text" name="email" id="email" />
+						<label for="email">Email</label>
+					</p>
+					<p>
+						<input type="password" name="password" id="password" />
+						<label for="password">Password</label>
+					</p>
+					<p id="error-area"></p>
+					<p>
+						<input type="button" name="signin" id="signin" value="Sign In" />
+					</p>
+				</fieldset>
+			</div>
+			<div id="main-signout">
+				<fieldset>
+					<p>
+						You are signed in with your Google account:
+					</p>
+					<p>
+						<label for="useremail">Email:</label>
+						<span id="useremail"></span>
+					</p>
+					<p>
+						<input type="button" name="signout" id="signout" value="Sign Out" />
+					</p>
+				</fieldset>
+			</div>
+		</div>
 		<h3>Options</h3>
 		<fieldset>
 			<p>
@@ -41,7 +84,7 @@
 			</p>
 			<p>
 				<select id="calendar-type">
-					<option value="single">Default (single cal.)</option>
+					<option value="single">Default (single calendar)</option>
 					<option value="own">Own calendars</option>
 					<option value="all">All calendars</option>
 				</select>
@@ -53,7 +96,7 @@
 		</fieldset>
 		</section>
 		<footer>
-		&nbsp;
+		All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.
 		</footer>
 
 	</body>
