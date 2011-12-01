@@ -6,6 +6,7 @@
 		<script type="text/javascript" src="debug.js"></script>
 		<script type="text/javascript" src="prefs.js"></script>
 		<script type="text/javascript" src="options.js"></script>
+		<script type="text/javascript" src="jscolor/jscolor.js"></script>
 		<title id="widget-title">Options of Google Calendar SD</title>
 	</head>
 	<body>
@@ -27,7 +28,7 @@
 			</p>
 			<p>
 				<input name="account-type" id="separate-signin" value="separate" type="radio"></input>
-				<label for="separate-signin">Sign in another Google account:</label>
+				<label for="separate-signin">Sign in to another Google account:</label>
 			</p>
 
 		</fieldset>
@@ -79,19 +80,61 @@
 				<label for="refresh-interval">Refresh interval</label>
 			</p>
 			<p>
-				<input type="text" id="max-entries" />
-				<label for="max-entries">Max. entries to display</label>
+				<select id="time-zone">
+					<option value="auto">Auto</option>
+				</select>
+				<label for="time-zone">Time Zone</label>
 			</p>
 			<p>
 				<select id="calendar-type">
 					<option value="single">Default (single calendar)</option>
 					<option value="own">Own calendars</option>
 					<option value="all">All calendars</option>
+					<option value="selected">Selected calendars...</option>
 				</select>
 				<label for="calendar-type">Calendar(s)</label>
 			</p>
 			<p>
 				<label class="hint">*All calendars include subscribed calendars.</label>
+			</p>
+		</fieldset>
+		<div id="select-calendars">
+			<h3>Calendars to use</h3>
+			<fieldset>
+				<p id="list-of-cals">
+				</p>
+			</fieldset>
+		</div>
+		<h3>Appearance</h3>
+		<fieldset>
+			<p>
+				<input type="text" id="max-entries" />
+				<label for="max-entries">Max. entries to display</label>
+			</p>
+			<p>
+				<input type="checkbox" id="past-events" />
+				<label for="past-events">Show passed events</label> 
+			</p>
+			<p>
+				<input type="text" id="bg-color" class="color">
+				<label for="bg-color">Background colour</label>
+			</p>
+			<p>
+				<input type="text" id="font-color" class="color">
+				<label for="font-color">Font colour</label>
+			</p>
+			<p>
+				<input type="text" id="alt-font-color" class="color">
+				<label for="alt-font-color">Light font colour (for all day events)</label>
+			</p>
+			<p>
+				<a href="#" id="font-minus"><img class="options-icon" src="font_minus.png" /></a>
+				<a href="#" id="font-plus"><img class="options-icon" src="font_plus.png" /></a>
+				<label for="font-color">Font size = <span id="font_size">11</span>px</label>
+			</p>
+			<p>
+				<input type="checkbox" id="wrap-lines">
+				<label for="wrap-lines">Wrap event titles</label>
 			</p>
 		</fieldset>
 		</section>

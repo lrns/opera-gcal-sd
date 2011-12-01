@@ -16,8 +16,9 @@ var defaultColor = '#182C57';
 var calendars = {};
 
 function init() {
+	setupCSS();
     updateCal();
-    timerId = window.setInterval(updateCal, getRefreshInterval());
+    timerId = window.setInterval(updateCal, getValue(REFRESH_INTERVAL));
 
 }
 /**
@@ -28,7 +29,35 @@ function refresh() {
 	window.clearInterval(timerId);
 	updateCal();
 	// reschedule update
-	timerId = window.setInterval(updateCal, getRefreshInterval());
+	timerId = window.setInterval(updateCal, getValue(REFRESH_INTERVAL));
+}
+function redraw() {
+	//TODO
+	setupCSS();
+}
+/**
+ * Setup CSS for calendar tile
+ */
+function setupCSS() {
+	for (var i in document.styleSheets) {
+		var sheet = document.styleSheets[i];
+		if (sheet.ownerNode && sheet.href == null) {
+			sheet.ownerNode.parentNode.removeChild(sheet.ownerNode);
+		}
+	}
+
+	var cssNode = document.createElement("style");
+	
+	cssNode.innerHTML = "body { background-color: #" + getValue(BG_COLOR)+ " !important; }\n";
+	cssNode.innerHTML += ".entries dd { white-space: " + (getValue(WRAP_LINES) == 'true' ? "normal" : "nowrap") + "; }\n";
+	cssNode.innerHTML += "#cal {";
+	cssNode.innerHTML += "font-size: " + getValue(FONT_SIZE) + "px;";
+	cssNode.innerHTML += "line-height: " + (parseInt(getValue(FONT_SIZE), 10) + 3) + "px;";
+	cssNode.innerHTML += "}\n";
+	cssNode.innerHTML += ".entries dt { color: #" + getValue(FONT_COLOR) + "; }";
+	cssNode.innerHTML += ".entries dd.full-day { color: #" + getValue(ALT_FONT_COLOR) + "; }";
+	console.log(cssNode.innerHTML);	
+	document.head.appendChild(cssNode);
 }
 /**
  * Add leading 0 to a single digit number
@@ -41,13 +70,12 @@ function updateCal() {
 	opera.extension.broadcastMessage('refresh-start');
 	console.log("update calendar...");
 	calendars = {};
-	if (getCalendarType() === 'all') {
+	if (getValue(CALENDAR_TYPE) === 'all') {
 		getFeed(ALL_FEEDS_URL, handleCalendars);
-	} else if(getCalendarType() === 'own') {
+	} else if(getValue(CALENDAR_TYPE) === 'own') {
 		getFeed(OWN_FEEDS_URL, handleCalendars);
-
 	} else {
-		getFeed(SINGLE_FEED_URL + FEED_URL_SUFFIX + getMaxEntries(), handleFeed);
+		getFeed(SINGLE_FEED_URL + FEED_URL_SUFFIX + getValue(MAX_ENTRIES), handleFeed);
 	}
 }
 
@@ -112,7 +140,7 @@ function handleCalendars(data) {
 	calendars = parseCalendars(data);
 	for (id in calendars) {
 		console.log("GET " + id);
-		getFeed(calendars[id].url + FEED_URL_SUFFIX + getMaxEntries(), handleMultiFeeds);
+		getFeed(calendars[id].url + FEED_URL_SUFFIX + getValue(MAX_ENTRIES), handleMultiFeeds);
 	}
 		
 }
@@ -131,7 +159,7 @@ function showLoading() {
 }
 function displayNoAuth(){
 	var text = 'Click to sign in ...';
-	if (getAccountType() != 'share') {
+	if (getValue(ACCOUNT_TYPE) != 'share') {
 		text = 'Please sign in inside extension preferences';
 	}
 	document.getElementById('error').innerHTML = text;
@@ -180,9 +208,9 @@ function getFeed(feedUrl, handler) {
 			handleError();
 		}
 		xhr.open("GET", feedUrl, true);
-		if (getAccountType() != 'share') { 
+		if (getValue(ACCOUNT_TYPE) != 'share') { 
 			// use separate account
-			xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getUserAuth());
+			xhr.setRequestHeader("Authorization","GoogleLogin auth=" + getValue(USER_AUTH));
 		}
 		xhr.send(null);
 	} catch(e) {
@@ -260,7 +288,7 @@ function displayData(entries) {
 	if (entries.length > 0) {
 		var today = new Date();
 		var s = '<dl class="entries">';
-		var num = entries.length < getMaxEntries() ? entries.length : getMaxEntries();
+		var num = entries.length < getValue(MAX_ENTRIES) ? entries.length : getValue(MAX_ENTRIES);
 		for (var i = 0; i < num; i++) {
 			var e = entries[i];
 			s += '<dt>';

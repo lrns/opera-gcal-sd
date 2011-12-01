@@ -65,9 +65,15 @@ fieldset label {
 	display: none;
 }
 
+#refresh-img {
+	display: none;
+}
 #error-area {
 	display:none;
 	color:#F00;
 	font-size:small;
 	padding-bottom: 5px;
+}
+#select-calendars {
+	display: none;
 }

@@ -5,7 +5,7 @@ This extension displays Google Calendar entries in a Speed Dial tile.
 ## How to use it:
 
 1. Install extension
-2. Sign in using your Google calendar account normally (if not yet signed in) 
+2. Sign in using your Google calendar account normally (if not yet signed in) or sign in into your Google account inside the preferences of an extension
 3. Click 'Refresh calendars' button in options page if you are signed into your Goole account but extension still says 'Click to sign in...'
 3. (Optional) Select calendars you want to get entries from:
     * Default - only entries from the default calendar are displayed
