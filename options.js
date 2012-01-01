@@ -31,6 +31,16 @@ function contains(obj, list) {
 
     return false;
 }
+
+/**
+ * Previous calendar(s) to sync option
+ */
+function resyncCalendars() {
+	opera.extension.bgProcess.refreshCalendars(function(){ console.debug('LAPATAi')} );
+}
+function selectCalendars() {
+}
+
 function initAccount() {
 	var userEmail = getValue(USER_EMAIL);
 	if (userEmail){
@@ -59,14 +69,14 @@ function initAccount() {
 	shareRadio.onchange = function() {
 		id('signin-pane').style.display = 'none';
 		setValue(ACCOUNT_TYPE, 'share');
-		opera.extension.bgProcess.refresh();
+		opera.extension.bgProcess.refreshFeeds();
 	}
 
 	var signinRadio = id('separate-signin');
 	signinRadio.onchange = function() {
 		id('signin-pane').style.display = 'block';
 		setValue(ACCOUNT_TYPE, 'signin');
-		opera.extension.bgProcess.refresh();
+		opera.extension.bgProcess.refreshFeeds();
 	}
 
 	if (getValue(ACCOUNT_TYPE) === 'share') {
@@ -85,13 +95,13 @@ function initOptions() {
 
 	refreshIntervalElement.onchange = function(){
 		setValue(REFRESH_INTERVAL, refreshIntervalElement.options[refreshIntervalElement.selectedIndex].value);
-		opera.extension.bgProcess.refresh();
+		opera.extension.bgProcess.refreshFeeds();
 	}
 
 	id('refresh-cal').onclick = function(){
 	    document.getElementById('refresh-img').style.display = 'inline';
-		opera.extension.bgProcess.refresh();
-	};
+		opera.extension.bgProcess.refreshFeeds();
+	}
 
 
 	var calendarType = getValue(CALENDAR_TYPE);
@@ -100,7 +110,21 @@ function initOptions() {
 	
 	calendarTypeElement.onchange = function(){
 		setValue(CALENDAR_TYPE, calendarTypeElement.options[calendarTypeElement.selectedIndex].value);
-		opera.extension.bgProcess.refresh();
+		if (getValue(CALENDAR_TYPE) === 'selected') {
+			selectCalendars();
+		} else {
+			id('select-calendars').style.display = 'none';
+			opera.extension.bgProcess.calendars = {};
+			if (getValue(CALENDAR_TYPE) === 'single') {
+				opera.extension.bgProcess.calendars[opera.extension.bgProcess.extractID(SINGLE_FEED_URL)] = 
+					{ url : SINGLE_FEED_URL,
+						title : 'Default', color : getValue(FONT_COLOR), 
+						synced : false, shouldSync : true };
+				
+			}
+			
+		}
+		opera.extension.bgProcess.refreshFeeds();
 	}
 
 	id('font-plus').onclick = function(){
@@ -134,7 +158,7 @@ function initSimpleFields() {
 		element.onchange = function(){
 			setValue(this.id, this.value);
 			if (this.id === MAX_ENTRIES) {
-				opera.extension.bgProcess.refresh();
+				opera.extension.bgProcess.refreshFeeds();
 			} else {
 				opera.extension.bgProcess.redraw();
 			}
@@ -148,7 +172,7 @@ function initSimpleFields() {
 		element.oninput = function(){
 			setValue(this.id, this.checked);
 			if (this.id === SHOW_PAST_EVENTS) {
-				opera.extension.bgProcess.refresh();
+				opera.extension.bgProcess.refreshFeeds();
 			} else {
 				opera.extension.bgProcess.redraw();
 			}
@@ -210,7 +234,7 @@ function logIn(email, passwd, onSuccess, onError)
 		console.log('Logged in as ' + email);
     	setValue(USER_AUTH, responseText.match(/Auth=(.+)/)[1]);
     	setValue(USER_EMAIL, email);
-		opera.extension.bgProcess.refresh();
+		opera.extension.bgProcess.refreshFeeds();
 		onSuccess();
     }
     function handleError(){

@@ -1,3 +1,4 @@
+
 var USER_AUTH = 'user-auth';
 var USER_EMAIL = 'user-email';
 var ACCOUNT_TYPE = 'account-type';
