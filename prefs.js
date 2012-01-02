@@ -23,7 +23,7 @@ var defaultValues = {
 	
 	'refresh-interval' : 900000,
 	'calendar-type' : 'all',
-	'selected-calendars' : {},
+	'selected-calendars' : '{}',
 	'time-zone' : 'auto',
 
 	'max-entries' : 15,
@@ -53,3 +53,5 @@ function setValue(key, value) {
 function getValue(key) {
 	return widget.preferences.getItem(key) || defaultValues[key];
 }
+
+//function id(e){return document.getElementById(e)}

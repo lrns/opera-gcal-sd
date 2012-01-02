@@ -38,7 +38,7 @@ function refreshFeeds() {
 }
 
 function refreshCalendars(url, handler) {
-	calendars = {};
+	console.log('Refreshing calendar ' + url);
 	getFeed(url, 
 			function(data) { 
 				// parse calendars
@@ -216,8 +216,9 @@ function parseCalendars(xml) {
 			synced : false, shouldSync : true };
 	}
 	calendars = newCalendars;
+	opera.extension.broadcastMessage('calendars-updated');
 }
 
 function extractID(url) {
-	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i,"");
+	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i,"").replace(/[^\w\s]/gi, '').substring(0,20);
 }

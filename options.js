@@ -32,13 +32,32 @@ function contains(obj, list) {
     return false;
 }
 
-/**
- * Previous calendar(s) to sync option
- */
-function resyncCalendars() {
-	opera.extension.bgProcess.refreshCalendars(function(){ console.debug('LAPATAi')} );
+function showSelectableCalendars() {
+	// show pane to select calendars
+	document.getElementById('select-calendars').style.display = 'block';
+	console.log('select cals...');
+	var selected = JSON.parse(getValue(SELECTED_CALENDARS));
+	var calendars = opera.extension.bgProcess.calendars;
+
+	document.getElementById('list-of-cals').innerHTML = '';
+	for (var id in calendars) {
+		var checked = true;
+		//TODO
+		var line = '<p><input type="checkbox" class="check-calendars" name="' + id + '" id="cal_'+id+'" value="1" checked="'+checked+'" />';
+		line += '<label for="cal_'+id+'">'+ calendars[id].title +'</label>';
+		line += '</p>';
+		document.getElementById('list-of-cals').innerHTML += line;
+	}
+		
 }
-function selectCalendars() {
+function resyncCalendars() {
+	console.log('select cals1...');
+	id('select-calendars').style.display = 'block';
+	id('list-of-cals').innerHTML = '<img src="ajax-loader.gif" id="cal-list-loader" />';
+
+	opera.extension.bgProcess.refreshCalendars(
+			opera.extension.bgProcess.ALL_FEEDS_URL,
+			function(){});
 }
 
 function initAccount() {
@@ -111,20 +130,20 @@ function initOptions() {
 	calendarTypeElement.onchange = function(){
 		setValue(CALENDAR_TYPE, calendarTypeElement.options[calendarTypeElement.selectedIndex].value);
 		if (getValue(CALENDAR_TYPE) === 'selected') {
-			selectCalendars();
+			resyncCalendars();
 		} else {
 			id('select-calendars').style.display = 'none';
 			opera.extension.bgProcess.calendars = {};
 			if (getValue(CALENDAR_TYPE) === 'single') {
-				opera.extension.bgProcess.calendars[opera.extension.bgProcess.extractID(SINGLE_FEED_URL)] = 
-					{ url : SINGLE_FEED_URL,
+				opera.extension.bgProcess.calendars[opera.extension.bgProcess.extractID(opera.extension.bgProcess.SINGLE_FEED_URL)] = 
+					{ url : opera.extension.bgProcess.SINGLE_FEED_URL,
 						title : 'Default', color : getValue(FONT_COLOR), 
 						synced : false, shouldSync : true };
 				
 			}
 			
+			opera.extension.bgProcess.refreshFeeds();
 		}
-		opera.extension.bgProcess.refreshFeeds();
 	}
 
 	id('font-plus').onclick = function(){
@@ -200,6 +219,8 @@ function init(){
 			document.getElementById('refresh-img').style.display = 'none';
 		} else if (thecatch === "refresh-start") {
 			document.getElementById('refresh-img').style.display = 'inline';
+		} else if (thecatch === "calendars-updated" && getValue(CALENDAR_TYPE) === "selected") {
+			showSelectableCalendars();
 		}
 	}
 
