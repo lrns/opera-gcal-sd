@@ -20,6 +20,17 @@ function initCalendars() {
 			synced : false, shouldSync : true };
 	} else if (getValue(CALENDAR_TYPE) === 'selected') {
 		// setup calendars
+		refreshCalendars(ALL_FEEDS_URL,	function() {
+				var selected = JSON.parse(getValue(SELECTED_CALENDARS));
+				for (var id in calendars) {
+					calendars[id].shouldSync = false;
+					if (id in selected) {
+						calendars[id].shouldSync = selected[id].shouldSync;
+						calendars[id].color = selected[id].color;
+					}
+				}
+				refreshFeeds();
+			});
 	}
 
 }
@@ -97,12 +108,19 @@ function handleMultiFeeds(data) {
 function syncCalendars() {
 	
 	newEntries = [];
+	var numToSync = 0;
 	for (id in calendars) {
-		
+		calendars[id].synced = false;	
 		if (calendars[id].shouldSync) {
+			numToSync++;
 			console.log("GET calendar " + id + " => " + calendars[id].url);
 			getFeed(buildFeedURL(calendars[id].url), handleMultiFeeds);
 		}
+	}
+	if (numToSync === 0) {
+		entries = newEntries;
+		displayData();
+		opera.extension.broadcastMessage('refresh-end');
 	}
 }
 function getFeed(feedUrl, handler) {
@@ -133,6 +151,7 @@ function getFeed(feedUrl, handler) {
 				console.log('Error response code: ' + xhr.status + ' ' + xhr.statusText);
 				handleError(xhr.status == 401 || xhr.status == 0);
 			} else if (xhr.responseXML) {
+				console.log('Response received: ' + xhr.responseText.substring(0,50));
 				handler(xhr.responseXML);
 			} else {
 				console.log('No responseText!');

@@ -1,6 +1,6 @@
 var LOGIN_URL = 'https://www.google.com/accounts/ClientLogin'
 var LOGIN_ADDITIONAL_PARAMS = 'accountType=HOSTED_OR_GOOGLE&service=cl'
-
+var selected = {};
 addEventListener('DOMContentLoaded',init,false);
 
 function id(e){return document.getElementById(e)}
@@ -32,21 +32,45 @@ function contains(obj, list) {
     return false;
 }
 
+function calendarChecked() {
+
+	console.log('checkbox changed for ' + this.id);
+	var calID = this.id.split('_')[1];
+	if (calID in selected) {
+		selected[calID].shouldSync = this.checked;
+	} else {
+		selected[calID] = { shouldSync : this.checked, 
+			color : opera.extension.bgProcess.calendars[calID].color };
+	}
+
+	opera.extension.bgProcess.calendars[calID].shouldSync = this.checked;
+
+	setValue(SELECTED_CALENDARS, JSON.stringify(selected));
+	opera.extension.bgProcess.refreshFeeds();
+}
 function showSelectableCalendars() {
 	// show pane to select calendars
 	document.getElementById('select-calendars').style.display = 'block';
 	console.log('select cals...');
-	var selected = JSON.parse(getValue(SELECTED_CALENDARS));
 	var calendars = opera.extension.bgProcess.calendars;
 
 	document.getElementById('list-of-cals').innerHTML = '';
+
 	for (var id in calendars) {
-		var checked = true;
-		//TODO
-		var line = '<p><input type="checkbox" class="check-calendars" name="' + id + '" id="cal_'+id+'" value="1" checked="'+checked+'" />';
+		var checked = (id in selected) ? selected[id].shouldSync : false;
+		opera.extension.bgProcess.calendars[id].shouldSync = checked;
+
+		var line = '<p><input type="checkbox" class="check-calendars" name="' + id + '" id="cal_'+id+'" value="1"';
+		if (checked) {
+			line += 'checked="checked"';
+		}
+		line += '/>';
 		line += '<label for="cal_'+id+'">'+ calendars[id].title +'</label>';
 		line += '</p>';
 		document.getElementById('list-of-cals').innerHTML += line;
+	}
+	for (var id in calendars) {
+		document.getElementById('cal_'+id).oninput = calendarChecked;
 	}
 		
 }
@@ -206,12 +230,17 @@ function init(){
 	setText('widget-author', widget.author );
 	setText('font_size', getValue(FONT_SIZE));
 
+	selected = JSON.parse(getValue(SELECTED_CALENDARS));
 	
 
 
 	initAccount();
 	initOptions();
 	initSimpleFields();
+
+	if (getValue(CALENDAR_TYPE) === 'selected') {
+		resyncCalendars();
+	}
 
 	opera.extension.onmessage = function(event){
 		var thecatch = event.data;

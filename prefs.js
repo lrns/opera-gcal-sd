@@ -5,6 +5,13 @@ var ACCOUNT_TYPE = 'account-type';
 
 var REFRESH_INTERVAL = 'refresh-interval';
 var CALENDAR_TYPE = 'calendar-type';
+
+/*
+ * id
+ * 		shouldSync
+ * 		color
+ */
+
 var SELECTED_CALENDARS = 'selected-calendars';
 var TIME_ZONE = 'time-zone';
 

@@ -27,7 +27,9 @@ var UI_INTERVAL = 60000; //10 min
 function init() {
 	initCalendars();
 	setupCSS();
-    refreshFeeds();
+	if (getValue(CALENDAR_TYPE) !== 'selected') {
+		refreshFeeds();
+	}
     feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
 	// force UI update every 10 min
     viewTimer = window.setInterval(displayData, UI_INTERVAL);
