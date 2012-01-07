@@ -77,3 +77,13 @@ fieldset label {
 #select-calendars {
 	display: none;
 }
+.cal-color {
+	width: 45px;
+	margin: 0 5px;
+}
+#font-size {
+	width: 20px;
+}
+#font-plus, #font-minus {
+	font-weight: bold;
+}

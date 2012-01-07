@@ -4,6 +4,7 @@ var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'O
 function redraw() {
 	//TODO
 	setupCSS();
+	displayData();
 }
 
 /**

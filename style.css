@@ -48,9 +48,10 @@ dt {
 	
 	float: left;
 	clear: left;
-	width: 42px;
+	/*width: 42px;*/
 	/*text-align: right;*/
 	color: #182C57;
+	white-space: nowrap;
 	/*background-color: #F8F9FF;*/
 	/*font-weight: bold;*/
 }

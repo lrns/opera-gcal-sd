@@ -32,6 +32,22 @@ function contains(obj, list) {
     return false;
 }
 
+function calendarColorChanged() {
+
+	console.log('color changed for ' + this.id);
+	var calID = this.id.split('_')[1];
+	if (calID in selected) {
+		selected[calID].color = '#' + this.value;
+	} else {
+		selected[calID] = { shouldSync : document.getElementById('cal_'+calID).checked, 
+			color : '#' + this.value };
+	}
+
+	opera.extension.bgProcess.calendars[calID].color = '#' + this.value;
+
+	setValue(SELECTED_CALENDARS, JSON.stringify(selected));
+	opera.extension.bgProcess.redraw();
+}
 function calendarChecked() {
 
 	console.log('checkbox changed for ' + this.id);
@@ -58,6 +74,9 @@ function showSelectableCalendars() {
 
 	for (var id in calendars) {
 		var checked = (id in selected) ? selected[id].shouldSync : false;
+		var color = (id in selected) ?
+			selected[id].color :
+			calendars[id].color;
 		opera.extension.bgProcess.calendars[id].shouldSync = checked;
 
 		var line = '<p><input type="checkbox" class="check-calendars" name="' + id + '" id="cal_'+id+'" value="1"';
@@ -65,13 +84,17 @@ function showSelectableCalendars() {
 			line += 'checked="checked"';
 		}
 		line += '/>';
+		line += '<input type="text" class="color cal-color" name="color_' + id + '" id="color_'+id+'" value="' + color +'"';
 		line += '<label for="cal_'+id+'">'+ calendars[id].title +'</label>';
+
 		line += '</p>';
 		document.getElementById('list-of-cals').innerHTML += line;
 	}
 	for (var id in calendars) {
 		document.getElementById('cal_'+id).oninput = calendarChecked;
+		document.getElementById('color_'+id).onchange = calendarColorChanged;
 	}
+	jscolor.bind();
 		
 }
 function resyncCalendars() {
@@ -175,7 +198,7 @@ function initOptions() {
 		if (size < 72) {
 			setValue(FONT_SIZE, size + 1);
 		}
-		setText('font_size', getValue(FONT_SIZE));
+		id('font-size').value = getValue(FONT_SIZE);
 		opera.extension.bgProcess.redraw();
 		return false;
 	};
@@ -184,7 +207,14 @@ function initOptions() {
 		if (size > 4) {
 			setValue(FONT_SIZE, size - 1);
 		}
-		setText('font_size', getValue(FONT_SIZE));
+		id('font-size').value = getValue(FONT_SIZE);
+		opera.extension.bgProcess.redraw();
+		return false;
+	};
+	id('font-size').onchange = function(){
+		//TODO validation
+	    var size = this.value;
+		setValue(FONT_SIZE, size);
 		opera.extension.bgProcess.redraw();
 		return false;
 	};
@@ -228,7 +258,7 @@ function init(){
 	setText('widget-title', 'Options of ' + widget.name);
 	setText('widget-name', widget.name + ' v' + widget.version);
 	setText('widget-author', widget.author );
-	setText('font_size', getValue(FONT_SIZE));
+	setText('font-size', getValue(FONT_SIZE));
 
 	selected = JSON.parse(getValue(SELECTED_CALENDARS));
 	
