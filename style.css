@@ -63,3 +63,7 @@ td.full-day {
 	color: #fff;
 	border-radius: 3px;
 }
+.dim-event {
+	text-decoration: line-through;
+	opacity: 0.6;
+}

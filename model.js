@@ -3,12 +3,26 @@ var ALL_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/allcalendars/
 var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/full';
 
 var SINGLE_FEED_URL = 'https://www.google.com/calendar/feeds/default/private/full';
-var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending&futureevents=true&max-results=';
+var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending';
 
 var REQUEST_TIMEOUT_MS = 30 * 1000; // 30 seconds
 
 function buildFeedURL(prefix) {
-	return prefix + FEED_URL_SUFFIX + getValue(MAX_ENTRIES);
+	var url = prefix + FEED_URL_SUFFIX;
+	url += '&max-results='+ getValue(MAX_ENTRIES);
+	var date = new Date();
+	if (getValue(SHOW_PAST_EVENTS) === 'true') {
+		// show all today's events
+		date.setHours(0);
+		date.setMinutes(0);
+		date.setSeconds(0);
+	}
+	url += '&start-min='+ date.toISOString();
+	if (getValue(TIME_ZONE) !== 'auto') {
+		url += '&ctz='+ getValue(TIME_ZONE);
+	}
+	console.log('URL: ' + url);
+	return url;
 }
 
 function initCalendars() {
@@ -196,12 +210,19 @@ function parseFeed(xml) {
 			for (var j = 0; j < when.length; j++) {
 				if (when[j].parentNode == xmlEntries[i]) {
 					// calendar entry must have 'when' element
-					var start = new Date(when[j].attributes["startTime"].nodeValue);
-					var end = new Date(when[j].attributes["endTime"].nodeValue);
-					// full day event
-					var fullday = start.getHours() === 0 && start.getMinutes() === 0 &&
-									end.getHours() === 0 && end.getMinutes() === 0;
+					// full day event - no time specified
 
+					var fullday =/^\d{4}-\d\d-\d\d$/.test(when[j].attributes["startTime"].nodeValue)
+					if (!fullday && getValue(TIME_ZONE) !== 'auto') {
+						// get rid of timezone offset:
+						// from: 2012-01-08T06:00:00.000-05:00
+						//   to: 2012-01-08T06:00:00.000
+						var start = new Date(when[j].attributes["startTime"].nodeValue.substring(0, when[j].attributes["startTime"].nodeValue.length - 6));
+						var end = new Date(when[j].attributes["endTime"].nodeValue.substring(0, when[j].attributes["endTime"].nodeValue.length - 6));
+					} else {
+						var start = new Date(when[j].attributes["startTime"].nodeValue);
+						var end = new Date(when[j].attributes["endTime"].nodeValue);
+					}
 
 					feedEntries.push({ title : title, start : start, end : end, 
 						color: color, fullday : fullday, calendar : calID });

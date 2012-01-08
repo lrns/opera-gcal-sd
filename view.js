@@ -1,6 +1,3 @@
-var TITLE_UNREAD_COUNT_RE = /\s+\((\d+)(\+?)\)$/; 
-var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
-
 
 /**
  * Setup CSS for calendar tile
@@ -59,7 +56,7 @@ function displayNoAuth(){
 }
 function drawEntries() {
 	console.log('Drawing entries >>>>>');
-
+	var now = new Date();
 	//TODO past today's events
 	//TODO events in progress
 	if (entries.length > 0) {
@@ -69,31 +66,37 @@ function drawEntries() {
 		console.log('Drawing entries: ' + entries.length);
 		for (var i = 0; i < num; i++) {
 			var e = entries[i];
-			s += '<tr><td class="entry-day" valign="top">';
-			if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
-					e.start.getMonth() == entries[i-1].start.getMonth()) {
-				// same day as for previous entry
-				s += '&nbsp;';
-			} else {
-				// first event of a day
-				s += e.start.format(getValue(DATE_FORMAT));
-			}
-			s += '</td>';
-			if (e.fullday) {
-				s += '<td valign="top" class="full-day entry" style="background-color: '+ e.color
-					+';">' + e.title; 
-			} else {
-				s += '<td valign="top" class="entry" style="color: ' + e.color +';">';
-				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
-					+ pad(e.start.getMinutes());
-				if (getValue(SHOW_END_TIME) === 'true') {
-					s += '-' + pad(e.end.getHours()) + ":" 
-						+ pad(e.end.getMinutes());
+			if (e.end > now || getValue(SHOW_PAST_EVENTS) === 'true') {
+				s += '<tr><td class="entry-day" valign="top">';
+				if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
+						e.start.getMonth() == entries[i-1].start.getMonth()) {
+					// same day as for previous entry
+					s += '&nbsp;';
+				} else {
+					// first event of a day
+					s += e.start.format(getValue(DATE_FORMAT));
 				}
-				s += "</span> ";
-				s += e.title; 
+				s += '</td>';
+				if (e.fullday) {
+					s += '<td valign="top" class="full-day entry" style="background-color: '+ e.color
+						+';">' + e.title; 
+				} else {
+					s += '<td valign="top" class="entry';
+					if (e.end < now) {
+						s += ' dim-event';
+					}
+					s += '" style="color: ' + e.color +';">';
+					s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
+						+ pad(e.start.getMinutes());
+					if (getValue(SHOW_END_TIME) === 'true') {
+						s += '-' + pad(e.end.getHours()) + ":" 
+							+ pad(e.end.getMinutes());
+					}
+					s += "</span> ";
+					s += e.title; 
+				}
+				s += '</td></tr>';
 			}
-			s += '</td></tr>';
 		}
 		s += "</dl>";
 		s += "</tbody></table>";

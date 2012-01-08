@@ -22,19 +22,27 @@ var newEntries = [];
 
 var viewTimer;
 var feedsTimer;
-var UI_INTERVAL = 60000; //10 min
+var sdTitleTimer;
+var UI_INTERVAL = 600000; //10 min
 
 function init() {
+	setSDTitle();
 	initCalendars();
 	setupCSS();
 	if (getValue(CALENDAR_TYPE) !== 'selected') {
 		refreshFeeds();
 	}
     feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
-	// force UI update every 10 min
+	// force UI update 
     viewTimer = window.setInterval(drawEntries, UI_INTERVAL);
+    sdTitleTimer = window.setInterval(setSDTitle, 30000);
 
 }
+
+function setSDTitle() {
+	opera.contexts.speeddial.title = (new Date()).format(getValue(TITLE_DATE_FORMAT));
+}
+
 /**
  * Update calendar and reschedule future updates.
  * Function called when options are changed

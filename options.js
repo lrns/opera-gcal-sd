@@ -176,6 +176,14 @@ function initOptions() {
 		opera.extension.bgProcess.refreshFeeds();
 	}
 
+	var timeZone = getValue(TIME_ZONE);
+    var timeZoneElement = id(TIME_ZONE);
+	setListActiveValue(timeZone, timeZoneElement);
+
+	timeZoneElement.onchange = function(){
+		setValue(TIME_ZONE, timeZoneElement.options[timeZoneElement.selectedIndex].value);
+		opera.extension.bgProcess.refreshFeeds();
+	}
 
 	var calendarType = getValue(CALENDAR_TYPE);
 	var calendarTypeElement = id('calendar-type');
@@ -228,7 +236,7 @@ function initOptions() {
 }
 
 function initSimpleFields() {
-	var textFields = [ MAX_ENTRIES, BG_COLOR, FONT_COLOR, ALT_FONT_COLOR, DATE_FORMAT ];
+	var textFields = [ MAX_ENTRIES, BG_COLOR, FONT_COLOR, ALT_FONT_COLOR, DATE_FORMAT, TITLE_DATE_FORMAT ];
 	var checkboxFields = [ SHOW_PAST_EVENTS, WRAP_LINES, SHOW_END_TIME ];
 
 	for (var i in textFields) {
@@ -247,6 +255,8 @@ function initSimpleFields() {
 				opera.extension.bgProcess.refreshFeeds();
 			} else if (this.id === DATE_FORMAT) {
 				opera.extension.bgProcess.redraw();
+			} else if (this.id === TITLE_DATE_FORMAT) {
+				opera.extension.bgProcess.setSDTitle();
 			} else {
 				opera.extension.bgProcess.setupCSS();
 			}

@@ -5,6 +5,7 @@ var ACCOUNT_TYPE = 'account-type';
 
 var REFRESH_INTERVAL = 'refresh-interval';
 var CALENDAR_TYPE = 'calendar-type';
+var TITLE_DATE_FORMAT = 'title-date-format';
 
 /*
  * id
@@ -38,6 +39,8 @@ var defaultValues = {
 	'max-entries' : 15,
 	'end-time' : 'false',
 	'date-format' : 'dd NNN',
+	'title-date-format' : 'H:mm E, d NNN yyyy',
+
 	'show-past-events' : false,
 	'bg-color' : 'FFFFFF',
 	'font-color' : '182C57',
