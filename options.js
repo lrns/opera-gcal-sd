@@ -44,6 +44,11 @@ function calendarColorChanged() {
 	}
 
 	opera.extension.bgProcess.calendars[calID].color = '#' + this.value;
+	for (var j in opera.extension.bgProcess.entries) {
+		if (opera.extension.bgProcess.entries[j].calendar === calID) {
+			opera.extension.bgProcess.entries[j].color = '#'+this.value;
+		}
+	}
 
 	setValue(SELECTED_CALENDARS, JSON.stringify(selected));
 	opera.extension.bgProcess.redraw();
@@ -78,6 +83,7 @@ function showSelectableCalendars() {
 			selected[id].color :
 			calendars[id].color;
 		opera.extension.bgProcess.calendars[id].shouldSync = checked;
+		opera.extension.bgProcess.calendars[id].color = color;
 
 		var line = '<p><input type="checkbox" class="check-calendars" name="' + id + '" id="cal_'+id+'" value="1"';
 		if (checked) {
@@ -94,6 +100,7 @@ function showSelectableCalendars() {
 		document.getElementById('cal_'+id).oninput = calendarChecked;
 		document.getElementById('color_'+id).onchange = calendarColorChanged;
 	}
+	opera.extension.bgProcess.refreshFeeds();
 	jscolor.bind();
 		
 }
@@ -184,7 +191,7 @@ function initOptions() {
 			if (getValue(CALENDAR_TYPE) === 'single') {
 				opera.extension.bgProcess.calendars[opera.extension.bgProcess.extractID(opera.extension.bgProcess.SINGLE_FEED_URL)] = 
 					{ url : opera.extension.bgProcess.SINGLE_FEED_URL,
-						title : 'Default', color : getValue(FONT_COLOR), 
+						title : 'Default', color : '#'+getValue(FONT_COLOR), 
 						synced : false, shouldSync : true };
 				
 			}
@@ -221,8 +228,8 @@ function initOptions() {
 }
 
 function initSimpleFields() {
-	var textFields = [ MAX_ENTRIES, BG_COLOR, FONT_COLOR, ALT_FONT_COLOR ];
-	var checkboxFields = [ SHOW_PAST_EVENTS, WRAP_LINES ];
+	var textFields = [ MAX_ENTRIES, BG_COLOR, FONT_COLOR, ALT_FONT_COLOR, DATE_FORMAT ];
+	var checkboxFields = [ SHOW_PAST_EVENTS, WRAP_LINES, SHOW_END_TIME ];
 
 	for (var i in textFields) {
 		var field = textFields[i];
@@ -230,10 +237,18 @@ function initSimpleFields() {
 		element.value = getValue(field);
 		element.onchange = function(){
 			setValue(this.id, this.value);
-			if (this.id === MAX_ENTRIES) {
-				opera.extension.bgProcess.refreshFeeds();
-			} else {
+			if (this.id === FONT_COLOR && getValue(CALENDAR_TYPE) === 'single') {
+				opera.extension.bgProcess.calendars[opera.extension.bgProcess.extractID(opera.extension.bgProcess.SINGLE_FEED_URL)].color = '#'+this.value;
+				for (var j in opera.extension.bgProcess.entries) {
+					opera.extension.bgProcess.entries[j].color = '#'+this.value;
+				}
 				opera.extension.bgProcess.redraw();
+			} else if (this.id === MAX_ENTRIES) {
+				opera.extension.bgProcess.refreshFeeds();
+			} else if (this.id === DATE_FORMAT) {
+				opera.extension.bgProcess.redraw();
+			} else {
+				opera.extension.bgProcess.setupCSS();
 			}
 		}
 	}

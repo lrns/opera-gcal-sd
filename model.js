@@ -16,7 +16,7 @@ function initCalendars() {
 	if (getValue(CALENDAR_TYPE) === 'single') {
 		calendars[extractID(SINGLE_FEED_URL)] = {
 			url : SINGLE_FEED_URL,
-			title : 'Default', color : getValue(FONT_COLOR), 
+			title : 'Default', color : '#'+getValue(FONT_COLOR), 
 			synced : false, shouldSync : true };
 	} else if (getValue(CALENDAR_TYPE) === 'selected') {
 		// setup calendars
@@ -100,7 +100,7 @@ function handleMultiFeeds(data) {
 					});
 		}
 		entries = newEntries;
-		displayData();
+		drawEntries();
 		opera.extension.broadcastMessage('refresh-end');
 	}
 }
@@ -119,7 +119,7 @@ function syncCalendars() {
 	}
 	if (numToSync === 0) {
 		entries = newEntries;
-		displayData();
+		drawEntries();
 		opera.extension.broadcastMessage('refresh-end');
 	}
 }
@@ -204,7 +204,7 @@ function parseFeed(xml) {
 
 
 					feedEntries.push({ title : title, start : start, end : end, 
-						color: color, fullday : fullday });
+						color: color, fullday : fullday, calendar : calID });
 				}
 			}
 		}

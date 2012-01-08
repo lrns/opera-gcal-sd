@@ -32,7 +32,7 @@ function init() {
 	}
     feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
 	// force UI update every 10 min
-    viewTimer = window.setInterval(displayData, UI_INTERVAL);
+    viewTimer = window.setInterval(drawEntries, UI_INTERVAL);
 
 }
 /**
@@ -41,15 +41,15 @@ function init() {
  */
 function reloadFeeds() {
 	window.clearInterval(feedsTimer);
-	updateCal();
+	refreshFeeds();
 	// reschedule update
 	timerId = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
 }
 function refreshUI() {
 	window.clearInterval(viewTimer);
-	displayData();
+	drawEntries();
 	// reschedule update
-	viewTimer = window.setInterval(displayDate, getValue(UI_INTERVAL));
+	viewTimer = window.setInterval(drawEntries, getValue(UI_INTERVAL));
 }
 
 

@@ -38,36 +38,28 @@ body {
 	bottom: 0px;
 	right: 0px;*/
 }
-dl {
-	padding: 0px;
+table {
+	padding: 1px;
 	margin: 0px;
+	width: 100%;
 }
-dt {
-	padding: 0 0 1px 0;
-	margin: 0 0 1px 0;
-	
-	float: left;
-	clear: left;
-	/*width: 42px;*/
-	/*text-align: right;*/
+tr {
+	padding: 1px 0;
+}
+td.entry-day {
 	color: #182C57;
 	white-space: nowrap;
-	/*background-color: #F8F9FF;*/
-	/*font-weight: bold;*/
 }
-dd {
-	margin: 0 0 1px 44px;
-	padding: 0 0 1px 0;
-}
-dd.entry {
+td.entry {
+	padding-left: 3px;
 	color: #182C57;
+	width: auto;
 }
 span.entry-time {
 	font-weight: bold;
 }
-dd.full-day {
+td.full-day {
 	background-color: #182C57;
 	color: #fff;
-	padding: 0 0 1px 5px;
 	border-radius: 3px;
 }

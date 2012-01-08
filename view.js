@@ -1,11 +1,6 @@
 var TITLE_UNREAD_COUNT_RE = /\s+\((\d+)(\+?)\)$/; 
 var months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 
-function redraw() {
-	//TODO
-	setupCSS();
-	displayData();
-}
 
 /**
  * Setup CSS for calendar tile
@@ -21,13 +16,13 @@ function setupCSS() {
 	var cssNode = document.createElement("style");
 	
 	cssNode.innerHTML = "body { background-color: #" + getValue(BG_COLOR)+ " !important; }\n";
-	cssNode.innerHTML += ".entries dd { white-space: " + (getValue(WRAP_LINES) == 'true' ? "normal" : "nowrap") + "; }\n";
+	cssNode.innerHTML += "td.entry { white-space: " + (getValue(WRAP_LINES) == 'true' ? "normal" : "nowrap") + "; }\n";
 	cssNode.innerHTML += "#cal {";
 	cssNode.innerHTML += "font-size: " + getValue(FONT_SIZE) + "px;";
-	cssNode.innerHTML += "line-height: " + (parseInt(getValue(FONT_SIZE), 10) + 3) + "px;";
+	//cssNode.innerHTML += "line-height: " + (parseInt(getValue(FONT_SIZE), 10) + 3) + "px;";
 	cssNode.innerHTML += "}\n";
-	cssNode.innerHTML += ".entries dt { color: #" + getValue(FONT_COLOR) + "; }";
-	cssNode.innerHTML += ".entries dd.full-day { color: #" + getValue(ALT_FONT_COLOR) + "; }";
+	cssNode.innerHTML += "td.entry-day { color: #" + getValue(FONT_COLOR) + "; }";
+	cssNode.innerHTML += "td.full-day { color: #" + getValue(ALT_FONT_COLOR) + "; }";
 	console.log(cssNode.innerHTML);	
 	document.head.appendChild(cssNode);
 }
@@ -62,38 +57,46 @@ function displayNoAuth(){
 	document.getElementById('loading').style.display = 'none';	
 	opera.extension.broadcastMessage('refresh-end');
 }
-function displayData() {
+function drawEntries() {
+	console.log('Drawing entries >>>>>');
 
 	//TODO past today's events
 	//TODO events in progress
 	if (entries.length > 0) {
 		var today = new Date();
-		var s = '<dl class="entries">';
+		var s = '<table id="entries" cellspacing="2" cellpadding="" border="0"><tbody>';
 		var num = entries.length < getValue(MAX_ENTRIES) ? entries.length : getValue(MAX_ENTRIES);
+		console.log('Drawing entries: ' + entries.length);
 		for (var i = 0; i < num; i++) {
 			var e = entries[i];
-			s += '<dt>';
+			s += '<tr><td class="entry-day" valign="top">';
 			if (i > 0 && e.start.getDate() == entries[i-1].start.getDate() &&
 					e.start.getMonth() == entries[i-1].start.getMonth()) {
 				// same day as for previous entry
 				s += '&nbsp;';
 			} else {
 				// first event of a day
-				s += pad(e.start.getDate()) + " " + months[e.start.getMonth()];
+				s += e.start.format(getValue(DATE_FORMAT));
 			}
-			s += '</dt>';
+			s += '</td>';
 			if (e.fullday) {
-				s += '<dd class="full-day" style="background-color: '+ e.color
+				s += '<td valign="top" class="full-day entry" style="background-color: '+ e.color
 					+';">' + e.title; 
 			} else {
-				s += '<dd class="entry" style="color: ' + e.color +';">';
+				s += '<td valign="top" class="entry" style="color: ' + e.color +';">';
 				s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
-					+ pad(e.start.getMinutes()) + "</span> ";
+					+ pad(e.start.getMinutes());
+				if (getValue(SHOW_END_TIME) === 'true') {
+					s += '-' + pad(e.end.getHours()) + ":" 
+						+ pad(e.end.getMinutes());
+				}
+				s += "</span> ";
 				s += e.title; 
 			}
-			s += '</dd>';
+			s += '</td></tr>';
 		}
 		s += "</dl>";
+		s += "</tbody></table>";
 	} else {
 		// no events 
 		s = '<div class="centertext">No events in your calendar(s)</div>';
@@ -105,4 +108,9 @@ function displayData() {
 	document.getElementById('loading').style.display = 'none';	
 }
 
+function redraw() {
+	//TODO
+	setupCSS();
+	drawEntries();
+}
 

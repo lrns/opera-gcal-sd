@@ -17,6 +17,8 @@ var TIME_ZONE = 'time-zone';
 
 var MAX_ENTRIES = 'max-entries';
 var SHOW_PAST_EVENTS = 'past-events';
+var SHOW_END_TIME = 'end-time';
+var DATE_FORMAT = 'date-format';
 var BG_COLOR = 'bg-color';
 var FONT_COLOR = 'font-color';
 var FONT_SIZE = 'font-size';
@@ -34,6 +36,8 @@ var defaultValues = {
 	'time-zone' : 'auto',
 
 	'max-entries' : 15,
+	'end-time' : 'false',
+	'date-format' : 'dd NNN',
 	'show-past-events' : false,
 	'bg-color' : 'FFFFFF',
 	'font-color' : '182C57',
