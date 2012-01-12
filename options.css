@@ -56,10 +56,10 @@ fieldset {
   border: none;
   background: rgba(150,160,200,0.25);
   border-radius: 2px;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 fieldset label {
-	margin-left: 20px;
+	margin-left: 10px;
 }
 #signin-pane {
 	display: none;
@@ -77,6 +77,9 @@ fieldset label {
 #select-calendars {
 	display: none;
 }
+p {
+	margin: 0.3em 0;
+}
 .cal-color {
 	width: 45px;
 	margin: 0 5px;
@@ -86,4 +89,12 @@ fieldset label {
 }
 #font-plus, #font-minus {
 	font-weight: bold;
+	font-size: 16px;
+}
+a:link, a:visited {
+    color: #182C57;
+}
+
+a:hover, a:active {
+    color: #2B190F;
 }

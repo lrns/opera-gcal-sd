@@ -13,7 +13,7 @@ function setupCSS() {
 	var cssNode = document.createElement("style");
 	
 	cssNode.innerHTML = "body { background-color: #" + getValue(BG_COLOR)+ " !important; }\n";
-	cssNode.innerHTML += "td.entry { white-space: " + (getValue(WRAP_LINES) == 'true' ? "normal" : "nowrap") + "; }\n";
+	cssNode.innerHTML += "td.entry { white-space: " + (getValue(WRAP_LINES) === 'true' ? "normal" : "nowrap") + "; }\n";
 	cssNode.innerHTML += "#cal {";
 	cssNode.innerHTML += "font-size: " + getValue(FONT_SIZE) + "px;";
 	//cssNode.innerHTML += "line-height: " + (parseInt(getValue(FONT_SIZE), 10) + 3) + "px;";

@@ -51,7 +51,7 @@ td.entry-day {
 	white-space: nowrap;
 }
 td.entry {
-	padding-left: 3px;
+	padding: 2px 2px 2px 3px;
 	color: #182C57;
 	width: auto;
 }

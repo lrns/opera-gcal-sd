@@ -41,12 +41,12 @@ var defaultValues = {
 	'date-format' : 'dd NNN',
 	'title-date-format' : 'H:mm E, d NNN yyyy',
 
-	'show-past-events' : false,
+	'show-past-events' : 'false',
 	'bg-color' : 'FFFFFF',
 	'font-color' : '182C57',
 	'font-size' : '11',
 	'alt-font-color' : 'FFFFFF',
-	'wrap-lines' : true
+	'wrap-lines' : 'true'
 };
 
 function resetPrefs(){

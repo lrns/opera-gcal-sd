@@ -233,6 +233,16 @@ function initOptions() {
 		opera.extension.bgProcess.redraw();
 		return false;
 	};
+
+	id('reset-prefs').onclick = function() {
+		if (confirm('Are you sure to reset preferences?')) {
+			resetPrefs();
+			opera.extension.bgProcess.redraw();
+			opera.extension.bgProcess.refreshFeeds();
+			window.location.reload();
+		}
+		return false;
+	};
 }
 
 function initSimpleFields() {

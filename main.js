@@ -35,7 +35,7 @@ function init() {
     feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
 	// force UI update 
     viewTimer = window.setInterval(drawEntries, UI_INTERVAL);
-    sdTitleTimer = window.setInterval(setSDTitle, 30000);
+    sdTitleTimer = window.setInterval(setSDTitle, 5000);
 
 }
 
