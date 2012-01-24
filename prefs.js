@@ -38,8 +38,8 @@ var defaultValues = {
 
 	'max-entries' : 15,
 	'end-time' : 'false',
-	'date-format' : 'dd NNN',
-	'title-date-format' : 'H:mm E, d NNN yyyy',
+	'date-format' : dateFormat['day'],
+	'title-date-format' : dateFormat['sd-title'],
 
 	'show-past-events' : 'false',
 	'bg-color' : 'FFFFFF',
@@ -68,4 +68,23 @@ function getValue(key) {
 	return widget.preferences.getItem(key) || defaultValues[key];
 }
 
+// Return localised message
+function msg(key) {
+	return text[key];
+}
+function translate() {
+	var elems =	document.querySelectorAll(".translate");
+	
+	for (var i in elems) {
+		if (elems[i].id in text) {
+			if (elems[i].tagName.toLowerCase() === 'input') {
+				elems[i].value = text[elems[i].id];
+			} else {
+				elems[i].innerHTML = text[elems[i].id];
+			}
+		} else {
+			elems[i].innerHTML = '<<<' +elems[i].id + '>>>';
+		}
+	}
+}
 //function id(e){return document.getElementById(e)}

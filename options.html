@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="options.css">
 		<script type="text/javascript" src="debug.js"></script>
+		<script type="text/javascript" src="text.js"></script>
 		<script type="text/javascript" src="prefs.js"></script>
 		<script type="text/javascript" src="options.js"></script>
 		<script type="text/javascript" src="jscolor/jscolor.js"></script>
@@ -16,19 +17,19 @@
 		<section>
 		<fieldset>
 			<p>
-				<input id="refresh-cal" type="button" value="Refresh calendars">
+				<input id="refresh-cal" class="translate" type="button" value="Refresh calendars">
 				<img id="refresh-img" src="ajax-loader-small.gif" />
 			</p>
 		</fieldset>
-		<h3>Account</h3>
+		<h3 id="options-account" class="translate">Account</h3>
 		<fieldset>
 			<p>
 				<input name="account-type" id="share-session" value="share-session" type="radio" selected="selected"></input>
-				<label for="share-session">Share browser's session</label>
+				<label for="share-session" id="options-share-session" class="translate">Share browser's session</label>
 			</p>
 			<p>
 				<input name="account-type" id="separate-signin" value="separate" type="radio"></input>
-				<label for="separate-signin">Sign in to another Google account:</label>
+				<label for="separate-signin" id="options-separate-signin" class="translate">Sign in to another Google account:</label>
 			</p>
 
 		</fieldset>
@@ -37,25 +38,25 @@
 				<fieldset>
 					<p>
 						<input type="text" name="email" id="email" />
-						<label for="email">Email</label>
+						<label for="email" id="options-email" class="translate">Email</label>
 					</p>
 					<p>
 						<input type="password" name="password" id="password" />
-						<label for="password">Password</label>
+						<label for="password" id="options-password" class="translate">Password</label>
 					</p>
 					<p id="error-area"></p>
 					<p>
-						<input type="button" name="signin" id="signin" value="Sign In" />
+						<input type="button" name="signin" id="signin" class="translate" value="Sign In" />
 					</p>
 				</fieldset>
 			</div>
 			<div id="main-signout">
 				<fieldset>
-					<p>
+					<p id="options-signed" class="translate">
 						You are signed in with your Google account:
 					</p>
 					<p>
-						<label for="useremail">Email:</label>
+						<label for="useremail" id="options-user-email" class="translate">Email:</label>
 						<span id="useremail"></span>
 					</p>
 					<p>
@@ -64,23 +65,23 @@
 				</fieldset>
 			</div>
 		</div>
-		<h3>Options</h3>
+		<h3 id="options-options" class="translate">Options</h3>
 		<fieldset>
 			<p>
 				<select id="refresh-interval">
-					<option value="60000">1 minute</option>
-					<option value="300000">5 minutes</option>
-					<option value="600000">10 minutes</option>
-					<option value="900000">15 minutes</option>
-					<option value="1800000">30 minutes</option>
-					<option value="3600000">1 hour</option>
-					<option value="18000000">5 hours</option>
+					<option value="60000" id="options-1-min" class="translate">1 minute</option>
+					<option value="300000" id="options-5-min" class="translate">5 minutes</option>
+					<option value="600000" id="options-10-min" class="translate">10 minutes</option>
+					<option value="900000" id="options-15-min" class="translate">15 minutes</option>
+					<option value="1800000" id="options-30-min" class="translate">30 minutes</option>
+					<option value="3600000" id="options-1-h" class="translate">1 hour</option>
+					<option value="18000000" id="options-5-h" class="translate">5 hours</option>
 				</select>
-				<label for="refresh-interval">Refresh interval</label>
+				<label for="refresh-interval" id="options-refresh-interval" class="translate">Refresh interval</label>
 			</p>
 			<p>
 				<select id="time-zone">
-				  <option value="auto">Auto</option>
+				  <option value="auto" id="options-auto" class="translate">Auto</option>
 <option value="Pacific/Midway">(GMT-11:00) Midway</option>
   <option value="Pacific/Niue">(GMT-11:00) Niue</option>
   <option value="Pacific/Pago_Pago">(GMT-11:00) Pago Pago</option>
@@ -391,81 +392,97 @@
   <option value="Pacific/Tongatapu">(GMT+13:00) Tongatapu</option>
   <option value="Pacific/Kiritimati">(GMT+14:00) Kiritimati</option>
 				</select>
-				<label for="time-zone">Time Zone</label>
+				<label for="time-zone" id="options-time-zone" class="translate">Time Zone</label>
 			</p>
 			<p>
 				<select id="calendar-type">
-					<option value="single">Default (single calendar)</option>
-					<option value="own">Own calendars</option>
-					<option value="all">All calendars</option>
-					<option value="selected">Selected calendars...</option>
+					<option value="single" id="options-default-cal" class="translate">Default (single calendar)</option>
+					<option value="own" id="options-own-cals" class="translate">Own calendars</option>
+					<option value="all" id="options-all-cals" class="translate">All calendars</option>
+					<option value="selected" id="options-selected-cals" class="translate">Selected calendars...</option>
 				</select>
-				<label for="calendar-type">Calendar(s)</label>
+				<label for="calendar-type" id="options-calendars" class="translate">Calendar(s)</label>
 			</p>
 			<p>
-				<label class="hint">*All calendars include subscribed calendars.</label>
+				<label class="hint" id="options-all-cal-note" class="translate">*All calendars include subscribed calendars.</label>
 			</p>
 		</fieldset>
 		<div id="select-calendars">
-			<h3>Calendars to use</h3>
+			<h3 id="options-cals-to-use" class="translate">Calendars to use</h3>
 			<fieldset>
 				<div id="list-of-cals">
 				</div>
 			</fieldset>
 		</div>
-		<h3>Appearance</h3>
+		<h3 id="options-appearance" class="translate">Appearance</h3>
 		<fieldset>
 			<p>
 				<input type="text" id="bg-color" class="color">
-				<label for="bg-color">Background colour</label>
+				<label for="bg-color" id="options-bg-color" class="translate">
+					Background colour</label>
 			</p>
 			<p>
 				<input type="text" id="font-color" class="color">
-				<label for="font-color">Font colour</label>
+				<label for="font-color" id="options-font-color" class="translate">
+					Font colour</label>
 			</p>
 			<p>
 				<input type="text" id="alt-font-color" class="color">
-				<label for="alt-font-color">Alternative font colour (for all day events)</label>
+				<label for="alt-font-color" id="options-alt-font-color" class="translate">
+					Alternative font colour (for all day events)</label>
 			</p>
 			<p>
 				<input type="text" id="max-entries" />
-				<label for="max-entries">Max. entries to display</label>
+				<label for="max-entries" id="options-mx-entries" class="translate">
+					Max. entries to display</label>
 			</p>
 			<p>
 				<input type="checkbox" id="past-events" />
-				<label for="past-events">Show all today's events (including passed events)</label> 
+				<label for="past-events" id="options-past-events" class="translate">
+					Show all today's events (including passed events)</label> 
 			</p>
 			<p>
 				<input type="checkbox" id="end-time" />
-				<label for="end-time">Show event end time</label> 
+				<label for="end-time" id="options-end-time" class="translate">
+					Show event end time</label> 
 			</p>
 			<p>
 				<input type="text" id="date-format">
-				<label for="date-format">Date format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a></label>
+				<label for="date-format" id="options-date-format" class="translate">
+					Date format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a>
+		       	</label>
 			<p>
 				<input type="text" id="title-date-format">
-				<label for="title-date-format">Speed Dial title format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a></label>
+				<label for="title-date-format" id="options-title-date" class="translate">
+						Speed Dial title format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a>
+					</label>
 			</p>
 			</p>
 			<p>
 				<a href="#" id="font-plus">A+</a>
 				<a href="#" id="font-minus">A-</a>
-				<label for="font-minus">Font size: <input type="text" id="font-size" value="11" />px</label>
+				<label for="font-minus">
+					<span id="options-font-size" class="translate">Font size: </span>
+					<input type="text" id="font-size" value="11" />
+					<span id="options-font-px" class="translate">px</span>
+				</label>
 			</p>
 			<p>
 				<input type="checkbox" id="wrap-lines">
-				<label for="wrap-lines">Wrap event titles</label>
+				<label for="wrap-lines" id="options-wrap-lines" class="translate">Wrap event titles</label>
 			</p>
 		</fieldset>
 		&nbsp;
 		<fieldset>
 			<p>
-				<a href="#" id="reset-prefs">Reset Preferences</a>
+				<a href="#" id="reset-prefs"><span id="options-reset-prefs" class="translate">Reset Preferences<span></a>
 			</p>
 		</fieldset>
 		</section>
 		<footer>
+		<span id="options-footer" class="translate">
 		All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.
+		</span>
 		</footer>
 
 	</body>

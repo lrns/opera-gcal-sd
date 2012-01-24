@@ -235,7 +235,7 @@ function initOptions() {
 	};
 
 	id('reset-prefs').onclick = function() {
-		if (confirm('Are you sure to reset preferences?')) {
+		if (confirm(msg('options-reset-confirm')) {
 			resetPrefs();
 			opera.extension.bgProcess.redraw();
 			opera.extension.bgProcess.refreshFeeds();
@@ -290,14 +290,14 @@ function initSimpleFields() {
 function init(){
 
 	// populate the title, name, author, ...
-	setText('widget-title', 'Options of ' + widget.name);
+	setText('widget-title', msg('options-title');
 	setText('widget-name', widget.name + ' v' + widget.version);
-	setText('widget-author', widget.author );
+	setText('widget-author', widget.author);
 	setText('font-size', getValue(FONT_SIZE));
 
-	selected = JSON.parse(getValue(SELECTED_CALENDARS));
-	
+	translate();
 
+	selected = JSON.parse(getValue(SELECTED_CALENDARS));
 
 	initAccount();
 	initOptions();
@@ -319,7 +319,6 @@ function init(){
 	}
 
 
-
 }
 function tryLogIn(email, passwd){
 	var errorArea = id('error-area');
@@ -327,17 +326,17 @@ function tryLogIn(email, passwd){
 	var passwordElement = id('password');
 	
 	errorArea.style.display = 'none';
-	signInButton.value = 'Signing In...';
+	signInButton.value = msg('options-signing-in');
 	signInButton.disabled = true;
 	
 	logIn(email, passwd, function() {
 			window.location.reload();
 		}, function(err) {
 			signInButton.disabled = false;
-			signInButton.value = 'Log In';
+			signInButton.value = msg('options-login');
 			passwordElement.value = '';
 			errorArea.style.display = 'block';
-			errorArea.innerText = 'Error: ' + err;
+			errorArea.innerText = msg('options-error') + err;
 		})
 }
 function logIn(email, passwd, onSuccess, onError)

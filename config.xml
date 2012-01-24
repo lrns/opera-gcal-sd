@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.0" viewmodes="minimized" defaultlocale="en">
-  <name short="Gcal-sd">Google Calendar</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.1" viewmodes="minimized" defaultlocale="en">
+	<name short="Gcal-sd">Google Calendar</name>
+	<name xml:lang="en-gb">Google Calendar</name>
+	<name xml:lang="lt">Google Kalendorius</name>
   <icon src="icon.png"/>
   <feature name="opera:share-cookies" required="false"/>
   <access origin="http://www.google.com" subdomains="true"/>
@@ -24,5 +26,11 @@ limitations under the License.</license>
   <author href="http://www.sukys.net" email="laurynas.sukys@gmail.com">Laurynas Sukys</author>
   <description xml:lang="en">
 	  Google Calendar events in your Speed Dial.
+  </description>
+  <description xml:lang="en-gb">
+	  Google Calendar events in your Speed Dial.
+  </description>
+  <description xml:lang="lt">
+	  Google Kalendoriaus įvykiai jūsų Greitojo rinkimo langelyje.
   </description>
 </widget>
