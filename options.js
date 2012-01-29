@@ -235,7 +235,7 @@ function initOptions() {
 	};
 
 	id('reset-prefs').onclick = function() {
-		if (confirm(msg('options-reset-confirm')) {
+		if (confirm(msg('options-reset-confirm'))) {
 			resetPrefs();
 			opera.extension.bgProcess.redraw();
 			opera.extension.bgProcess.refreshFeeds();
@@ -290,7 +290,7 @@ function initSimpleFields() {
 function init(){
 
 	// populate the title, name, author, ...
-	setText('widget-title', msg('options-title');
+	setText('widget-title', msg('options-title'));
 	setText('widget-name', widget.name + ' v' + widget.version);
 	setText('widget-author', widget.author);
 	setText('font-size', getValue(FONT_SIZE));

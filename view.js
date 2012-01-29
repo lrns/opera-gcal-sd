@@ -31,7 +31,7 @@ function pad(s) {
 }
 
 function onError() {
-	document.getElementById('error').innerHTML = 'Unknown Error!';
+	document.getElementById('error').innerHTML = msg('view-unknown-error');
 	document.getElementById('error').style.display = 'block';
 	document.getElementById('cal').style.display = 'none';
 	document.getElementById('loading').style.display = 'none';	
@@ -44,9 +44,9 @@ function showLoading() {
 	document.getElementById('loading').style.display = 'block';	
 }
 function displayNoAuth(){
-	var text = 'Click to sign in ...';
+	var text = msg('view-click-signin');
 	if (getValue(ACCOUNT_TYPE) != 'share') {
-		text = 'Please sign in inside extension preferences';
+		text = msg('view-signin-prefs');
 	}
 	document.getElementById('error').innerHTML = text;
 	document.getElementById('error').style.display = 'block';
@@ -102,7 +102,7 @@ function drawEntries() {
 		s += "</tbody></table>";
 	} else {
 		// no events 
-		s = '<div class="centertext">No events in your calendar(s)</div>';
+		s = '<div class="centertext">'+msg('view-no-events')+'</div>';
 	}
 	
 	document.getElementById('cal').innerHTML = s;

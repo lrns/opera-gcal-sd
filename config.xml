@@ -3,6 +3,7 @@
 	<name short="Gcal-sd">Google Calendar</name>
 	<name xml:lang="en-gb">Google Calendar</name>
 	<name xml:lang="lt">Google Kalendorius</name>
+	<name xml:lang="nl">Google Calendar</name>
   <icon src="icon.png"/>
   <feature name="opera:share-cookies" required="false"/>
   <access origin="http://www.google.com" subdomains="true"/>
@@ -31,6 +32,9 @@ limitations under the License.</license>
 	  Google Calendar events in your Speed Dial.
   </description>
   <description xml:lang="lt">
-	  Google Kalendoriaus įvykiai jūsų Greitojo rinkimo langelyje.
+	  Google Kalendoriaus įvykiai jūsų Sparčiojo rinkimo langelyje.
+  </description>
+  <description xml:lang="nl">
+	  Google Calendar events in your Speed Dial.
   </description>
 </widget>
