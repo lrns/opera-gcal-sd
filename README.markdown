@@ -2,6 +2,11 @@
 
 This extension displays Google Calendar entries in a Speed Dial tile.
 
+This is not an official Google Calendar extension.
+
+## Translators needed!
+Instructions on how to translate the extension can be found [here][https://www.dropbox.com/s/8h7hu3zymxjqml4/translation.txt]
+
 ## How to use it:
 
 1. Install extension
@@ -26,6 +31,7 @@ Source code is available on [github][https://github.com/lrns/opera-gcal-sd]. Fee
 
 
 ## Acknowledgements
+Thanks to [Sam][http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
 Thanks to [Damon][http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
 Google authentication is based on the code of [Google Reader Notifier][https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
 Colour selection is done using [JSColor][http://jscolor.com/] library.
@@ -33,7 +39,7 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 
 
 ## TODO
-* Localisation
+* More localisation
 * ?
 
 ## Limitation
@@ -42,6 +48,7 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 
 ## Changelog
 
+* 2.1 - localisation implemented. Dutch and Lithuanian translations added. 
 * 2.0 - selective sync; a lot of customisation options: colours, date format, timezone, font size, do not wrap long event titles, show today's passed events, show the end time of an event; custom Speed Dial title 
 * 1.1.1 - option to choose whether to share browser's session or sign in to another Google account 
 * 1.1.0 - sharing browser's session (no separe sign in needed), new options page, 'refresh calendars' button in options page

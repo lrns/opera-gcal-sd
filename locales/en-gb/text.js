@@ -1,7 +1,7 @@
 var dateFormat = {
 	'time' : '',
 	'day'  : 'dd NNN',
-	'sd-title' : 'H:mm E, d NNN yyyy',
+	'sd-title' : 'EE, d MMM yyyy, H:mm',
 	'months-short' : new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
 						'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
 	'months' : new Array('January', 'February', 'March', 'April', 'May', 'June', 
@@ -37,7 +37,7 @@ var text = {
 	'options-refresh-interval' : 'Refresh interval',
 	'options-auto' : 'Auto',
 	'options-time-zone' : 'Time zone',
-	'options-default-cal' : 'Default (single calendar)',
+	'options-default-cal' : 'Default calendar',
 	'options-own-cals' : 'Own calendars',
 	'options-all-cals' : 'All calendars',
 	'options-selected-cals' : 'Selected calendars',

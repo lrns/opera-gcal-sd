@@ -276,7 +276,7 @@ function initSimpleFields() {
 	for (var i in checkboxFields) {
 		var field = checkboxFields[i];
 		element = id(field);
-		element.checked = getValue(field);
+		element.checked = getValue(field) === 'true';
 		element.oninput = function(){
 			setValue(this.id, this.checked);
 			if (this.id === SHOW_PAST_EVENTS) {
