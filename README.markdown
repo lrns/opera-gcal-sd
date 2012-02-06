@@ -40,7 +40,8 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 
 ## TODO
 * More localisation
-* ?
+* Allow to choose extension's language independently from browser's language
+* ...
 
 ## Limitation
 * Notifications (alerts) are not possible due to limitation of Opera Extension API
