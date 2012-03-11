@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.1" viewmodes="minimized" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.2" viewmodes="minimized" defaultlocale="en">
 	<name short="Gcal-sd">Google Calendar</name>
 	<name xml:lang="en-gb">Google Calendar</name>
 	<name xml:lang="lt">Google Kalendorius</name>
 	<name xml:lang="nl">Google Calendar</name>
+	<name xml:lang="tr">Google Calendar</name>
   <icon src="icon.png"/>
   <feature name="opera:share-cookies" required="false"/>
   <access origin="http://www.google.com" subdomains="true"/>
@@ -36,5 +37,8 @@ limitations under the License.</license>
   </description>
   <description xml:lang="nl">
 	  Geef Google Calendar agenda's weer in je snelkiezer.
+  </description>
+  <description xml:lang="tr">
+	  Google Calendar etkinlikleriniz Hızlı Erişiminizde.
   </description>
 </widget>
