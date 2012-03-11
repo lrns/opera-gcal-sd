@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="options.css">
 		<script type="text/javascript" src="debug.js"></script>
-		<script type="text/javascript" src="text.js"></script>
+		<script type="text/javascript" src="lang-en.js"></script>
 		<script type="text/javascript" src="prefs.js"></script>
 		<script type="text/javascript" src="options.js"></script>
 		<script type="text/javascript" src="jscolor/jscolor.js"></script>
@@ -67,6 +67,18 @@
 		</div>
 		<h3 id="options-options" class="translate">Options</h3>
 		<fieldset>
+			<p>
+				<select id="language">
+					<option value="auto" id="options-lang-auto" class="translate">Auto</option>
+					<option value="en">English US [en]</option>
+					<option value="en-gb">English UK [en-gb]</option>
+					<option value="nl">Dutch [nl]</option>
+					<option value="lt">Lithuanian [lt]</option>
+					<option value="tk">Turkish [tk]</option>
+
+				</select>
+				<label for="language" id="options-language" class="translate">Language</label>
+			</p>
 			<p>
 				<select id="refresh-interval">
 					<option value="60000" id="options-1-min" class="translate">1 minute</option>

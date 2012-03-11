@@ -162,6 +162,17 @@ function initAccount() {
 	}
 }
 function initOptions() {
+	var language = getValue(LANGUAGE);
+    var languageElement = id(LANGUAGE);
+	setListActiveValue(language, languageElement);
+
+	languageElement.onchange = function(){
+		setValue(LANGUAGE, languageElement.options[languageElement.selectedIndex].value);
+		loadLanguage();
+		opera.extension.bgProcess.loadLanguage();
+		opera.extension.bgProcess.redraw();
+	}
+
 	var refreshInterval = getValue(REFRESH_INTERVAL);
     var refreshIntervalElement = id(REFRESH_INTERVAL);
 	setListActiveValue(refreshInterval, refreshIntervalElement);
@@ -295,7 +306,7 @@ function init(){
 	setText('widget-author', widget.author);
 	setText('font-size', getValue(FONT_SIZE));
 
-	translate();
+	loadLanguage();
 
 	selected = JSON.parse(getValue(SELECTED_CALENDARS));
 

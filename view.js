@@ -74,7 +74,7 @@ function drawEntries() {
 					s += '&nbsp;';
 				} else {
 					// first event of a day
-					s += e.start.format(getValue(DATE_FORMAT));
+					s += e.start.format(getDayFormat());
 				}
 				s += '</td>';
 				if (e.fullday) {

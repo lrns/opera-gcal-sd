@@ -1,4 +1,4 @@
-var dateFormat = {
+var translatedDateFormat = {
 	'time' : '',
 	'day'  : 'dd NNN',
 	'sd-title' : 'EE d MMM yyyy, Humm',
@@ -10,7 +10,7 @@ var dateFormat = {
 	'weekdays' : new Array('Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag')
 }
 
-var text = {
+var translatedText = {
 	'index-title' : 'Google Calendar',
 	'options-title' : 'Voorkeuren van Google Calendar',
 
@@ -26,6 +26,9 @@ var text = {
 	'options-user-email' : 'E-mail:',
 
 	'options-options' : 'Voorkeuren',
+	'options-language' : 'Language',
+	'options-lang-auto' : 'Auto',
+
 	'options-1-min' : '1 minuut',
 	'options-5-min' : '5 minuten',
 	'options-10-min' : '10 minuten',
@@ -70,4 +73,4 @@ var text = {
 	'view-signin-prefs' : 'Meldt u alstublieft aan in de voorkeuren van deze extensie',
 	'view-no-events' : 'Er zijn geen afspraken in je agenda\'s'
 }
-
+updateTranslation();

@@ -26,6 +26,7 @@ var sdTitleTimer;
 var UI_INTERVAL = 600000; //10 min
 
 function init() {
+	loadLanguage();
 	setSDTitle();
 	initCalendars();
 	setupCSS();
@@ -35,12 +36,12 @@ function init() {
     feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
 	// force UI update 
     viewTimer = window.setInterval(drawEntries, UI_INTERVAL);
-    sdTitleTimer = window.setInterval(setSDTitle, 5000);
+    sdTitleTimer = window.setInterval(setSDTitle, 2000);
 
 }
 
 function setSDTitle() {
-	opera.contexts.speeddial.title = (new Date()).format(getValue(TITLE_DATE_FORMAT));
+	opera.contexts.speeddial.title = (new Date()).format(getSDDateFormat());
 }
 
 /**

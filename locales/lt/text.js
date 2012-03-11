@@ -1,4 +1,4 @@
-var dateFormat = {
+var translatedDateFormat = {
 	'time' : '',
 	'day'  : 'NNN d',
 	'sd-title' : 'EE, yyyy MMM d, H:mm',
@@ -10,7 +10,7 @@ var dateFormat = {
 	'weekdays' : new Array('Sekmadienis', 'Pirmadienis', 'Antradienis', 'Trečiadienis', 'Ketvirtadienis', 'Penktadienis', 'Šeštadienis')
 }
 
-var text = {
+var translatedText = {
 	'index-title' : 'Google Kalendorius',
 	'options-title' : 'Google kalendoriaus nustatymai',
 
@@ -26,6 +26,9 @@ var text = {
 	'options-user-email' : 'El. paštas:',
 
 	'options-options' : 'Nustatymai',
+	'options-language' : 'Kalba',
+	'options-lang-auto' : 'Auto - kaip ir naršyklės',
+
 	'options-1-min' : '1 minutę',
 	'options-5-min' : '5 minutes',
 	'options-10-min' : '10 minučių',
@@ -72,3 +75,5 @@ var text = {
 
 }
 
+
+updateTranslation();
