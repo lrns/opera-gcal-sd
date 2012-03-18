@@ -84,6 +84,13 @@ var dateFormat = {};
 var translatedDateFormat = {};
 var translatedText = {};
 
+function updateDate() {
+	console.log('Dates updated: ' + dateFormat['months'][0]);
+	Date.monthNames = dateFormat['months'];
+	Date.monthAbbreviations = dateFormat['months-short'];
+	Date.dayNames = dateFormat['weekdays'];
+	Date.dayAbbreviations = dateFormat['weekdays-short'];
+}
 function resetTranslation() {
 	text = {}
 	dateFormat = {}
@@ -95,6 +102,12 @@ function resetTranslation() {
 		text[i] = defaultText[i];
 	}
 	updateDate();
+	//opera.extension.bgProcess.redraw();
+	if (opera.extension.bgProcess) {
+		opera.extension.bgProcess.redraw();
+	} else {
+		redraw();
+	}
 }
 
 function updateTranslation() {
@@ -107,6 +120,11 @@ function updateTranslation() {
 	}
 	updateDate();
 	translate();
+	if (opera.extension.bgProcess) {
+		opera.extension.bgProcess.redraw();
+	} else {
+		redraw();
+	}
 }
 resetTranslation();
 

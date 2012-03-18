@@ -27,7 +27,7 @@ var translatedText = {
  'options-user-email' : 'E-posta:',
 
  'options-options' : 'Ayarlar',
- 'options-language' : 'Language',
+ 'options-language' : 'Dil',
  'options-lang-auto' : 'Auto',
 
  'options-1-min' : '1 dakika',

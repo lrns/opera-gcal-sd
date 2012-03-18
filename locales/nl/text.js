@@ -26,7 +26,7 @@ var translatedText = {
 	'options-user-email' : 'E-mail:',
 
 	'options-options' : 'Voorkeuren',
-	'options-language' : 'Language',
+	'options-language' : 'Taal',
 	'options-lang-auto' : 'Auto',
 
 	'options-1-min' : '1 minuut',

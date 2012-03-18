@@ -170,7 +170,7 @@ function initOptions() {
 		setValue(LANGUAGE, languageElement.options[languageElement.selectedIndex].value);
 		loadLanguage();
 		opera.extension.bgProcess.loadLanguage();
-		opera.extension.bgProcess.redraw();
+		//opera.extension.bgProcess.redraw();
 	}
 
 	var refreshInterval = getValue(REFRESH_INTERVAL);

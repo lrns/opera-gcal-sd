@@ -76,40 +76,10 @@ function setValue(key, value) {
 function getValue(key) {
 	return widget.preferences.getItem(key) || defaultValues[key];
 }
-function updateDate() {
-	Date.monthNames = dateFormat['months'];
-	Date.monthAbbreviations = dateFormat['months-short'];
-	Date.dayNames = dateFormat['weekdays'];
-	Date.dayAbbreviations = dateFormat['weekdays-short'];
-}
 // Return localised message
 function msg(key) {
 	return text[key];
 }
-/* moved to lang-en.js
-function resetTranslation() {
-	var text = {}
-	var dateFormat = {}
-
-	for (i in defaultDateFormat) {
-		dateFormat[i] = defaultDateFormat[i];
-	}
-	for (i in defaultText) {
-		text[i] = defaultText[i];
-	}
-}
-
-function updateTranslation() {
-	resetTranslation();
-	for (i in translatedDateFormat) {
-		dateFormat[i] = translatedDateFormat[i];
-	}
-	for (i in translatedText) {
-		text[i] = translatedText[i];
-	}
-	translate();
-}
-*/
 function translate() {
 	console.log('Translating...');
 	var elems =	document.querySelectorAll(".translate");
