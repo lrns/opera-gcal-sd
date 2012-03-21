@@ -40,8 +40,8 @@ var defaultValues = {
 
 	'max-entries' : 15,
 	'end-time' : 'false',
-	'date-format' : dateFormat['day'],
-	'title-date-format' : dateFormat['sd-title'],
+	'date-format' : 'dd NNN',
+	'title-date-format' : 'EE, d MMM yyyy, H:mm',
 
 	'show-past-events' : 'false',
 	'bg-color' : 'FFFFFF',
@@ -52,11 +52,21 @@ var defaultValues = {
 };
 
 function getSDDateFormat() {
-	return (('sd-title' in dateFormat) ? dateFormat['sd-title'] : 'EE, d MMM yyyy, H:mm');
+	// 1. User's value
+	// 2. Value from locale's file
+	// 3. Default value
+	if (widget.preferences.getItem(TITLE_DATE_FORMAT)) {
+		return widget.preferences.getItem(TITLE_DATE_FORMAT);
+	}
+	return (('sd-title' in dateFormat) ? dateFormat['sd-title'] : defaultValues[TITLE_DATE_FORMAT]);
 }
 
 function getDayFormat() {
-	return (('day' in dateFormat) ? dateFormat['day'] : 'dd NNN');
+	if (widget.preferences.getItem(DATE_FORMAT)) {
+		return widget.preferences.getItem(DATE_FORMAT);
+	}
+	return (('day' in dateFormat) ? dateFormat['day'] : defaultValues[DATE_FORMAT]);
+
 }
 function resetPrefs(){
 	for(i in widget.preferences)

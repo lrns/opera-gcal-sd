@@ -57,7 +57,10 @@ function displayNoAuth(){
 function drawEntries() {
 	console.log('Drawing entries >>>>>');
 	var now = new Date();
-	//TODO past today's events
+	if (typeof entries == 'undefined') {
+		//TODO - refactor, this is not very nice
+		return;
+	}
 	//TODO events in progress
 	if (entries.length > 0) {
 		var today = new Date();

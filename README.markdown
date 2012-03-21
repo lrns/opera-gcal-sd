@@ -40,7 +40,6 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 
 ## TODO
 * More localisation
-* Allow to choose extension's language independently from browser's language
 * ...
 
 ## Limitation
@@ -49,6 +48,7 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 
 ## Changelog
 
+* 2.2 - option to change language independently from browser's language. Turkish translation
 * 2.1 - localisation implemented. Dutch and Lithuanian translations added. 
 * 2.0 - selective sync; a lot of customisation options: colours, date format, timezone, font size, do not wrap long event titles, show today's passed events, show the end time of an event; custom Speed Dial title 
 * 1.1.1 - option to choose whether to share browser's session or sign in to another Google account 
