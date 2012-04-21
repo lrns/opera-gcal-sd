@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.2" viewmodes="minimized" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.3" viewmodes="minimized" defaultlocale="en">
 	<name short="Gcal-sd">Google Calendar</name>
+	<name xml:lang="cs">Google Kalendář</name>
 	<name xml:lang="en-gb">Google Calendar</name>
 	<name xml:lang="lt">Google Kalendorius</name>
 	<name xml:lang="nl">Google Calendar</name>
@@ -25,9 +26,12 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</license>
-  <author href="http://www.sukys.net" email="laurynas.sukys@gmail.com">Laurynas Sukys</author>
+  <author href="http://www.sukys.net" email="laurynas.sukys@gmail.com">Laurynas Šukys</author>
   <description xml:lang="en">
 	  Google Calendar events in your Speed Dial.
+  </description>
+  <description xml:lang="cs">
+	  Události Google Kalendáře v Rychlém přístupu.
   </description>
   <description xml:lang="en-gb">
 	  Google Calendar events in your Speed Dial.

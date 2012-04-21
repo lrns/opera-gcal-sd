@@ -31,6 +31,8 @@ Source code is available on [github][https://github.com/lrns/opera-gcal-sd]. Fee
 
 
 ## Acknowledgements
+Thanks to [MartinezZ][https://github.com/MartinezZ] for Czech translation.
+Thanks to [greench][http://my.opera.com/greench/about/] for Turkish translation.
 Thanks to [Sam][http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
 Thanks to [Damon][http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
 Google authentication is based on the code of [Google Reader Notifier][https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
@@ -43,11 +45,11 @@ Date formating is done using [Date Formatting And Format Validation][http://www.
 * ...
 
 ## Limitation
-* Notifications (alerts) are not possible due to limitation of Opera Extension API
+* Notifications (alerts) are not possible due to limitations of Opera Extension API
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
-
+* 2.3 - Czech translation, more debug options
 * 2.2 - option to change language independently from browser's language. Turkish translation
 * 2.1 - localisation implemented. Dutch and Lithuanian translations added. 
 * 2.0 - selective sync; a lot of customisation options: colours, date format, timezone, font size, do not wrap long event titles, show today's passed events, show the end time of an event; custom Speed Dial title 
