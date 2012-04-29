@@ -254,6 +254,11 @@ function initOptions() {
 		}
 		return false;
 	};
+	id('debug-data').onclick = function() {
+		opera.extension.bgProcess.showDebugData();
+
+		return false;
+	};
 }
 
 function initSimpleFields() {

@@ -69,6 +69,7 @@ var defaultText = {
 	'options-signing-in' : 'Signing In...',
 
 	'options-reset-confirm' : 'Are you sure to reset preferences?',
+	'options-debug-data' : 'Debug data',
 
 	'view-unknown-error' : 'Unknown error!',
 	'view-click-signin' : 'Click to sign in ...',

@@ -53,7 +53,7 @@ td.entry-day {
 td.entry {
 	padding: 2px 2px 2px 3px;
 	color: #182C57;
-	width: auto;
+	width: 100%;
 }
 span.entry-time {
 	font-weight: bold;
