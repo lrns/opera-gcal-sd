@@ -1,8 +1,8 @@
 addEventListener('DOMContentLoaded',init,false);
 
 function showDebugContent() {
-	var text = "asdfas";
-	document.getElementById('debug-textarea').innerHTML = text; 
+	document.getElementById('debug-textarea').innerHTML = 
+			opera.extension.bgProcess.getDebugText();
 }
 
 function init() {

@@ -69,7 +69,7 @@ var translatedText = {
     'view-unknown-error' : 'Neznámá chyba!',
     'view-click-signin' : 'Klikněte pro přihlášení...',
     'view-signin-prefs' : 'Přihlašte se v nastavení rozšíření',
-    'view-no-events' : 'V kalednáři nejsou žádné události'
+    'view-no-events' : 'V kalendáři nejsou žádné události'
 }
 updateTranslation();
 
