@@ -211,18 +211,23 @@ function parseFeed(xml) {
 				if (when[j].parentNode == xmlEntries[i]) {
 					// calendar entry must have 'when' element
 					// full day event - no time specified
-
-					var fullday =/^\d{4}-\d\d-\d\d$/.test(when[j].attributes["startTime"].nodeValue)
+					var startString = when[j].attributes["startTime"].nodeValue;
+					var endString = when[j].attributes["endTime"].nodeValue;
+					var fullday =/^\d{4}-\d\d-\d\d$/.test(startString)
+					// date includes time zone: 2012-01-08T06:00:00.000-05:00
+					// or 2012-09-25T10:59:00.000Z
 					if (!fullday && getValue(TIME_ZONE) !== 'auto') {
-						// get rid of timezone offset:
+						// get rid of timezone offset when timezone is forced,
+						// assuming that the local time is returned:
 						// from: 2012-01-08T06:00:00.000-05:00
-						//   to: 2012-01-08T06:00:00.000
-						var start = new Date(when[j].attributes["startTime"].nodeValue.substring(0, when[j].attributes["startTime"].nodeValue.length - 6));
-						var end = new Date(when[j].attributes["endTime"].nodeValue.substring(0, when[j].attributes["endTime"].nodeValue.length - 6));
+						//   to: 2012-01-08T06:00:00
+						var start = dateFromString(startString);
+						var end = dateFromString(endString);
 					} else {
-						var start = new Date(when[j].attributes["startTime"].nodeValue);
-						var end = new Date(when[j].attributes["endTime"].nodeValue);
+						var start = new Date(startString);
+						var end = new Date(endString);
 					}
+
 
 					feedEntries.push({ title : title, start : start, end : end, 
 						color: color, fullday : fullday, calendar : calID });
@@ -262,7 +267,20 @@ function parseCalendars(xml) {
 function extractID(url) {
 	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i,"").replace(/[^\w\s]/gi, '').substring(0,20);
 }
-
+/**
+ * Parse date from string ignoring timezone and milliseconds
+ */
+function dateFromString(s) {
+	// sample strings:
+	// 2012-01-08T06:00:00.000-05:00
+	// 2012-09-25T10:59:00.000Z
+	return new Date(parseInt(s.substring(0,4), 10),
+					parseInt(s.substring(5,7), 10) - 1,
+					parseInt(s.substring(8,10), 10),
+					parseInt(s.substring(11,13), 10),
+					parseInt(s.substring(14,16), 10),
+					parseInt(s.substring(17,19), 10))
+}
 //utility function
 //stolen from http://stackoverflow.com/questions/728360/copying-an-object-in-javascript
 function clone(obj) {
