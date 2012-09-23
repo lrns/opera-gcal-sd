@@ -71,6 +71,7 @@ var text = {
  'view-no-events' : '予定はありません'
 
 }
-
-
+console.log('JAPAN loaded');
+console.log(text['index-title']);
 updateTranslation();
+

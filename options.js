@@ -263,7 +263,7 @@ function initOptions() {
 
 function initSimpleFields() {
 	var textFields = [ MAX_ENTRIES, BG_COLOR, FONT_COLOR, ALT_FONT_COLOR, DATE_FORMAT, TITLE_DATE_FORMAT ];
-	var checkboxFields = [ SHOW_PAST_EVENTS, WRAP_LINES, SHOW_END_TIME ];
+	var checkboxFields = [ SHOW_PAST_EVENTS, WRAP_LINES, SHOW_END_TIME, CLOCK_12H ];
 
 	for (var i in textFields) {
 		var field = textFields[i];

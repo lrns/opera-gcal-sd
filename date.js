@@ -215,10 +215,10 @@ Date.parseString = function(val, format) {
 		}
 		else if (token=="a") {
 			if (val.substring(i_val,i_val+2).toLowerCase()=="am") {
-				ampm="AM";
+				ampm="am";
 			}
 			else if (val.substring(i_val,i_val+2).toLowerCase()=="pm") {
-				ampm="PM";
+				ampm="pm";
 			}
 			else {
 				return null;
@@ -258,10 +258,10 @@ Date.parseString = function(val, format) {
 		}
 	}
 	// Correct hours value
-	if (hh<12 && ampm=="PM") {
+	if (hh<12 && ampm=="pm") {
 		hh=hh-0+12; 
 	}
-	else if (hh>11 && ampm=="AM") { 
+	else if (hh>11 && ampm=="am") { 
 		hh-=12; 
 	}
 	return new Date(year,month-1,date,hh,mm,ss);
@@ -354,10 +354,10 @@ Date.prototype.format = function(format) {
 	value["KK"]=Date.LZ(value["K"]);
 	value["kk"]=Date.LZ(value["k"]);
 	if (H > 11) { 
-		value["a"]="PM"; 
+		value["a"]="pm"; 
 	}
 	else { 
-		value["a"]="AM"; 
+		value["a"]="am"; 
 	}
 	value["m"]=m;
 	value["mm"]=Date.LZ(m);

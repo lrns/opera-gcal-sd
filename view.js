@@ -89,11 +89,9 @@ function drawEntries() {
 						s += ' dim-event';
 					}
 					s += '" style="color: ' + e.color +';">';
-					s += '<span class="entry-time">' + pad(e.start.getHours()) + ":" 
-						+ pad(e.start.getMinutes());
+					s += '<span class="entry-time">' + e.start.format(getTimeFormat());
 					if (getValue(SHOW_END_TIME) === 'true') {
-						s += '-' + pad(e.end.getHours()) + ":" 
-							+ pad(e.end.getMinutes());
+						s += '-' + e.end.format(getTimeFormat());
 					}
 					s += "</span> ";
 					s += e.title; 

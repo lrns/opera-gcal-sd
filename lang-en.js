@@ -56,6 +56,7 @@ var defaultText = {
 	'options-mx-entries' : 'Max. entries to display',
 	'options-past-events' : 'Show all today\'s events (including passed events)',
 	'options-end-time' : 'Show event end time',
+	'options-clock-12h' : '12h clock',
 	'options-date-format' : 'Date format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a>',
 	'options-title-date' : 'Speed Dial title format, see <a target="_blank" href="http://www.javascripttoolbox.com/lib/date/documentation.php">examples</a>',
 	'options-font-size' : 'Font size: ',

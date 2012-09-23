@@ -27,10 +27,12 @@ Set timezone option to your location if your events have wrong times.
 ## Support page
 Please leave comments/issues in the comments of the extension page.
 
-Source code is available on [github][https://github.com/lrns/opera-gcal-sd]. Feel free to enhance the extension! Contributions are always welcome.
+Source code is available on [github][https://github.com/lrns/opera-gcal-sd]. Contributions are always welcome!
 
 
 ## Acknowledgements
+Thanks to [norandot-opera][http://my.opera.com/norandot-opera/about/] for Japanese translation.
+Thanks to [Unrealmirakulix][http://my.opera.com/Unrealmirakulix/about/] for German translation.
 Thanks to [MartinezZ][https://github.com/MartinezZ] for Czech translation.
 Thanks to [greench][http://my.opera.com/greench/about/] for Turkish translation.
 Thanks to [Sam][http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
@@ -40,16 +42,12 @@ Colour selection is done using [JSColor][http://jscolor.com/] library.
 Date formating is done using [Date Formatting And Format Validation][http://www.javascripttoolbox.com/lib/date/index.php] library.
 
 
-## TODO
-* More localisation
-* ...
-
 ## Limitation
 * Notifications (alerts) are not possible due to limitations of Opera Extension API
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
-* 2.4 - German translation
+* 2.4 - fixed time zone settings, added German and Japanese translations, 12h clock option
 * 2.3 - Czech translation, more debug options
 * 2.2 - option to change language independently from browser's language. Turkish translation
 * 2.1 - localisation implemented. Dutch and Lithuanian translations added. 

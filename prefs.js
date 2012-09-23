@@ -25,7 +25,9 @@ var FONT_COLOR = 'font-color';
 var FONT_SIZE = 'font-size';
 var ALT_FONT_COLOR = 'alt-font-color';
 var WRAP_LINES = 'wrap-lines';
-var LANGUAGE = 'language'
+var LANGUAGE = 'language';
+var CLOCK_12H = 'clock-12h';
+
 
 var defaultValues = {
 	'user-auth' : '',
@@ -42,6 +44,7 @@ var defaultValues = {
 	'end-time' : 'false',
 	'date-format' : 'dd NNN',
 	'title-date-format' : 'EE, d MMM yyyy, H:mm',
+	'clock-12h' : 'false',
 
 	'show-past-events' : 'false',
 	'bg-color' : 'FFFFFF',
@@ -51,7 +54,7 @@ var defaultValues = {
 	'wrap-lines' : 'true'
 };
 
-function getSDDateFormat() {
+function getSDDateTemplate() {
 	// 1. User's value
 	// 2. Value from locale's file
 	// 3. Default value
@@ -61,6 +64,17 @@ function getSDDateFormat() {
 	return (('sd-title' in dateFormat) ? dateFormat['sd-title'] : defaultValues[TITLE_DATE_FORMAT]);
 }
 
+function getSDDateFormat() {
+	template = getSDDateTemplate();
+	if (widget.preferences.getItem('clock-12h') === 'true') {
+		return template.replace(/HH?:(mm?)/i, 'h:$1a');
+	}
+	return template;
+}
+
+function getTimeFormat() {
+	return widget.preferences.getItem('clock-12h') === 'true' ? 'h:mma' : 'H:mm';
+}
 function getDayFormat() {
 	if (widget.preferences.getItem(DATE_FORMAT)) {
 		return widget.preferences.getItem(DATE_FORMAT);
@@ -69,8 +83,9 @@ function getDayFormat() {
 
 }
 function resetPrefs(){
-	for(i in widget.preferences)
+	for (i in widget.preferences) {
 		delete widget.preferences[i];
+	}
 }
 
 function dropAuth(){
