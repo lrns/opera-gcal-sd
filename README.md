@@ -4,6 +4,8 @@ This extension displays Google Calendar entries in a Speed Dial tile.
 
 This is not an official Google Calendar extension.
 
+Homepage - https://addons.opera.com/en/extensions/details/google-calendar/
+
 ## Translators needed!
 To translate the extension to your language, please translate messages in  the following language file https://gist.github.com/3773358 and send the translated file to me (paste the content or URL in the comments).
 
@@ -23,10 +25,10 @@ Instructions on how to translate the extension can be found [here][https://www.d
 	* All calendars - all user's calendars as well as subscribed calendars, e.g. Holidays
 	* Selected - you will be allowed to select calendars to sync. Also you will be able to set colours of calendars to your own preference
 
-5. Set other customisation options the way you like!
+5. Change other customisation options as you like!
 
 ## Timezone
-Set timezone option to your location if your events have wrong times.
+Set timezone option to your location if your events have wrong start/end times.
 
 
 ## Support page
