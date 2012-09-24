@@ -5,7 +5,12 @@ This extension displays Google Calendar entries in a Speed Dial tile.
 This is not an official Google Calendar extension.
 
 ## Translators needed!
+To translate the extension to your language, please translate messages in  the following language file https://gist.github.com/3773358 and send the translated file to me (paste the content or URL in the comments).
+
+<!---
+http://www.getlocalization.com/operagooglecalendarsdext/
 Instructions on how to translate the extension can be found [here][https://www.dropbox.com/s/8h7hu3zymxjqml4/translation.txt]
+-->
 
 ## How to use it:
 
@@ -27,19 +32,19 @@ Set timezone option to your location if your events have wrong times.
 ## Support page
 Please leave comments/issues in the comments of the extension page.
 
-Source code is available on [github][https://github.com/lrns/opera-gcal-sd]. Contributions are always welcome!
+Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Contributions are always welcome!
 
 
 ## Acknowledgements
-Thanks to [norandot-opera][http://my.opera.com/norandot-opera/about/] for Japanese translation.
-Thanks to [Unrealmirakulix][http://my.opera.com/Unrealmirakulix/about/] for German translation.
-Thanks to [MartinezZ][https://github.com/MartinezZ] for Czech translation.
-Thanks to [greench][http://my.opera.com/greench/about/] for Turkish translation.
-Thanks to [Sam][http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
-Thanks to [Damon][http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
-Google authentication is based on the code of [Google Reader Notifier][https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
-Colour selection is done using [JSColor][http://jscolor.com/] library.
-Date formating is done using [Date Formatting And Format Validation][http://www.javascripttoolbox.com/lib/date/index.php] library.
+* Thanks to norandot-opera [http://my.opera.com/norandot-opera/about/] for Japanese translation.
+* Thanks to Unrealmirakulix [http://my.opera.com/Unrealmirakulix/about/] for German translation.
+* Thanks to MartinezZ [https://github.com/MartinezZ] for Czech translation.
+* Thanks to greench [http://my.opera.com/greench/about/] for Turkish translation.
+* Thanks to Sam [http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
+* Thanks to Damon [http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
+* Google authentication is based on the code of Google Reader Notifier [https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
+* Colour selection is done using JSColor [http://jscolor.com/] library.
+* Date formating is done using http://www.javascripttoolbox.com/lib/date/index.php library.
 
 
 ## Limitation

@@ -379,7 +379,8 @@ function logIn(email, passwd, onSuccess, onError)
             	return
             if (xhr.status >= 400) {
           		console.log('Error response code: ' + xhr.status + '/' + xhr.statusText);
-          		handleError(/*xhr.status + '/' + xhr.statusText*/);
+          		handleError();
+				//handleError(xhr.status + '/' + xhr.statusText);
         	} else if (xhr.responseText) {
           		console.log('responseText: ' + xhr.responseText.substring(0, 200) + '...');
           		handleSuccess(xhr.responseText);

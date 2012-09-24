@@ -138,12 +138,6 @@ function loadLanguage() {
 	document.getElementsByTagName('head')[0].appendChild(newScript);
 	console.log('Script loaded: ' + newScript.src);
 
-	//for (i in translatedDateFormat) {
-		//dateFormat[i] = translatedDateFormat[i];
-	//}
-	//for (i in translatedText) {
-		//text[i] = translatedText[i];
-	//}
 	translate();
 	
 }

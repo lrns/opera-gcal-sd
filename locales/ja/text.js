@@ -1,4 +1,4 @@
-var dateFormat = {
+var translatedDateFormat = {
  'time' : '',
  'day' : 'MM/dd (E)',
  'sd-title' : 'yyyy, NNN d EE H:mm',
@@ -10,7 +10,7 @@ var dateFormat = {
  'weekdays' : new Array('日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜')
 }
 
-var text = {
+var translatedText = {
  'index-title' : 'Googleカレンダー',
  'options-title' : '設定',
 
@@ -71,7 +71,5 @@ var text = {
  'view-no-events' : '予定はありません'
 
 }
-console.log('JAPAN loaded');
-console.log(text['index-title']);
 updateTranslation();
 

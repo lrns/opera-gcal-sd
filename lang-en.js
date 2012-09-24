@@ -13,6 +13,7 @@ var defaultDateFormat = {
 var defaultText = {
 
 	'index-title' : 'Google Calendar',
+	'description' : 'Google Calendar events in your Speed Dial.',
 	'options-title' : 'Options of Google Calendar',
 
 	'refresh-cal' : 'Refresh Calendars',
