@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://www.sukys.net/opera-gcal-sd" version="2.4" viewmodes="minimized" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="https://github.com/lrns/opera-gcal-sd" version="2.5" viewmodes="minimized" defaultlocale="en">
 	<name short="Gcal-sd">Google Calendar</name>
 	<name xml:lang="cs">Google Kalendář</name>
 	<name xml:lang="de">Google Kalender</name>
 	<name xml:lang="en-gb">Google Calendar</name>
+	<name xml:lang="et">Google'i kalender</name>
+	<name xml:lang="it">Calendario Google</name>
 	<name xml:lang="ja">Googleカレンダー</name>
 	<name xml:lang="lt">Google Kalendorius</name>
 	<name xml:lang="nl">Google Calendar</name>
+	<name xml:lang="ru">Google Календарь</name>
 	<name xml:lang="tr">Google Calendar</name>
   <icon src="icon.png"/>
   <feature name="opera:share-cookies" required="false"/>
@@ -15,7 +18,8 @@
   <feature name="opera:speeddial" required="true">
     <param name="url" value="http://www.google.com/calendar/b/0/render"/>
   </feature>
-  <license href="http://www.apache.org/licenses/LICENSE-2.0">Copyright 2011 Laurynas Sukys
+  <license href="http://www.apache.org/licenses/LICENSE-2.0">
+Copyright 2011 Laurynas Sukys
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -27,7 +31,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License.</license>
+limitations under the License.
+  </license>
   <author email="laurynas.sukys@gmail.com">Laurynas Šukys</author>
   <description xml:lang="en">
 	  Google Calendar events in your Speed Dial.
@@ -41,6 +46,12 @@ limitations under the License.</license>
   <description xml:lang="en-gb">
 	  Google Calendar events in your Speed Dial.
   </description>
+  <description xml:lang="et">
+	  Google'i kalendri sündmused kiirvalimisel.
+  </description>
+  <description xml:lang="it">
+	  Eventi del Calendatio di Google.
+  </description>
   <description xml:lang="ja">
 	  Google Calendar events in your Speed Dial.
   </description>
@@ -49,6 +60,9 @@ limitations under the License.</license>
   </description>
   <description xml:lang="nl">
 	  Geef Google Calendar agenda's weer in je snelkiezer.
+  </description>
+  <description xml:lang="ru">
+	  Google Calendar events in your Speed Dial.
   </description>
   <description xml:lang="tr">
 	  Google Calendar etkinlikleriniz Hızlı Erişiminizde.
