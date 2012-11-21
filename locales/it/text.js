@@ -1,4 +1,4 @@
-var defaultDateFormat = {
+var translatedDateFormat = {
  'time' : '',
  'day' : 'dd. NNN',
  'sd-title' : 'EE, d. MMM yyyy, HH:mm',
@@ -10,7 +10,7 @@ var defaultDateFormat = {
  'weekdays' : new Array('Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato')
 }
 
-var defaultText = {
+var translatedText = {
 
  'index-title' : 'Calendario Google',
  'description' : 'Eventi del Calendatio di Google.',

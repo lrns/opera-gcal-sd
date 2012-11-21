@@ -107,7 +107,7 @@ function showSelectableCalendars() {
 function resyncCalendars() {
 	console.log('select cals1...');
 	id('select-calendars').style.display = 'block';
-	id('list-of-cals').innerHTML = '<img src="ajax-loader.gif" id="cal-list-loader" />';
+	id('list-of-cals').innerHTML = '<img src="img/ajax-loader.gif" id="cal-list-loader" />';
 
 	opera.extension.bgProcess.refreshCalendars(
 			opera.extension.bgProcess.ALL_FEEDS_URL,

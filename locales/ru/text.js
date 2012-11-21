@@ -1,4 +1,4 @@
-var dateFormat = {
+var translatedDateFormat = {
  'time' : '',
  'day' : 'dd. NNN',
  'sd-title' : 'EE, d. MMM yyyy, HH:mm',
@@ -10,7 +10,7 @@ var dateFormat = {
  'weekdays' : new Array('воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота')
 }
 
-var text = {
+var translatedText = {
  'index-title' : 'Google Календарь',
  'options-title' : 'Настройки',
 

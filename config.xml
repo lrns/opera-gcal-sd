@@ -11,7 +11,7 @@
 	<name xml:lang="nl">Google Calendar</name>
 	<name xml:lang="ru">Google Календарь</name>
 	<name xml:lang="tr">Google Calendar</name>
-  <icon src="icon.png"/>
+	<icon src="img/icon.png"/>
   <feature name="opera:share-cookies" required="false"/>
   <access origin="http://www.google.com" subdomains="true"/>
   <access origin="https://www.google.com" subdomains="true"/>

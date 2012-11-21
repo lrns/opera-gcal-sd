@@ -1,4 +1,4 @@
-var defaultDateFormat = {
+var translatedDateFormat = {
  'time' : '',
  'day' : 'd. NNN',
  'sd-title' : 'EE, d. MMM yyyy, H:mm',
@@ -10,7 +10,7 @@ var defaultDateFormat = {
  'weekdays' : new Array('pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev')
 }
 
-var defaultText = {
+var translatedText = {
 
  'index-title' : 'Google\'i kalender',
  'description' : 'Google\'i kalendri sündmused kiirvalimisel.',

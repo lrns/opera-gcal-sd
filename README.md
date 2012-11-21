@@ -9,10 +9,6 @@ Homepage - https://addons.opera.com/en/extensions/details/google-calendar/
 ## Translators needed!
 To translate the extension to your language, please translate messages in  the following language file https://gist.github.com/3773358 and send the translated file to me (paste the content or URL in the comments).
 
-<!---
-http://www.getlocalization.com/operagooglecalendarsdext/
-Instructions on how to translate the extension can be found [here][https://www.dropbox.com/s/8h7hu3zymxjqml4/translation.txt]
--->
 
 ## How to use it:
 
@@ -38,12 +34,6 @@ Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Cont
 
 
 ## Acknowledgements
-* Thanks to norandot-opera [http://my.opera.com/norandot-opera/about/] for Japanese translation.
-* Thanks to Unrealmirakulix [http://my.opera.com/Unrealmirakulix/about/] for German translation.
-* Thanks to MartinezZ [https://github.com/MartinezZ] for Czech translation.
-* Thanks to greench [http://my.opera.com/greench/about/] for Turkish translation.
-* Thanks to Sam [http://my.opera.com/HuRRaCaNe/about/] for Dutch translation.
-* Thanks to Damon [http://achey.net/] for finding and fixing an issue with recurring events in v1.0.1.
 * Google authentication is based on the code of Google Reader Notifier [https://addons.opera.com/addons/extensions/details/google-reader-notifier/] extension.
 * Colour selection is done using JSColor [http://jscolor.com/] library.
 * Date formating is done using http://www.javascripttoolbox.com/lib/date/index.php library.
@@ -54,6 +44,7 @@ Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Cont
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
+* 2.5 - Estonian, Italian and Russian translations
 * 2.4 - fixed time zone settings, added German and Japanese translations, 12h clock option
 * 2.3 - Czech translation, more debug options
 * 2.2 - option to change language independently from browser's language. Turkish translation
