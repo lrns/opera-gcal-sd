@@ -7,7 +7,7 @@ This is not an official Google Calendar extension.
 Homepage - https://addons.opera.com/en/extensions/details/google-calendar/
 
 ## Translators needed!
-To translate the extension to your language, please translate messages in  the following language file https://gist.github.com/3773358 and send the translated file to me (paste the content or URL in the comments).
+To translate the extension to your language, please translate messages in  the following language file (only "message" part!) https://gist.github.com/lrns/6287939 and send the translated file to me (paste the content or URL in the comments).
 
 
 ## How to use it:
@@ -44,6 +44,7 @@ Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Cont
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
+* 3.0 - Updated for Opera 15, added Polish translation
 * 2.5 - Estonian, Italian and Russian translations
 * 2.4 - fixed time zone settings, added German and Japanese translations, 12h clock option
 * 2.3 - Czech translation, more debug options

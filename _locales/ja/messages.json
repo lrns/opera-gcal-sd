@@ -1,0 +1,238 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "MM/dd (E)"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "yyyy, NNN d EE H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "睦月|如月|弥生|卯月|皐月|水無月|文月|葉月|長月|神無月|霜月|師走"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "日|月|火|水|木|金|土"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "日曜|月曜|火曜|水曜|木曜|金曜|土曜"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Googleカレンダー"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "設定"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "カレンダーを更新"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "アカウント"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "ブラウザのセッションと共有"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "別のGoogleアカウントでサインイン:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "Email"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Password"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "サインイン"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "サインアウト"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Googleアカウントでサインイン中:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "Email:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "オプション"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1分"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5分"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10分"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15分"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30分"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1時間"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5時間"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "更新間隔"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "自動"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "タイムゾーン"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "デフォルトの"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "マイ"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "すべての"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "選択した"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "カレンダー"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*空のカレンダーは表示されません."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "利用するカレンダー"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "表示"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "背景色"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "フォントの色"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "フォントの代替色 (終日予定用)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "最大表示数"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "本日の予定を全表示 (過ぎた予定も表示する)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "終了時間を表示"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "日付の表示形式, <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">凡例</a>を参照"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "スピードダイヤルのタイトルでの日付表示形式, <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">凡例</a>を参照。ただしNNN→1月、MMM→睦月"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "フォントサイズ: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pixels"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "タイトルを折り返す"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "設定を初期化"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Googleサーバーとのすべての接続はHTTPSプロトコルを通じて行われます。パスワードはどこにも保存されることなく、最初のサインインにのみ使用されます。"
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "ログイン"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "エラー: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "サインイン中"
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "設定を初期化してよろしいですか？"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Unknown error!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "クリックしてサインインしてください"
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Please sign in inside extension preferences"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "予定はありません"
+    }
+}

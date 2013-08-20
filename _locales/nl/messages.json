@@ -1,0 +1,246 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE d MMM yyyy, Humm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "Jan|Feb|Mar|Apr|Mei|Jun|Jul|Aug|Sep|Okt|Nov|Dec"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "Januari|Februari|Maart|April|Mei|Juni|Juli|Augustus|September|Oktober|November|December"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "Zo|Ma|Di|Wo|Do|Vr|Za"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "Zondag|Maandag|Dinsdag|Woensdag|Donderdag|Vrijdag|Zaterdag"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Calendar"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Voorkeuren van Google Calendar"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Herlaad agenda's"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Account"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Browsersessie delen"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Aanmelden met een specifieke Google account"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "E_mail"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Wachtwoord"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Aanmelden"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Afmelden"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Je bent aangemeld met je Google account:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "E_mail:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Voorkeuren"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Taal"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Auto"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 minuut"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 minuten"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 minuten"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 minuten"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 minuten"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 uur"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 uren"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Om de zoveel minuten agenda's herladen"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Automatisch"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Tijdzone"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Standaard (enkele kalender)"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Mijn agenda's"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Alle agenda's"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Selecteer agenda's"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Agenda('s)"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Alle agenda's, d.w.z. inclusief geabboneerde agenda's"
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Te gebruiken agenda's"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Uiterlijk"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Achtergrondkleur"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Kleur van het lettertype"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Alternatieve kleur v.h. lettertype (Voor gebeurtenissen die de hele dag duren)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Maximum aantal afspraken om weer te geven"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Toon alle afspraken van vandaag (inclusief degene die al voorbij zijn)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Toon wanneer een afspraak eindigt"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Formaat van de datum, zie <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">voorbeelden</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Snelkiezer titelformaat, zie <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">voorbeelden</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Grootte van het lettertype: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pixels"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Tekstterugloop (lange titels gebruiken meerdere lijnen)"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Voorkeuren herstellen"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Alle connecties worden gemaakt met Google servers via het HTTPS protocol. Wachtwoorden worden nergens opgeslagen. Het wachtwoord wordt alleen gebruikt bij het aanmelden voor de eerste keer."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Aanmelden"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Error: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Bezig met aanmelden..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Bent u zeker dat u alles terug wil naar de standaardinstellingen? Al uw voorkeuren worden gewist."
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Onbekende error! :("
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Klik om u aan te melden..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Meldt u alstublieft aan in de voorkeuren van deze extensie"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Er zijn geen afspraken in je agenda's"
+    }
+}

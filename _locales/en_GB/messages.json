@@ -1,0 +1,14 @@
+{
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Background colour"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Font colour"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Alternative font colour (for all day events)"
+    }
+}

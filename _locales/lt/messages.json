@@ -1,0 +1,246 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "NNN d"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, yyyy MMM d, H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "Saus.|Vas.|Kov.|Bal.|Geg.|Birž.|Liep.|Rugp.|Rugs.|Spal.|Lapkr.|Gruod."
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "Sausio|Vasario|Kovo|Balandžio|Gegužės|Birželio|Liepos|Rugpjūčio|Rugsėjo|Spalio|Lapkričio|Gruodžio"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "Sek|Pir|Ant|Tre|Ket|Pen|Šeš"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "Sekmadienis|Pirmadienis|Antradienis|Trečiadienis|Ketvirtadienis|Penktadienis|Šeštadienis"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Kalendorius"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Google kalendoriaus nustatymai"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Atnaujinti kalendorius"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Paskyra"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Naudotis esamu prisijungimu"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Prisijungi prie kitos Google paskyros"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "El. paštas"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Slaptažodis"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Prisijungti"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Atsijungti"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Esate prisijungę prie Google paskyros:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "El. paštas:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Nustatymai"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Kalba"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Auto _ kaip ir naršyklės"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 minutę"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 minutes"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 minučių"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 minučių"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 minučių"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 valandą"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 valandas"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Atnaujinti kas"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Numatyta"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Laiko juosta"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Pagrindinis kalendorius"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Mano kalendoriai"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Visi kalendoriai"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Pasirinkti kalendoriai"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Kalendoriai"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Visi kalendoriai _ mano kalendoriai ir prenumeruojami kalendoriai."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Rodomi kalendoriai"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Išvaizda"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Fono spalva"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Teksto spalva"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Kita teksto spalva (visos dienos įvykiams)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Kiek įvykių rodyti langelyje"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Rodyti visus šiandienos įvykius (būsimus ir praėjusius)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Rodyti įvykių pabaigos laiką"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Datos formatas, žiūrėkite <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">pavyzdžius</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Sparčiojo Rinkimo langelio datos formatas, žiūrėkite <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">pavyzdžius</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Šrifto dydis: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pikseliai"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Rodyti ilgus įvykių pavadinimus per kelias eilutes"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Atstatyti pradines parinktis"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Visi prisijungimai į Google serverius yra siunčiami naudojant saugų HTTPS protokolą. Slaptažodis nėra saugomas; jis naudojamas tik pirmą kartą jungiantis prie Google paskyros."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Prisijungti"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Klaida: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Prisijungiama..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Ar Jūs tikrai norite atstatyti pradines parinktis?"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Nežinoma klaida! :("
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Spauskite čia ir prisijunkite..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Prisijunkite prie Google paskyros papildymo nustatymuose..."
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Nėra įvykių jūsų kalendoriuje"
+    }
+}

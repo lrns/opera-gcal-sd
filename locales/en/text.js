@@ -1,9 +1,7 @@
-var translatedDateFormat = {
-
-}
-
-var translatedText = {
-
-}
-
+opera.isReady(function(){
+var translatedDateFormat = window["translatedDateFormat"] = {
+};
+var translatedText = window["translatedText"] = {
+};
 updateTranslation();
+});

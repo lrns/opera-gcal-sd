@@ -1,0 +1,246 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd. NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d. MMM yyyy, H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "leden|únor|březen|duben|květen|červen|červenec|srpen|září|říjen|listopad|prosinec"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "ne|po|út|st|čt|pá|so"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "neděle|pondělí|úterý|středa|čtvrtek|pátek|sobota"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Kalendář"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Nastavení Google Kalendáře"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Obnovit Kalendář"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Účet"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Sdílet přihlášení v prohlížeči (pomocí session)"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Přihlásit se k jinému Google účtu:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "Email"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Heslo"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Přihlásit"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Odhlásit"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Jste přihlášeni pomocí svého Google účtu:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "Email:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Nastavení"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Jazyk"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Automaticky"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 minuta"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 minut"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 minut"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 minut"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 minut"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 hodina"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 hodin"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Interval aktualizace"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Automaticky"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Časová zóna"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Hlavní kalendář"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Vlastní kalendáře"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Všechny kalendáře*"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Vybrané kalendáře"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Kalendář(e)"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Všechny kalendáře včetně odebíraných kalendářů."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Dostupné lalendáře"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Vzhled"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Barva pozadí"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Barva písma"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Náhradní barva písma (pro celodenní události)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Max. počet zobrazených událostí"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Zobrazit všechny denní události (včetně uplynulých)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Zobrazit čas konce události"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Formát data, viz. příklady"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Formát názvu Rychlého přístupu, viz. příklady"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Velikost písma: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pixelů"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Zalamovat názvy událostí"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Zrušit nastavení"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Všechna spojení se servery Google probíhají pomocí protokolu HTTPS. Heslo není nikde ukládáno, je použito pouze při prvním přihlášení."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Přihlášení"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Chyba: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Přihlašování..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Skutečně chcete zrušit nastavení?"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Neznámá chyba!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Klikněte pro přihlášení..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Přihlašte se v nastavení rozšíření"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "V kalendáři nejsou žádné události"
+    }
+}

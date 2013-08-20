@@ -1,4 +1,6 @@
-//uncomment this if you wanna see debug output in Opera's Error Console
-console={log:function(m){}} 
-//console={log:function(m){window.opera.postError(m)}} 
-
+opera.isReady(function(){
+function debugMessage(msg) {
+	console.log(msg);
+}
+var debugMessage = window["debugMessage"] = debugMessage;
+});

@@ -1,0 +1,238 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd. NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d. MMM yyyy, HH:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "янв|фев|мар|апр|мая|июня|июля|авг|сен|окт|ноя|дек"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "ВС|ПН|ВТ|СР|ЧТ|ПТ|СБ"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "воскресенье|понедельник|вторник|среда|четверг|пятница|суббота"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Календарь"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Настройки"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Обновить список"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Учётная запись"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Брать из браузера"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Войти в другую:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "E_mail"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Пароль"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Войти"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Выйти"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Вы вошли как"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "E_mail:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Настройка"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 минута"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 минут"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 минут"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 минут"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 минут"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 час"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 часов"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Частота обновления"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Автоматически"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Часовой пояс"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "По умолчанию"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Личные"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Все"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Избранные"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Календари"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Опция «Все» включает календари по подписке"
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Выберите:"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Дизайн"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Фон"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Цвет шрифта"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Цвет шрифта для событий на весь день"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Количество событий"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Показывать прошедшие события текущего дня"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Показывать время окончания"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Формат даты (<a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">примеры</a>)"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Подпись на стартовой панели (<a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">примеры</a>)"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Размер шрифта: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "пунктов"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Перенос строки"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Сброс всех настроек"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Все соединения с серверами Google происходят по защищённому HTTPS_протоколу. Пароль нигде не хранится, он используется лишь один раз при авторизации расширения в первый раз."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Войти"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Ошибка: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Вход..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Вы уверены? Будут сброшены все настройки"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Неизвестная ошибка"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Нажмите для авторизации ..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Вы не авторизованы в Google Календарь"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Календарь пуст"
+    }
+}

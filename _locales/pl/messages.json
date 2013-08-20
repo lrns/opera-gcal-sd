@@ -1,0 +1,258 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d MMM yyyy, H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "Sty|Lut|Mar|Kwi|Maj|Cze|Lip|Sie|Wrz|Paź|Lis|Gru'"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "Styczeń|Luty|Marzec|Kwiecień|Maj|Czerwiec|Lipiec|Sierpień|Wrzesień|Październik|Listopad|Grudzień"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "Pn|Wt|Śr|Cz|Pt|So|Nd"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "Niedziela|Poniedziałek|Wtorek|Środa|Czwartek|Piątek|Sobota"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Kalendarz Google"
+    }, 
+    "description": {
+        "description": "Google Calendar events in your Speed Dial.", 
+        "message": "Wydarzenia z Kalendarza Google w Speed Dialu."
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Opcje Kalendarza Google"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Odśwież kalendarze"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Konto"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Użyj sesji przeglądarki"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Użyj innego konta Google:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "Email"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Hasło"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Zaloguj"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Wyloguj"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Jesteś zalogowany do konta Google:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "Email:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Opcje"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Język"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Auto"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 minuta"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 minut"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 minut"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 minut"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 minut"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 godzina"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 godzin"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Częstotliwość odświeżania"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Auto"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Strefa czasowa"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Domyślny kalendarz"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Własne kalendarze"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Wszystkie kalendarze"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Wybrane kalendarze"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Kalendarz(e)"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Wszystkie kalendarze obejmują również subskrybowane kalendarze."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Używane kalendarze"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Wygląd"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Kolor tła"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Kolor czcionki"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Alternatywny kolor czcionki (dla wszystkich wydarzeń)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Maks. liczba wyświetlanych wydarzeń"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Pokazuj wszystkie dzisiejsze wydarzenia (również minione)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Pokazuj czas zakończenia wydarzenia"
+    }, 
+    "options_clock_12h": {
+        "description": "12h clock", 
+        "message": "Czas w formacie 12-godzinowym"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Format daty, zobacz <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">przykłady</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Format tytułu Speed Diala, zobacz <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">przykłady</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Rozmiar czcionki: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pikseli"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Zawijaj tytuły wydarzeń"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Przywróć ustawienia"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Wszystkie połączenia do serwerów Google wykorzystują protokół HTTPS. Hasło nie jest nigdzie zapisywane, a jedynie wykorzystywane przy pierwszym logowaniu."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Zaloguj"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Błąd: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Logowanie..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Na pewno przywrócić ustawienia?"
+    }, 
+    "options_debug_data": {
+        "description": "Debug data", 
+        "message": "Dane diagnostyczne"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Nieznany błąd!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Kliknij, aby się zalogować..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Proszę się zalogować na stronie ustawień rozszerzenia"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Brak wydarzeń w Twoim kalendarzu"
+    }
+}

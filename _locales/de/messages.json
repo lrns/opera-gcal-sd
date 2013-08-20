@@ -1,0 +1,238 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd. NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d. MMM yyyy, HH:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "Jan|Feb|Mär|Apr|Mai|Jun|Jul|Aug|Sep|Okt|Nov|Dez"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "So|Mo|Di|Mi|Do|Fr|Sa"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Kalender"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Optionen für Google Kalender"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Kalender aktualisieren"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Konto"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Share browser's session"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Über ein anderes Google_Konto anmelden:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "E_Mail"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Passwort"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Anmelden"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Abmelden"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Sie sind über ihr Google_Konto angenmeldet:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "E_Mail:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Optionen"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 Minute"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 Minuten"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 Minuten"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 Minuten"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 Minuten"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 Stunde"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 Stunden"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Aktualisierungsintervall"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Automatisch"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Zeitzone"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Standardeinstellung"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Eigene Kalender"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Alle Kalender"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Ausgewählte Kalender"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Kalender"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Alle Kalender beinhaltet abonnierte Kalender."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "genutzte Kalender"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Erscheinungsbild"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Hintergrundfarbe"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Schriftfarbe"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Alternative Schriftfarbe (für alle Ereignisse)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Maximale Zahl der Einträge"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Zeige auch vergangene Ereignisse"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Zeige Endzeit der Ereignisse"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Datumsformat, siehe <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">Beispiele</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Speed Dial Titelformat, siehe <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">Beispiele</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Schriftgröße: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "Pixel"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Ereignistitel über mehrere Zeilen anzeigen"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Einstellungen zurücksetzen"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Alle Verbindungen zu den Google_Servern laufen über das HTTPS_Protokoll. Das Passwort wird nirgends gespeichert, es wird nur beim ersten anmelden genutzt."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Anmelden"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Fehler: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Anmelden..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Wollen Sie die Einstellungen wirklich zurücksetzen?"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Unbekannter Fehler!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Zum Anmelden klicken ..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Bitte melden Sie sich innerhalb der Erweiterungseinstellungen an"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Eine Ereignisse in ihren Kalendern"
+    }
+}

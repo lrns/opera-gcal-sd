@@ -1,0 +1,246 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "dd NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d MMM yyyy, H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "Oca|Şu|Mar|Nis|May|Haz|Tem|Ağu|Eyl|Ekm|Kas|Ara"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "Paz|Pzt|Sal|Çar|Per|Cum|Cmt"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "Pazar|Pazartesi|Salı|Çarşamba|Perşembe|Cuma|Cumartesi"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Calendar"
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Google Calendar Ayarları"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Takvimleri güncelle"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Hesap"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Tarayıcının oturumunu paylaş"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Başka Google hesabına giriş yap:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "E_posta"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Şifre"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Giriş Yap"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": ".Çıkış Yap"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Giriş yaptığınız Google hesabı:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "E_posta:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Ayarlar"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Dil"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Auto"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 dakika"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 dakika"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 dakika"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 dakika"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 dakika"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 saat"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 saat"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Yenileme sıklığı"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Otomatik"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Zaman dilimi"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Varsayılan takvim"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Kendi takvimlerim"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Tüm takvimler"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Seçilen takvimler"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Takvimler"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "*Tüm takvimler abone olunan takvimleri de içerir."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Kullanılacak takvimler"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Görünüm"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Arkaplan rengi"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Yazı tipi rengi"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Alternatif yazı tipi rengi (tüm gün etkinlikleri için)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Görüntülenecek en fazla kayıt"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Bugünün tüm etkinliklerini göster (geçmiş etkinliklerle de birlikte)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Etkinliğin bitiş saatini göster"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Tarih türleri, bakınız <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">örnekler</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Hızlı Erişim başlık türü, bakınız <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">örnekler</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Yazı tipi boyutu: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "piksel"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Etkinlik başlıklarını alt satıra genişlet"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Ayarları sıfırla"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Google sunucularıyla yapılan tyüm bağlantılar HTTPS protokolü ile yapılmaktadır. Şifreniz hiç bir yerde kaydedilmiyor, sadece ilk kez girişte kullanılıyor."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Giriş yap"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Hata: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Giriş yapılıyor..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Ayarları sıfırlamak istediğinizden emin misiniz?"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Bilinmeyen hata!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Giriş yapmak için tıklayın..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Lütfen eklentinin ayarlarından giriş yapın"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Takviminizde etkinlik yok"
+    }
+}

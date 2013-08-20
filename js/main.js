@@ -1,68 +1,48 @@
-/* main variables to hold data
-entry 
-	title
-	start
-	end
-	color
-	fullday - bool flag
-	*/
-
+opera.isReady(function(){
 var entries = [];
-/*
-ID (from calendar URL) => calendar
-	url
-	title
-	color
-	synced - flag if calendar was recently synced
-	shouldSync - bool flag
-*/
 var calendars = {};
-
 var newEntries = [];
-
 var viewTimer;
 var feedsTimer;
 var sdTitleTimer;
-var UI_INTERVAL = 600000; //10 min
 
 function init() {
-	loadLanguage();
+  //loadLanguage();
 	setSDTitle();
 	initCalendars();
 	setupCSS();
 	if (getValue(CALENDAR_TYPE) !== 'selected') {
 		refreshFeeds();
 	}
-    feedsTimer = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
-	// force UI update 
-    viewTimer = window.setInterval(drawEntries, UI_INTERVAL);
-    sdTitleTimer = window.setInterval(setSDTitle, 2000);
-
+	chrome.alarms.create("sd-title", {periodInMinutes: 1});
+	chrome.alarms.create("view-update", {periodInMinutes: 10});
+	chrome.alarms.create("feeds-update", {periodInMinutes: getValue(REFRESH_INTERVAL)});
+	
+	chrome.alarms.onAlarm.addListener(function(alarm) {
+		if (alarm.name === "sd-title") {
+			setSDTitle();
+		} else if (alarm.name === "feeds-update") {
+			refreshFeeds();
+		} else if (alarm.name === "view-update") {
+			drawEntries();
+		}
+	});
 }
 
 function setSDTitle() {
-	opera.contexts.speeddial.title = (new Date()).format(getSDDateFormat());
+	opr.speeddial.update({ title: new Date().format(getSDDateFormat()) });
 }
-
-/**
- * Update calendar and reschedule future updates.
- * Function called when options are changed
- */
-function reloadFeeds() {
-	window.clearInterval(feedsTimer);
-	refreshFeeds();
-	// reschedule update
-	timerId = window.setInterval(refreshFeeds, getValue(REFRESH_INTERVAL));
-}
-function refreshUI() {
-	window.clearInterval(viewTimer);
-	drawEntries();
-	// reschedule update
-	viewTimer = window.setInterval(drawEntries, getValue(UI_INTERVAL));
-}
+var setSDTitle = window["setSDTitle"] = setSDTitle;
 
 function showDebugData() {
-	if (opera.extension.tabs.create) {
-		opera.extension.tabs.create({url: "debug.html", focus: true});
-	}
+  if (opera.extension.tabs.create) {
+    opera.extension.tabs.create({
+      url: "debug.html",
+      focus: true
+    });
+  }
 }
+var showDebugData = window["showDebugData"] = showDebugData;
+
+init();
+});

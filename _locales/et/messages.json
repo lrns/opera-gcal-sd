@@ -1,0 +1,258 @@
+{
+    "time": {
+        "description": "", 
+        "message": ""
+    }, 
+    "day": {
+        "description": "dd NNN", 
+        "message": "d. NNN"
+    }, 
+    "sd_title": {
+        "description": "EE, d MMM yyyy, H:mm", 
+        "message": "EE, d. MMM yyyy, H:mm"
+    }, 
+    "months_short": {
+        "description": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec", 
+        "message": "jaan|veebr|märts|apr|mai|juuni|juuli|aug|sept|okt|nov|dets"
+    }, 
+    "months": {
+        "description": "January|February|March|April|May|June|July|August|September|October|November|December", 
+        "message": "jaanuar|veebruar|märts|aprill|mai|juuni|juuli|august|september|oktoober|november|detsember"
+    }, 
+    "weekdays_short": {
+        "description": "Sun|Mon|Tue|Wed|Thu|Fri|Sat", 
+        "message": "P|E|T|K|N|R|L"
+    }, 
+    "weekdays": {
+        "description": "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday", 
+        "message": "pühapäev|esmaspäev|teisipäev|kolmapäev|neljapäev|reede|laupäev"
+    }, 
+    "index_title": {
+        "description": "Google Calendar", 
+        "message": "Google'i kalender"
+    }, 
+    "description": {
+        "description": "Google Calendar events in your Speed Dial.", 
+        "message": "Google'i kalendri sündmused kiirvalimisel."
+    }, 
+    "options_title": {
+        "description": "Options of Google Calendar", 
+        "message": "Google'i kalendri seaded"
+    }, 
+    "refresh_cal": {
+        "description": "Refresh Calendars", 
+        "message": "Värskenda kalendreid"
+    }, 
+    "options_account": {
+        "description": "Account", 
+        "message": "Konto"
+    }, 
+    "options_share_session": {
+        "description": "Share browser's session", 
+        "message": "Brauseri seansi jagamine"
+    }, 
+    "options_separate_signin": {
+        "description": "Sign in to another Google account:", 
+        "message": "Logi sisse teise kontoga:"
+    }, 
+    "options_email": {
+        "description": "Email", 
+        "message": "E_post"
+    }, 
+    "options_password": {
+        "description": "Password", 
+        "message": "Parool"
+    }, 
+    "signin": {
+        "description": "Sign In", 
+        "message": "Logi sisse"
+    }, 
+    "signout": {
+        "description": "Sign Out", 
+        "message": "Logi välja"
+    }, 
+    "options_signed": {
+        "description": "You are signed in with your Google account:", 
+        "message": "Oled sisse logitud Google' kontoga:"
+    }, 
+    "options_user_email": {
+        "description": "Email:", 
+        "message": "E_post:"
+    }, 
+    "options_options": {
+        "description": "Options", 
+        "message": "Seaded"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Keel"
+    }, 
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Automaatne"
+    }, 
+    "options_1_min": {
+        "description": "1 minute", 
+        "message": "1 minut"
+    }, 
+    "options_5_min": {
+        "description": "5 minutes", 
+        "message": "5 minutit"
+    }, 
+    "options_10_min": {
+        "description": "10 minutes", 
+        "message": "10 minutit"
+    }, 
+    "options_15_min": {
+        "description": "15 minutes", 
+        "message": "15 minutit"
+    }, 
+    "options_30_min": {
+        "description": "30 minutes", 
+        "message": "30 minutit"
+    }, 
+    "options_1_h": {
+        "description": "1 hour", 
+        "message": "1 tund"
+    }, 
+    "options_5_h": {
+        "description": "5 hours", 
+        "message": "5 tundi"
+    }, 
+    "options_refresh_interval": {
+        "description": "Refresh interval", 
+        "message": "Värskendusintervall"
+    }, 
+    "options_auto": {
+        "description": "Auto", 
+        "message": "Automaatne"
+    }, 
+    "options_time_zone": {
+        "description": "Time zone", 
+        "message": "Ajavöönd"
+    }, 
+    "options_default_cal": {
+        "description": "Default calendar", 
+        "message": "Vaikimisi kalender"
+    }, 
+    "options_own_cals": {
+        "description": "Own calendars", 
+        "message": "Oma kalendrid"
+    }, 
+    "options_all_cals": {
+        "description": "All calendars", 
+        "message": "Kõik kalendrid"
+    }, 
+    "options_selected_cals": {
+        "description": "Selected calendars", 
+        "message": "Valitud kalendrid"
+    }, 
+    "options_calendars": {
+        "description": "Calendar(s)", 
+        "message": "Kalendrid"
+    }, 
+    "options_all_cal_note": {
+        "description": "*All calendars include subscribed calendars.", 
+        "message": "* \"Kõik kalendrid\" hõlmab ka tellitud kalendreid."
+    }, 
+    "options_cals_to_use": {
+        "description": "Calendars to use", 
+        "message": "Kasutatavad kalendrid"
+    }, 
+    "options_appearance": {
+        "description": "Appearance", 
+        "message": "Välimus"
+    }, 
+    "options_bg_color": {
+        "description": "Background color", 
+        "message": "Taustavärv"
+    }, 
+    "options_font_color": {
+        "description": "Font color", 
+        "message": "Teksti värv"
+    }, 
+    "options_alt_font_color": {
+        "description": "Alternative font color (for all day events)", 
+        "message": "Vahelduv teksti värv (kogupäevasündmustele)"
+    }, 
+    "options_mx_entries": {
+        "description": "Max. entries to display", 
+        "message": "Näidatavate kirjete suurim arv"
+    }, 
+    "options_past_events": {
+        "description": "Show all today's events (including passed events)", 
+        "message": "Kuvatakse kõik tänased sündmused (sh möödunud)"
+    }, 
+    "options_end_time": {
+        "description": "Show event end time", 
+        "message": "Kuvatakse lõppkellaaega"
+    }, 
+    "options_clock_12h": {
+        "description": "12h clock", 
+        "message": "12_tunnine kell"
+    }, 
+    "options_date_format": {
+        "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Kuupäevavorming, vt <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">näiteid</a>"
+    }, 
+    "options_title_date": {
+        "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
+        "message": "Kiirvalimise pealkirjavorming, vt <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">näiteid</a>"
+    }, 
+    "options_font_size": {
+        "description": "Font size: ", 
+        "message": "Fondi suurus: "
+    }, 
+    "options_font_px": {
+        "description": "pixels", 
+        "message": "pix"
+    }, 
+    "options_wrap_lines": {
+        "description": "Wrap event titles", 
+        "message": "Ürituste pealkirjade murdmine"
+    }, 
+    "options_reset_prefs": {
+        "description": "Reset preferences", 
+        "message": "Lähtesta seaded"
+    }, 
+    "options_footer": {
+        "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
+        "message": "Kõik ühendused Google'i serveritesse käivad HTTPS_protokolliga. Parooli ei salvestata kuskil, seda kasutatakse üksnes esmakordsel sisselogimisel."
+    }, 
+    "options_login": {
+        "description": "Log In", 
+        "message": "Logi sisse"
+    }, 
+    "options_error": {
+        "description": "Error: ", 
+        "message": "Viga: "
+    }, 
+    "options_signing_in": {
+        "description": "Signing In...", 
+        "message": "Sisselogimine..."
+    }, 
+    "options_reset_confirm": {
+        "description": "Are you sure to reset preferences?", 
+        "message": "Kas soovid kindlasti seaded lähtestada?"
+    }, 
+    "options_debug_data": {
+        "description": "Debug data", 
+        "message": "Silumisandmed"
+    }, 
+    "view_unknown_error": {
+        "description": "Unknown error!", 
+        "message": "Tundmatu viga!"
+    }, 
+    "view_click_signin": {
+        "description": "Click to sign in ...", 
+        "message": "Klõpsa sisselogimiseks..."
+    }, 
+    "view_signin_prefs": {
+        "description": "Please sign in inside extension preferences", 
+        "message": "Palun logi sisse laienduse eelistuste lehel"
+    }, 
+    "view_no_events": {
+        "description": "No events in your calendars", 
+        "message": "Sündmusi pole"
+    }
+}
