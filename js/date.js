@@ -1,15 +1,17 @@
-opera.isReady(function(){
+document.addEventListener('DOMContentLoaded', function () {
+	// Locale hack 
+	Date.monthNames = getTranslatedMessage('months').split('|');
+	Date.monthAbbreviations = getTranslatedMessage('months_short').split('|');
+	Date.dayNames = getTranslatedMessage('weekdays').split('|');
+	Date.dayAbbreviations = getTranslatedMessage('weekdays_short').split('|');
+	  
+});
+
+// Below code is not modified
 Date.$VERSION = 1.02;
 Date.LZ = function(x) {
   return (x < 0 || x > 9 ? "" : "0") + x;
 };
-// Locale hack 
-Date.monthNames = getTranslatedMessage('months').split('|');
-Date.monthAbbreviations = getTranslatedMessage('months_short').split('|');
-Date.dayNames = getTranslatedMessage('weekdays').split('|');
-Date.dayAbbreviations = getTranslatedMessage('weekdays_short').split('|');
-
-// Below code is not modified
 
 Date.preferAmericanFormat = true;
 if (!Date.prototype.getFullYear) {
@@ -361,4 +363,3 @@ Date.prototype.add = function(interval, number) {
   }
   return this;
 };
-});

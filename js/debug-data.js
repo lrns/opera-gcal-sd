@@ -1,11 +1,9 @@
-opera.isReady(function(){
-addEventListener('DOMContentLoaded', init, false);
 function showDebugContent() {
-  document.getElementById('debug_textarea').innerHTML = opera.extension.bgProcess.getDebugText();
+  document.getElementById('debug_textarea').innerHTML = chrome.extension.getBackgroundPage().getDebugText();
 }
-var showDebugContent = window["showDebugContent"] = showDebugContent;
 function init() {
   showDebugContent();
 }
-var init = window["init"] = init;
-});
+
+addEventListener('DOMContentLoaded', init, false);
+

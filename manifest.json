@@ -12,7 +12,7 @@
 "default_locale": "en",
 "icons" : {"128": "img/icon.png"},
 "options_page" : "options.html",
-"web_accessible_resources" : ["css/style.css","css/options.css","debug.html","img/ajax-loader.gif","img/ajax-loader-small.gif","img/icon.png","js/prefs.js","js/debug.js","js/jscolor/jscolor.js","js/jscolor/hs.png","js/jscolor/hv.png","js/jscolor/cross.gif","js/jscolor/arrow.gif","js/view.js","js/debug-data.js","js/model.js","js/lang-en.js","js/date.js","js/options.js","js/main.js","LICENSE.TXT","locales/ru/text.js","locales/cs/text.js","locales/en/text.js","locales/tr/text.js","locales/nl/text.js","locales/et/text.js","locales/de/text.js","locales/en-gb/text.js","locales/it/text.js","locales/lt/text.js","locales/ja/text.js","README.md"],
+"web_accessible_resources" : ["css/style.css","css/options.css","debug.html","img/ajax-loader.gif","img/ajax-loader-small.gif","img/icon.png","js/prefs.js","js/debug.js","js/jscolor/jscolor.js","js/jscolor/hs.png","js/jscolor/hv.png","js/jscolor/cross.gif","js/jscolor/arrow.gif","js/view.js","js/debug-data.js","js/model.js","js/date.js","js/options.js","js/main.js"],
 "permissions" : ["alarms", "speeddial", "tabs", "https://*/*", "storage", "http://*/*", "webRequest", "webRequestBlocking"],
 "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'unsafe-eval';"
 }

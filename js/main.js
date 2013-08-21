@@ -3,6 +3,7 @@ var calendars = {};
 var newEntries = [];
 
 function init() {
+	resetTranslation();
     //loadLanguage();
     setSDTitle();
     initCalendars();
@@ -35,6 +36,6 @@ function showDebugData() {
 	}
 }
 
-opera.isReady(function () {
+document.addEventListener('DOMContentLoaded', function () {
     init();
 });

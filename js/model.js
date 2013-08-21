@@ -3,7 +3,7 @@ var ALL_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/allcalendars/
 var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/full';
 var SINGLE_FEED_URL = 'https://www.google.com/calendar/feeds/default/private/full';
 var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending';
-var REQUEST_TIMEOUT_MS = 30 * 1000;
+var REQUEST_TIMEOUT_MIN = 1; // one minute is the shortest period in chrome.alarms
 
 function buildFeedURL(prefix) {
 	var url = prefix + FEED_URL_SUFFIX;
@@ -107,7 +107,7 @@ function handleMultiFeeds(data) {
 }
 
 function syncCalendars() {
-	 newEntries = [];
+	newEntries = [];
 	var numToSync = 0;
 	for (id in calendars) {
 		calendars[id].synced = false;
@@ -126,14 +126,17 @@ function syncCalendars() {
 
 
 function getFeed(feedUrl, handler) {
-	var xhr =  new XMLHttpRequest();
-	var abortTimerId = window.setTimeout(function () {
-		xhr.abort();
-		chrome.runtime.sendMessage({ status : 'refresh_end' });
-	}
-	, REQUEST_TIMEOUT_MS);
+	var xhr = new XMLHttpRequest();
+	chrome.alarms.create("abort", { delayInMinutes : REQUEST_TIMEOUT_MIN });
+	chrome.alarms.onAlarm.addListener(function (alarm) {
+		if (alarm.name === "abort") {
+			xhr.abort();
+			chrome.runtime.sendMessage({ status : 'refresh_end' });
+		}
+	});
+		
 	function handleError(is401) {
-		window.clearTimeout(abortTimerId);
+		chrome.alarms.clear("abort");
 		if (is401) {
 			displayNoAuth();
 		}
@@ -141,16 +144,15 @@ function getFeed(feedUrl, handler) {
 	}
 	try {
 		xhr.onreadystatechange = function () {
-			if (xhr.readyState != 4)return;
+			if (xhr.readyState != 4)
+				return;
 			if (xhr.status >= 400 || xhr.status == 0) {
 				debugMessage('Error response code: ' + xhr.status + ' ' + xhr.statusText);
 				handleError(xhr.status == 401 || xhr.status == 0);
-			}
-			else if (xhr.responseXML) {
+			} else if (xhr.responseXML) {
 				debugMessage('Response received: ' + xhr.responseText.substring(0, 50));
 				handler(xhr.responseXML);
-			}
-			else {
+			} else {
 				debugMessage('No responseText!');
 				handleError();
 			}
@@ -164,8 +166,7 @@ function getFeed(feedUrl, handler) {
 			xhr.setRequestHeader("Authorization", "GoogleLogin auth=" + getValue("user_auth"));
 		}
 		xhr.send(null);
-	}
-	catch (e) {
+	} catch (e) {
 		debugMessage('XHR exception: ' + e);
 		handleError();
 	}
@@ -209,8 +210,7 @@ function parseFeed(xml) {
 		}
 		debugMessage('Parsed ' + feedEntries.length + ' entries');
 		return feedEntries;
-	}
-	catch (err) {
+	} catch (err) {
 		debugMessage("Error: " + err);
 		return {};
 	}
@@ -227,7 +227,7 @@ function parseCalendars(xml) {
 		 newCalendars[extractID(url)] = { url: url, title: title, color: color, synced: false, shouldSync: true };
 	}
 	calendars = newCalendars;
-	chrome.runtime.sendMessage({ status : 'calendars_updated' });
+	chrome.runtime.sendMessage({ status: 'calendars_updated' });
 }
 
 
