@@ -72,7 +72,7 @@ function msg(key) {
 
 function translate() {
 	debugMessage('Translating...');
-	var elems = document.querySelectorAll(".translate");
+	/*var elems = document.querySelectorAll(".translate");
 	for (var i in elems) {
 		if (elems[i].id in text) {
 			if (elems[i].tagName.toLowerCase() === 'input') {
@@ -85,11 +85,12 @@ function translate() {
 		else {
 			elems[i].innerHTML = '<<<' + elems[i].id + '>>>';
 		}
-	}
+	}*/
 }
 
 function loadLanguage() {
 	var lang = getValue("language");
+	debugMessage("Loading language: " + lang);
 	//TODO implement
 	translate();
 }
