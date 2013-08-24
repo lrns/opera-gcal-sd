@@ -5,5 +5,5 @@ function init() {
   showDebugContent();
 }
 
-addEventListener('DOMContentLoaded', init, false);
+document.addEventListener('DOMContentLoaded', init);
 

@@ -204,6 +204,8 @@ function parseFeed(xml) {
 						var start =  new Date(startString);
 						var end =  new Date(endString);
 					}
+					//debugMessage("startTime in XML: " + startString);
+					//debugMessage("start time parsed: " + start);
 					feedEntries.push({ title: title, start: start, end: end, color: color, fullday: fullday, calendar: calID });
 				}
 			}
@@ -286,7 +288,7 @@ function getDebugText() {
 	}
 	prefs = {};
 	for (pref_key in defaultValues) {
-		prefs[pref_key] = getValue("pref_key");
+		prefs[pref_key] = getValue(pref_key);
 	}
 	delete prefs['user_auth'];
 	delete prefs['user_email'];

@@ -86,7 +86,7 @@ function showSelectableCalendars() {
 		document.getElementById('list_of_cals').innerHTML += line;
 	}
 	for (var id in calendars) {
-		document.getElementById('cal_' + id).oninput = calendarChecked;
+		document.getElementById('cal_' + id).onchange= calendarChecked;
 		document.getElementById('color_' + id).onchange = calendarColorChanged;
 	}
 	bgPage.refreshFeeds();
@@ -96,7 +96,7 @@ function showSelectableCalendars() {
 function resyncCalendars() {
 	debugMessage('select cals1...');
 	id('select_calendars').style.display = 'block';
-	id('list_of_cals').innerHTML = '<img src="img/ajax_loader.gif" id="cal_list_loader" />';
+	id('list_of_cals').innerHTML = '<img src="/img/ajax-loader.gif" id="cal_list_loader" />';
 	chrome.extension.getBackgroundPage().refreshCalendars(chrome.extension.getBackgroundPage().ALL_FEEDS_URL, function () {});
 }
 
@@ -105,7 +105,7 @@ function initAccount() {
 	var userEmail = getValue("user_email");
 	if (userEmail) {
 		id('main_signin').style.display = 'none';
-		id('useremail').innerText = (userEmail.indexOf('@') != _1) ? userEmail : userEmail + '@gmail.com';
+		id('useremail').innerText = (userEmail.indexOf('@') != -1) ? userEmail : userEmail + '@gmail.com';
 	} else {
 		id('main_signout').style.display = 'none';
 	}
@@ -166,6 +166,7 @@ function initOptions() {
 	};
 	id('refresh_cal').onclick = function () {
 		document.getElementById('refresh_img').style.display = 'inline';
+		debugMessage("refreshing button clicked");
 		chrome.extension.getBackgroundPage().refreshFeeds();
 	};
 	var timeZone = getValue("time_zone");
@@ -195,6 +196,8 @@ function initOptions() {
 		}
 	};
 	
+	id('font_size').value = getValue("font_size");
+	
 	id('font_plus').onclick = function () {
 		var size = parseInt(getValue("font_size"), 10);
 		if (size < 72) {
@@ -207,7 +210,7 @@ function initOptions() {
 	id('font_minus').onclick = function () {
 		var size = parseInt(getValue("font_size"), 10);
 		if (size > 4) {
-			setValue("font_size", size_1);
+			setValue("font_size", size - 1);
 		}
 		id('font_size').value = getValue("font_size");
 		chrome.extension.getBackgroundPage().redraw();
@@ -250,7 +253,7 @@ function initSimpleFields() {
 				for (var j in bgPage.entries) {
 					bgPage.entries[j].color = '#' + this.value;
 				}
-				cbgPage.redraw();
+				bgPage.redraw();
 			} else if (this.id === "max_entries") {
 				bgPage.refreshFeeds();
 			} else if (this.id === "date_format") {
@@ -266,7 +269,9 @@ function initSimpleFields() {
 		var field = checkboxFields[i];
 		element = id(field);
 		element.checked = getValue(field) === 'true';
-		element.oninput = function () {
+		debugMessage("registered checkbox " + field);
+		element.onchange = function () {
+			debugMessage("checkbox fired " + this.id);
 			setValue(this.id, this.checked);
 			if (this.id === "show_past_events") {
 				chrome.extension.getBackgroundPage().refreshFeeds();
@@ -291,11 +296,12 @@ function init() {
 		resyncCalendars();
 	}
 	chrome.runtime.onMessage.addListener(function (request, sender) {
-		if (request.line === "refresh_end") {
+		//debugMessage("message " + request.status);
+		if (request.status === "refresh_end") {
 			document.getElementById('refresh_img').style.display = 'none';
-		} else if (request.line === "refresh_start") {
+		} else if (request.status === "refresh_start") {
 			document.getElementById('refresh_img').style.display = 'inline';
-		} else if (request.line === "calendars_updated" && getValue("calendar_type") === "selected") {
+		} else if (request.status === "calendars_updated" && getValue("calendar_type") === "selected") {
 			showSelectableCalendars();
 		}
 	});
@@ -361,4 +367,4 @@ function logIn(email, passwd, onSuccess, onError) {
 	}
 }
 
-addEventListener('DOMContentLoaded',  init, false);
+document.addEventListener('DOMContentLoaded', init);

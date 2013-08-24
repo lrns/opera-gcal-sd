@@ -58,11 +58,15 @@ function dropAuth() {
 }
 
 function setValue(key, value) {
+	// chrome.storage.local.set({key: value}, function() {
+	// 	debugMessage('Prefs: ' + key + ' => ' + value);
+	// });
 	debugMessage(key + ' => ' + value);
 	localStorage[key] = value;
 }
 
 function getValue(key) {
+	// chrome.storage.local.get(key, function(val) { console.log(val) });
 	return localStorage[key] || defaultValues[key];
 }
 

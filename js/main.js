@@ -13,7 +13,7 @@ function init() {
 	}
 	chrome.alarms.create("sd-title", { periodInMinutes : 1 });
 	chrome.alarms.create("view-update", { periodInMinutes : 10 });
-	chrome.alarms.create("feeds-update", { periodInMinutes : getValue("refresh_interval") });
+	chrome.alarms.create("feeds-update", { periodInMinutes : parseInt(getValue("refresh_interval"), 10) });
 	chrome.alarms.onAlarm.addListener(function (alarm) {
 		if (alarm.name === "sd-title") {
 			setSDTitle();
@@ -31,11 +31,8 @@ function setSDTitle() {
 }
 
 function showDebugData() {
-	if (chrome.tabs.create) {
-		chrome.tabs.create({ url : "debug.html", active : true });
-	}
+	chrome.tabs.create({ url : "debug.html", active : true });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    init();
-});
+document.addEventListener('DOMContentLoaded', init);
+
