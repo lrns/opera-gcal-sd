@@ -19,6 +19,7 @@ var defaultValues = {
 	'alt_font_color' : 'FFFFFF', 
 	'wrap_lines' : 'true'
 };
+var translatedMessages = {};
 
 function getSDDateTemplate() {
 	if (getValue("title_date_format")) {
@@ -76,31 +77,14 @@ function msg(key) {
 
 function translate() {
 	debugMessage('Translating...');
-	/*var elems = document.querySelectorAll(".translate");
-	for (var i in elems) {
-		if (elems[i].id in text) {
-			if (elems[i].tagName.toLowerCase() === 'input') {
-				elems[i].value = getTranslatedMessage(elems[i].id);
-			}
-			else {
-				elems[i].innerHTML = getTranslatedMessage(elems[i].id);
-			}
+	var elems = document.querySelectorAll(".translate");
+	for (var i = 0; i < elems.length; i++) {
+		if (elems[i].tagName.toLowerCase() === 'input') {
+			elems[i].value = getTranslatedMessage(elems[i].id);
+		} else {
+			elems[i].innerHTML = getTranslatedMessage(elems[i].id);
 		}
-		else {
-			elems[i].innerHTML = '<<<' + elems[i].id + '>>>';
-		}
-	}*/
-}
-
-function loadLanguage() {
-	var lang = getValue("language");
-	debugMessage("Loading language: " + lang);
-	//TODO implement
-	translate();
-}
-
-function getTranslatedMessage(message) {
-	return chrome.i18n.getMessage(message);
+	}
 }
 
 function updateDate() {
@@ -111,24 +95,55 @@ function updateDate() {
 	Date.dayAbbreviations = getTranslatedMessage('weekdays_short').split("|");
 }
 
+function loadLanguage() {
+	var lang = getValue("language");
+	translatedMessages = {};
+	if (lang === 'auto') {
+		debugMessage("Using default language: " + chrome.i18n.getMessage("@@ui_locale"));	
+		doFullTranslation();
+	} else {
+		debugMessage("Loading language: " + lang);
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4)
+				return;
+			if (xhr.status < 400 && xhr.status > 0) {
+				var newMessages = JSON.parse(xhr.responseText);
+				// very naive validation
+				if ("index_title" in newMessages) { 
+					translatedMessages = newMessages;
+					doFullTranslation();
+				}
+			} else {
+				debugMessage("Error loading language, xhr.status = " + xhr.status);
+			}
+		};
+		xhr.open("GET", chrome.extension.getURL('/_locales/'+lang+'/messages.json'), true);
+		xhr.send();
+	}
+}
+
+function getTranslatedMessage(message) {
+	if (getValue("language") === 'auto') {
+		return chrome.i18n.getMessage(message);
+	} else {
+		if (!(message in translatedMessages)) {
+			debugMessage(message + " not translated in " + getValue("language"));
+		}		
+		return message in translatedMessages ? translatedMessages[message].message : chrome.i18n.getMessage(message);
+	}
+}
+
+
 function resetTranslation() {
-	//TODO translatedMessages = {}
+	translatedMessages = {};
 	chrome.extension.getBackgroundPage().redraw();
 }
 
-function updateTranslation() {
-	//TODO
-	/*
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = handleStateChange; // Implemented elsewhere.
-	xhr.open("GET", chrome.extension.getURL('/config_resources/config.json'), true);
-	xhr.send();
-	*/
-	resetTranslation();
+/* Called after loading the language */
+function doFullTranslation() {
 	updateDate();
 	translate();
 	chrome.extension.getBackgroundPage().redraw();
-	
+	chrome.extension.getBackgroundPage().setSDTitle();
 }
-
-

@@ -49,11 +49,11 @@
     }, 
     "options_separate_signin": {
         "description": "Sign in to another Google account:", 
-        "message": "Über ein anderes Google_Konto anmelden:"
+        "message": "Über ein anderes Google-Konto anmelden:"
     }, 
     "options_email": {
         "description": "Email", 
-        "message": "E_Mail"
+        "message": "E-Mail"
     }, 
     "options_password": {
         "description": "Password", 
@@ -69,11 +69,11 @@
     }, 
     "options_signed": {
         "description": "You are signed in with your Google account:", 
-        "message": "Sie sind über ihr Google_Konto angenmeldet:"
+        "message": "Sie sind über ihr Google-Konto angenmeldet:"
     }, 
     "options_user_email": {
         "description": "Email:", 
-        "message": "E_Mail:"
+        "message": "E-Mail:"
     }, 
     "options_options": {
         "description": "Options", 
@@ -110,6 +110,18 @@
     "options_refresh_interval": {
         "description": "Refresh interval", 
         "message": "Aktualisierungsintervall"
+    },
+	"options_lang_auto": {
+        "description": "Auto", 
+        "message": "Automatisch"
+    }, 
+	"options_language": {
+        "description": "Language", 
+        "message": "Sprache"
+    }, 
+	"options_auto": {
+        "description": "Auto", 
+        "message": "Automatisch"
     }, 
     "options_auto": {
         "description": "Auto", 
@@ -201,7 +213,7 @@
     }, 
     "options_footer": {
         "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
-        "message": "Alle Verbindungen zu den Google_Servern laufen über das HTTPS_Protokoll. Das Passwort wird nirgends gespeichert, es wird nur beim ersten anmelden genutzt."
+        "message": "Alle Verbindungen zu den Google-Servern laufen über das HTTPS-Protokoll. Das Passwort wird nirgends gespeichert, es wird nur beim ersten anmelden genutzt."
     }, 
     "options_login": {
         "description": "Log In", 

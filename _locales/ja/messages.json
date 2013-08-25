@@ -1,4 +1,4 @@
-{
+﻿{
     "time": {
         "description": "", 
         "message": ""
@@ -78,6 +78,10 @@
     "options_options": {
         "description": "Options", 
         "message": "オプション"
+    }, 
+	"options_language": {
+        "description": "Language", 
+        "message": "言語"
     }, 
     "options_1_min": {
         "description": "1 minute", 

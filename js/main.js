@@ -3,8 +3,7 @@ var calendars = {};
 var newEntries = [];
 
 function init() {
-	resetTranslation();
-    //loadLanguage();
+    loadLanguage();
     setSDTitle();
     initCalendars();
     setupCSS();

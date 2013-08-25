@@ -217,7 +217,7 @@
     }, 
     "options_footer": {
         "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
-        "message": "Kõik ühendused Google'i serveritesse käivad HTTPS_protokolliga. Parooli ei salvestata kuskil, seda kasutatakse üksnes esmakordsel sisselogimisel."
+        "message": "Kõik ühendused Google'i serveritesse käivad HTTPS-protokolliga. Parooli ei salvestata kuskil, seda kasutatakse üksnes esmakordsel sisselogimisel."
     }, 
     "options_login": {
         "description": "Log In", 

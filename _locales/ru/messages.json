@@ -53,7 +53,7 @@
     }, 
     "options_email": {
         "description": "Email", 
-        "message": "E_mail"
+        "message": "E-mail"
     }, 
     "options_password": {
         "description": "Password", 
@@ -110,7 +110,15 @@
     "options_refresh_interval": {
         "description": "Refresh interval", 
         "message": "Частота обновления"
-    }, 
+    },
+	"options_lang_auto": {
+        "description": "Auto", 
+        "message": "Автоматически"
+    },
+	"options_language": {
+        "description": "Language", 
+        "message": "Язык"
+    },
     "options_auto": {
         "description": "Auto", 
         "message": "Автоматически"
@@ -175,6 +183,10 @@
         "description": "Show event end time", 
         "message": "Показывать время окончания"
     }, 
+	"options_clock_12h": {
+        "description": "12h clock", 
+        "message": "12-часовой формат времени"
+    }, 
     "options_date_format": {
         "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
         "message": "Формат даты (<a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">примеры</a>)"
@@ -201,7 +213,7 @@
     }, 
     "options_footer": {
         "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
-        "message": "Все соединения с серверами Google происходят по защищённому HTTPS_протоколу. Пароль нигде не хранится, он используется лишь один раз при авторизации расширения в первый раз."
+        "message": "Все соединения с серверами Google происходят по защищённому HTTPS-протоколу. Пароль нигде не хранится, он используется лишь один раз при авторизации расширения в первый раз."
     }, 
     "options_login": {
         "description": "Log In", 

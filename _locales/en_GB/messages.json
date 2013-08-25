@@ -1,4 +1,8 @@
 {
+	"index_title": {
+        "description": "Google Calendar", 
+        "message": "Google Calendar"
+    }, 
     "options_bg_color": {
         "description": "Background color", 
         "message": "Background colour"

@@ -85,7 +85,7 @@
     }, 
     "options_lang_auto": {
         "description": "Auto", 
-        "message": "Auto _ kaip ir naršyklės"
+        "message": "Auto - kaip ir naršyklės"
     }, 
     "options_1_min": {
         "description": "1 minute", 
@@ -149,7 +149,7 @@
     }, 
     "options_all_cal_note": {
         "description": "*All calendars include subscribed calendars.", 
-        "message": "*Visi kalendoriai _ mano kalendoriai ir prenumeruojami kalendoriai."
+        "message": "*Visi kalendoriai - mano kalendoriai ir prenumeruojami kalendoriai."
     }, 
     "options_cals_to_use": {
         "description": "Calendars to use", 
@@ -182,6 +182,10 @@
     "options_end_time": {
         "description": "Show event end time", 
         "message": "Rodyti įvykių pabaigos laiką"
+    }, 
+	"options_clock_12h": {
+        "description": "12h clock", 
+        "message": "12 val. laikas"
     }, 
     "options_date_format": {
         "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
