@@ -15,6 +15,6 @@
           "128": "img/icon_128.png" },
 "options_page" : "options.html",
 "web_accessible_resources" : ["css/style.css","css/options.css","debug.html","img/ajax-loader.gif","img/ajax-loader-small.gif","img/icon.png","js/prefs.js","js/debug.js","js/jscolor/jscolor.js","js/jscolor/hs.png","js/jscolor/hv.png","js/jscolor/cross.gif","js/jscolor/arrow.gif","js/view.js","js/debug-data.js","js/model.js","js/date.js","js/options.js","js/main.js"],
-"permissions" : ["alarms", "speeddial", "tabs", "https://*/*", "storage", "http://*/*", "webRequest", "webRequestBlocking"],
+"permissions" : ["alarms", "speeddial", "tabs", "https://*/*", "storage", "http://*/*"],
 "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'unsafe-eval';"
 }
