@@ -10,9 +10,9 @@
 	"url": "http://www.google.com/calendar/b/0/render"
 },
 "default_locale": "en",
-"icons": { "16": "img/icon.png",
-           "48": "img/icon.png",
-          "128": "img/icon.png" },
+"icons": { "16": "img/icon_16.png",
+           "48": "img/icon_48.png",
+          "128": "img/icon_128.png" },
 "options_page" : "options.html",
 "web_accessible_resources" : ["css/style.css","css/options.css","debug.html","img/ajax-loader.gif","img/ajax-loader-small.gif","img/icon.png","js/prefs.js","js/debug.js","js/jscolor/jscolor.js","js/jscolor/hs.png","js/jscolor/hv.png","js/jscolor/cross.gif","js/jscolor/arrow.gif","js/view.js","js/debug-data.js","js/model.js","js/date.js","js/options.js","js/main.js"],
 "permissions" : ["alarms", "speeddial", "tabs", "https://*/*", "storage", "http://*/*", "webRequest", "webRequestBlocking"],

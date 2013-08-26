@@ -1,3 +1,3 @@
 function debugMessage(msg) {
-	console.log(msg);
+	//console.log(msg);
 }

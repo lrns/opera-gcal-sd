@@ -2,12 +2,12 @@
 
 This extension displays Google Calendar entries in a Speed Dial tile.
 
-This is not an official Google Calendar extension.
+This is an unofficial Google Calendar extension.
 
 Homepage - https://addons.opera.com/en/extensions/details/google-calendar/
 
 ## Translators needed!
-To translate the extension to your language, please translate messages in  the following language file (only "message" part!) https://gist.github.com/lrns/6287939 and send the translated file to me (paste the content or URL in the comments).
+To translate the extension to your language, please translate messages in  the following language file (only "message" part!) https://gist.github.com/lrns/6287939 and send the translated file to me (e.g. paste the translated messages or URL in the comments).
 
 
 ## How to use it:
@@ -39,12 +39,12 @@ Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Cont
 * Date formating is done using http://www.javascripttoolbox.com/lib/date/index.php library.
 
 
-## Limitation
-* Notifications (alerts) are not possible due to limitations of Opera Extension API
+## Limitations
+* Native notifications are not (currently) possible due to limitations of Opera Extension API
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
-* 3.0 - Updated for Opera 15, added Polish translation
+* 3.0 - Updated for Opera 15+, added Polish translation
 * 2.5 - Estonian, Italian and Russian translations
 * 2.4 - fixed time zone settings, added German and Japanese translations, 12h clock option
 * 2.3 - Czech translation, more debug options
