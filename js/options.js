@@ -80,7 +80,7 @@ function showSelectableCalendars() {
 			line += 'checked="checked"';
 		}
 		line += '/>';
-		line += '<input type="text" class="color cal_color" name="color_' + id + '" id="color_' + id + '" value="' + color + '"';
+		line += '<input type="text" class="color cal_color" name="color_' + id + '" id="color_' + id + '" value="' + color + '">';
 		line += '<label for="cal_' + id + '">' + calendars[id].title + '</label>';
 		line += '</p>';
 		document.getElementById('list_of_cals').innerHTML += line;
