@@ -1,7 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf_8" />
+		<meta charset="utf-8" />
 		<link href="css/options.css" rel="stylesheet" />
 
 		<title id="widget_title">Options of Google Calendar SD</title>
@@ -15,11 +15,11 @@
 			</header>
 			<section>
 				<fieldset>
-					<p> <input class="translate" id="refresh_cal" type="button" value="Refresh calendars" /> <img id="refresh_img" src="/img/ajax-loader-small.gif" /> </p>
+					<p> <input class="translate" id="refresh_cal" type="button" value="Refresh calendars" /> <img id="refresh_img" src="/img/ajax-loader-small.gif" alt="loading..." /> </p>
 				</fieldset>
 				<h3 class="translate" id="options_account">Account</h3>
 				<fieldset>
-					<p> <input id="share_session" name="account_type" selected="selected" type="radio" value="share_session" /> <label class="translate" for="share_session" id="options_share_session">Share browser's session</label> </p>
+					<p> <input id="share_session" name="account_type" checked="checked" type="radio" value="share_session" /> <label class="translate" for="share_session" id="options_share_session">Share browser's session</label> </p>
 					<p> <input id="separate_signin" name="account_type" type="radio" value="separate" /> <label class="translate" for="separate_signin" id="options_separate_signin">Sign in to another Google account:</label> </p>
 				</fieldset>
 				<div id="signin_pane">
@@ -34,7 +34,7 @@
 					<div id="main_signout">
 						<fieldset>
 							<p class="translate" id="options_signed"> You are signed in with your Google account: </p>
-							<p> <label class="translate" for="useremail" id="options_user_email">Email:</label> <span id="useremail"></span> </p>
+							<p> <span class="translate" id="useremail">Email:</span> <span id="options_user_email"></span> </p>
 							<p> <input id="signout" name="signout" type="button" value="Sign Out" /> </p>
 						</fieldset>
 					</div>
@@ -395,7 +395,7 @@
 						</select>
 						<label class="translate" for="calendar_type" id="options_calendars">Calendar(s)</label> 
 					</p>
-					<p> <label class="hint translate" id="options_all_cal_note">*All calendars include subscribed calendars.</label> </p>
+					<p> <span class="hint translate" id="options_all_cal_note">*All calendars include subscribed calendars.</span> </p>
 				</fieldset>
 				<div id="select_calendars">
 					<h3 class="translate" id="options_cals_to_use">Calendars to use</h3>
@@ -409,13 +409,13 @@
 					<p> <input class="color" id="font_color" type="text" /> <label class="translate" for="font_color" id="options_font_color"> Font colour</label> </p>
 					<p> <input class="color" id="alt_font_color" type="text" /> <label class="translate" for="alt_font_color" id="options_alt_font_color"> Alternative font colour (for all day events)</label> </p>
 					<p> <input id="max_entries" type="text" /> <label class="translate" for="max_entries" id="options_mx_entries"> Max. entries to display</label> </p>
-					<p> <input id="show_past_events" type="checkbox" /> <label class="translate" for="past_events" id="options_past_events"> Show all today's events (including passed events)</label> </p>
-					<p> <input id="show_end_time" type="checkbox" /> <label class="translate" for="end_time" id="options_end_time"> Show event end time</label> </p>
+					<p> <input id="show_past_events" type="checkbox" /> <label class="translate" for="show_past_events" id="options_past_events"> Show all today's events (including passed events)</label> </p>
+					<p> <input id="show_end_time" type="checkbox" /> <label class="translate" for="show_end_time" id="options_end_time"> Show event end time</label> </p>
 					<p> <input id="clock_12h" type="checkbox" /> <label class="translate" for="clock_12h" id="options_clock_12h"> 12h clock</label> </p>
 					<p> <input id="date_format" type="text" /> <label class="translate" for="date_format" id="options_date_format"> Date format, see <a href="http://www.javascripttoolbox.com/lib/date/documentation.php" target="_blank">examples</a> </label> </p>
 					<p> <input id="title_date_format" type="text" /> <label class="translate" for="title_date_format" id="options_title_date"> Speed Dial title format, see <a href="http://www.javascripttoolbox.com/lib/date/documentation.php" target="_blank">examples</a> </label> </p>
 					<p></p>
-					<p> <a href="#" id="font_plus">A+</a> <a href="#" id="font_minus">A-</a> <label for="font_minus"> <span class="translate" id="options_font_size">Font size: </span> <input id="font_size" type="text" value="11" /> <span class="translate" id="options_font_px">px</span> </label> </p>
+					<p> <a href="#" id="font_plus">A+</a> <a href="#" id="font_minus">A-</a> <label for="font_size" class="translate" id="options_font_size"> Font size: </label> <input id="font_size" type="text" value="11" /> <span class="translate" id="options_font_px"> px </span> </p>
 					<p> <input id="wrap_lines" type="checkbox" /> <label class="translate" for="wrap_lines" id="options_wrap_lines">Wrap event titles</label> </p>
 				</fieldset>
 				<fieldset>
