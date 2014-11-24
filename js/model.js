@@ -1,9 +1,11 @@
-var CAL_URL = 'http://www.google.com/reader/view/';
-var ALL_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/allcalendars/full';
-var OWN_FEEDS_URL = 'https://www.google.com/calendar/feeds/default/owncalendars/full';
-var SINGLE_FEED_URL = 'https://www.google.com/calendar/feeds/default/private/full';
+var SINGLE_FEED_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events';
+var CALENDAR_LIST_URL = 'https://www.googleapis.com/calendar/v3/users/me/calendarList';
 var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending';
 var REQUEST_TIMEOUT_MIN = 1; // one minute is the shortest period in chrome.alarms
+var CLIENT_ID = "xxx.apps.googleusercontent.com"
+
+var cachedToken;
+var tokenExpiryDate;
 
 function buildFeedURL(prefix) {
 	var url = prefix + FEED_URL_SUFFIX;
@@ -296,3 +298,68 @@ function getDebugText() {
 	return JSON.stringify(debug);
 }
 
+function authURL() {
+	"calendar.readonly can be used for 'view calendars' permissions"
+	return "https://accounts.google.com/o/oauth2/auth?&response_type=token&client_id=" + CLIENT_ID + "&redirect_uri=" + chrome.identity.getRedirectURL("calendar") + "&scope=https://www.googleapis.com/auth/calendar"
+}
+
+
+function requestInteractiveAuthToken(callback) {
+  debugMessage('requestInteractiveAuthToken()')
+  chrome.identity.launchWebAuthFlow({'url': authURL(), 'interactive': true}, function (redirect_url) {
+    if (chrome.runtime.lastError) {
+      _gaq.push(['_trackEvent', 'getAuthToken (interactive)', 'Failed', chrome.runtime.lastError.message]);
+      debugMessage('getAuthToken (interactive):' + chrome.runtime.lastError.message);
+      return;
+    }
+    _gaq.push(['_trackEvent', 'getAuthToken (interactive)', 'OK']);
+    extractToken(redirect_url, callback);
+  });
+}
+
+function requestAuthTokenSilently(callback) {
+  debugMessage('requestAuthTokenSilently()')
+  chrome.identity.launchWebAuthFlow({'url': authURL(), 'interactive': false}, function (redirect_url) {
+    if (chrome.runtime.lastError) {
+      _gaq.push(['_trackEvent', 'getAuthToken (silent)', 'Failed', chrome.runtime.lastError.message]);
+      debugMessage('getAuthToken (silent):' + chrome.runtime.lastError.message);
+      //TODO show Sign In button?
+      return;
+    }
+    extractToken(redirect_url, callback);
+  });
+}
+
+function extractToken(token_url, callback) {
+	//example: https://<id>.chromiumapp.org/calendar#access_token=<token>&token_type=Bearer&expires_in=3600
+	cachedToken = token_url.match(/access_token=([^&]*)/)[1];
+	expires_in = parseInt(token_url.match(/expires_in=([^&]*)/)[1]);
+	debugMessage("token captured, expires in " + expires_in);
+
+	tokenExpiryDate = new Date();
+	//Expire 5 mins earlier just to be safe
+	tokenExpiryDate.setSeconds(tokenExpiryDate.getSeconds() + expires_in - 300);
+}
+
+function withAuthTokenDo(callback) {
+	if (cachedToken && tokenExpiryDate && tokenExpiryDate > new Date()) {
+		// cached token valid
+		callback();
+	} else {
+		requestAuthTokenSilently(callback);
+	}
+}
+
+function getCalData(url) {
+	// https://www.googleapis.com/calendar/v3/users/me/calendarList
+	withAuthTokenDo(function() {
+		$.ajax(url, {
+	      headers: {
+	        'Authorization': 'Bearer ' + cachedToken
+	      },
+	      success:function( data ) { console.log(data);},
+	      error: function(response) { console.log(response); }
+	  	});
+	});
+
+}

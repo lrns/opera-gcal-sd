@@ -3,6 +3,8 @@ var calendars = {};
 var newEntries = [];
 
 function init() {
+	installAnalytics();
+	_gaq.push(['_trackEvent', 'Speed Dial', 'Shown']);
     loadLanguage();
     setSDTitle();
     initCalendars();

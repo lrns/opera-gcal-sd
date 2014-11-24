@@ -283,6 +283,9 @@ function initSimpleFields() {
 }
 
 function init() {
+	installAnalytics();
+	_gaq.push(['_trackEvent', 'Options', 'Shown']);
+
 	setText('widget_title', msg('options_title'));
 	setText('widget_name', chrome.app.getDetails().name + ' v' + chrome.app.getDetails().version);
 	setText('widget_author', chrome.app.getDetails().developer.name);
