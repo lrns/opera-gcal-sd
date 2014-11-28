@@ -1,70 +1,38 @@
 var SINGLE_FEED_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events';
 var CALENDAR_LIST_URL = 'https://www.googleapis.com/calendar/v3/users/me/calendarList';
-var FEED_URL_SUFFIX = '?singleevents=true&orderby=starttime&sortorder=ascending';
+var FEED_URL_SUFFIX = '?singleEvents=true&orderBy=startTime';
 var REQUEST_TIMEOUT_MIN = 1; // one minute is the shortest period in chrome.alarms
-var CLIENT_ID = "xxx.apps.googleusercontent.com"
-
+var CLIENT_ID = "xxx"
+var DEFAULT_SD_URL = "https://www.google.com/calendar/render"
 var cachedToken;
 var tokenExpiryDate;
 
-function buildFeedURL(prefix) {
-	var url = prefix + FEED_URL_SUFFIX;
-	url += '&max-results=' + getValue("max_entries");
-	var date =  new Date();
+function buildFeedURL(calendar) {
+	var url = SINGLE_FEED_URL.replace("CAL_ID", calendar.id) + FEED_URL_SUFFIX;
+	url += '&maxResults=' + getValue("max_entries");
+	var date = new Date();
 	if (getValue("show_past_events") === 'true') {
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 	}
-	url += '&start-min=' + date.toISOString();
+	url += '&timeMin=' + encodeURIComponent(date.toISOString());
 	if (getValue("time_zone") !== 'auto') {
-		url += '&ctz=' + getValue("time_zone");
+		url += '&timeZone=' + getValue("time_zone");
 	}
 	debugMessage('URL: ' + url);
 	return url;
 }
-	function initCalendars() {
-        calendars = {
-        };
-        if (getValue("calendar_type") === 'single') {
-            calendars[extractID(SINGLE_FEED_URL)] = {
-                url : SINGLE_FEED_URL, title : 'Default', color : '#' + getValue("font_color"), synced : false, shouldSync : true
-            };
-        }
-        else if (getValue("calendar_type") === 'selected') {
-            refreshCalendars(ALL_FEEDS_URL, function () {
-                var selected = JSON.parse(getValue("selected_calendars"));
-                for (var id in calendars) {
-                    calendars[id].shouldSync = false;
-                    if (id in selected) {
-                        calendars[id].shouldSync = selected[id].shouldSync;
-                        calendars[id].color = selected[id].color;
-                    }
-                }
-                refreshFeeds();
-            }
-            );
-        }
-    }
 	
 function refreshFeeds() {
-	debugMessage("update feeds...");
+	debugMessage("update feeds: " + getValue("calendar_type"));
 	chrome.runtime.sendMessage({ status : 'refresh_start' });
-	if (getValue("calendar_type") === 'all') {
-		refreshCalendars(ALL_FEEDS_URL, syncCalendars);
-	}
-	else if (getValue("calendar_type") === 'own') {
-		calendars = {
-		};
-		refreshCalendars(OWN_FEEDS_URL, syncCalendars);
-	}
-	else {
-		syncCalendars();
-	}
+	refreshCalendars(CALENDAR_LIST_URL, fetchAllEntries);
+	fetchAllEntries();
 }
 
 function refreshCalendars(url, handler) {
-	debugMessage('Refreshing calendar ' + url);
+	debugMessage('Refreshing calendar list ' + url);
 	getFeed(url, function (data) {
 		parseCalendars(data);
 		handler();
@@ -74,7 +42,7 @@ function refreshCalendars(url, handler) {
 
 
 function handleMultiFeeds(data) {
-	var feedEntries = parseFeed(data);
+	var feedEntries = parseEntries(data);
 	for (var i = 0; i < feedEntries.length; i++) {
 		 newEntries.push(feedEntries[i]);
 	}
@@ -96,8 +64,8 @@ function handleMultiFeeds(data) {
 	if (allSynced) {
 		if (numCalendars > 1 &&  newEntries.length > 1) {
 			 newEntries =  newEntries.sort(function (a, b) {
-				if (a.start > b.start)return 1;
-				if (a.start < b.start)return  - 1;
+				if (a.start.realDate > b.start.realDate) return 1;
+				if (a.start.realDate < b.start.realDate) return  -1;
 				return 0;
 			}
 			);
@@ -108,7 +76,7 @@ function handleMultiFeeds(data) {
 	}
 }
 
-function syncCalendars() {
+function fetchAllEntries() {
 	newEntries = [];
 	var numToSync = 0;
 	for (id in calendars) {
@@ -116,127 +84,121 @@ function syncCalendars() {
 		if (calendars[id].shouldSync) {
 			numToSync++;
 			debugMessage("GET calendar " + id + " => " + calendars[id].url);
-			getFeed(buildFeedURL(calendars[id].url), handleMultiFeeds);
+			getFeed(buildFeedURL(calendars[id]), handleMultiFeeds);
 		}
 	}
 	if (numToSync === 0) {
-		entries =  newEntries;
+		entries = newEntries;
 		drawEntries();
 		chrome.runtime.sendMessage({ status : 'refresh_end' });
 	}
 }
 
 
-function getFeed(feedUrl, handler) {
-	var xhr = new XMLHttpRequest();
-	chrome.alarms.create("abort", { delayInMinutes : REQUEST_TIMEOUT_MIN });
-	chrome.alarms.onAlarm.addListener(function (alarm) {
-		if (alarm.name === "abort") {
-			xhr.abort();
-			chrome.runtime.sendMessage({ status : 'refresh_end' });
-		}
+function getFeed(feedUrl, callback) {
+	withAuthTokenDo(function() {
+		$.ajax(feedUrl, {
+	      	headers: {
+	        	'Authorization': 'Bearer ' + cachedToken
+	      	},
+	      	success: function(data) { 
+	      		debugMessage("Feed received from " + feedUrl);
+	      		// a hack to see which calendar is sending data
+	      		data.url = this.url;
+	      		callback(data)
+	      	},
+	      	error: function(response) {
+		        _gaq.push(['_trackEvent', 'Update', 'Feed Error', response.statusText]);
+		        debugMessage('Failed to retrieve feed: '+ response.statusText);
+		        if (response.status === 401) {
+		        	chrome.runtime.sendMessage({ status : 'auth_required' });
+		        }
+		        chrome.runtime.sendMessage({ status : 'refresh_end' });
+		    }
+
+	  	});
 	});
-		
-	function handleError(is401) {
-		chrome.alarms.clear("abort");
-		if (is401) {
-			displayNoAuth();
-		}
-		chrome.runtime.sendMessage({ status : 'refresh_end' });
-	}
-	try {
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState != 4)
-				return;
-			if (xhr.status >= 400 || xhr.status == 0) {
-				debugMessage('Error response code: ' + xhr.status + ' ' + xhr.statusText);
-				handleError(xhr.status == 401 || xhr.status == 0);
-			} else if (xhr.responseXML) {
-				debugMessage('Response received: ' + xhr.responseText.substring(0, 50));
-				handler(xhr.responseXML);
-			} else {
-				debugMessage('No responseText!');
-				handleError();
-			}
-		};
-		xhr.onerror = function (error) {
-			debugMessage('XHR error\n' + error);
-			handleError();
-		};
-		xhr.open("GET", feedUrl, true);
-		if (getValue("account_type") != 'share') {
-			xhr.setRequestHeader("Authorization", "GoogleLogin auth=" + getValue("user_auth"));
-		}
-		xhr.send(null);
-	} catch (e) {
-		debugMessage('XHR exception: ' + e);
-		handleError();
-	}
+
 }
 
 
-function parseFeed(xml) {
-	var calID = extractID(xml.getElementsByTagName("id")[0].childNodes[0].nodeValue);
-	debugMessage("Received: " + calID);
+function parseEntries(data) {
+	debugMessage("Received: " + data.summary);
+	var calID = extractID(data.url);
 	var color = getValue("font_color");
 	if (calID in calendars) {
 		if (calendars[calID].synced) {
 			return {
 			};
 		}
-		color = calendars[calID].color;
+		color = calendars[calID].backgroundColor;
 		calendars[calID].synced = true;
 	}
 	try {
-		var xmlEntries = xml.getElementsByTagName("entry");
 		var feedEntries = [];
-		for (var i = 0; i < xmlEntries.length; i++) {
-			var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-			var when = xmlEntries[i].getElementsByTagName('when');
-			for (var j = 0; j < when.length; j++) {
-				if (when[j].parentNode == xmlEntries[i]) {
-					var startString = when[j].attributes["startTime"].nodeValue;
-					var endString = when[j].attributes["endTime"].nodeValue;
-					var fullday = /^\d{4}-\d\d-\d\d$/.test(startString);
-					if (!fullday && getValue("time_zone") !== 'auto') {
-						var start = dateFromString(startString);
-						var end = dateFromString(endString);
-					}
-					else {
-						var start =  new Date(startString);
-						var end =  new Date(endString);
-					}
-					//debugMessage("startTime in XML: " + startString);
-					//debugMessage("start time parsed: " + start);
-					feedEntries.push({ title: title, start: start, end: end, color: color, fullday: fullday, calendar: calID });
+		for (var i = 0; i < data.items.length; i++) {
+			var entry = data.items[i];
+			entry.color = color;
+			//non-full day entries have 'dateTime'
+			entry.fullday = 'date' in entry.start; 
+			// TODO review the logic and maybe use momentjs
+			if (entry.fullday) {
+				var tokens = entry.start.date.split('-');
+				entry.start.realDate = new Date(tokens[0], parseInt(tokens[1])-1, tokens[2]);
+				tokens = entry.end.date.split('-');
+				entry.end.realDate = new Date(tokens[0], parseInt(tokens[1])-1, tokens[2]);
+			} else {
+				if(getValue("time_zone") === 'auto') {
+					entry.start.realDate = new Date(entry.start.dateTime);
+					entry.end.realDate = new Date(entry.end.dateTime);
+				} else {
+					entry.start.realDate = dateFromString(entry.start.dateTime);
+					entry.end.realDate = dateFromString(entry.end.dateTime);
 				}
 			}
+			feedEntries.push(entry);
 		}
 		debugMessage('Parsed ' + feedEntries.length + ' entries');
 		return feedEntries;
 	} catch (err) {
-		debugMessage("Error: " + err);
+		debugMessage('Error parsing entries: ' + err);
 		return {};
 	}
 }
 
 
-function parseCalendars(xml) {
-	var xmlEntries = xml.getElementsByTagName("entry");
-	var newCalendars = {};
-	for (var i = 0; i < xmlEntries.length; i++) {
-		var title = xmlEntries[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
-		var url = xmlEntries[i].getElementsByTagName('content')[0].attributes["src"].nodeValue;
-		var color = xmlEntries[i].getElementsByTagName('color')[0].attributes["value"].nodeValue;
-		 newCalendars[extractID(url)] = { url: url, title: title, color: color, synced: false, shouldSync: true };
+function parseCalendars(data) {
+	debugMessage('parsing calendars ' + data.items.length);
+	var calendarsToUse = getValue('calendar_type');
+	if (calendarsToUse === 'selected') {
+		var selectedCalendars = JSON.parse(getValue('selected_calendars'));
 	}
-	calendars = newCalendars;
+  
+	var newCalendars = {};
+	for (var i = 0; i < data.items.length; i++)  {
+        var cal = data.items[i];
+        // use encoded ids everywhere to makes things easier
+        cal.id = encodeURIComponent(cal.id);
+        cal.shouldSync = true;
+        if (calendarsToUse === 'own' && cal.accessRole !== 'owner') {
+			cal.shouldSync = false;
+        } else if (calendarsToUse === 'selected') {
+        	if (cal.id in selectedCalendars) {
+                calendars[id].shouldSync = selected[id].shouldSync;
+                calendars[id].color = selectedCalendars[id].color;
+            }
+            // let's display all calendars which are not in selected list in case that list is outdated
+        }
+        cal.synced = false;
+        newCalendars[cal.id] = cal;
+    }
+    calendars = newCalendars;
 	chrome.runtime.sendMessage({ status: 'calendars_updated' });
 }
 
 
 function extractID(url) {
-	return url.replace(/https?:\/\/www\.google\.com\/calendar\/feeds\//i, "").replace(/[^\w\s]/gi, '').substring(0, 20);
+	return url.match(/v3\/calendars\/([^\/]+)\//)[1]
 }
 
 
@@ -299,7 +261,7 @@ function getDebugText() {
 }
 
 function authURL() {
-	"calendar.readonly can be used for 'view calendars' permissions"
+	"calendar.readonly can be used for 'view calendars' permission"
 	return "https://accounts.google.com/o/oauth2/auth?&response_type=token&client_id=" + CLIENT_ID + "&redirect_uri=" + chrome.identity.getRedirectURL("calendar") + "&scope=https://www.googleapis.com/auth/calendar"
 }
 
@@ -310,6 +272,7 @@ function requestInteractiveAuthToken(callback) {
     if (chrome.runtime.lastError) {
       _gaq.push(['_trackEvent', 'getAuthToken (interactive)', 'Failed', chrome.runtime.lastError.message]);
       debugMessage('getAuthToken (interactive):' + chrome.runtime.lastError.message);
+      chrome.runtime.sendMessage({ status : 'auth_required' });
       return;
     }
     _gaq.push(['_trackEvent', 'getAuthToken (interactive)', 'OK']);
@@ -323,7 +286,7 @@ function requestAuthTokenSilently(callback) {
     if (chrome.runtime.lastError) {
       _gaq.push(['_trackEvent', 'getAuthToken (silent)', 'Failed', chrome.runtime.lastError.message]);
       debugMessage('getAuthToken (silent):' + chrome.runtime.lastError.message);
-      //TODO show Sign In button?
+      chrome.runtime.sendMessage({ status : 'auth_required' });
       return;
     }
     extractToken(redirect_url, callback);
@@ -339,6 +302,8 @@ function extractToken(token_url, callback) {
 	tokenExpiryDate = new Date();
 	//Expire 5 mins earlier just to be safe
 	tokenExpiryDate.setSeconds(tokenExpiryDate.getSeconds() + expires_in - 300);
+	chrome.runtime.sendMessage({ status : 'auth_done' });
+	callback();
 }
 
 function withAuthTokenDo(callback) {

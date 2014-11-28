@@ -64,9 +64,6 @@ fieldset {
 fieldset label {
 	margin-left: 10px;
 }
-#signin_pane {
-	display: none;
-}
 
 #refresh_img {
 	display: none;

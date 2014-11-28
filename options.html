@@ -18,24 +18,15 @@
 					<p> <input class="translate" id="refresh_cal" type="button" value="Refresh calendars" /> <img id="refresh_img" src="/img/ajax-loader-small.gif" /> </p>
 				</fieldset>
 				<h3 class="translate" id="options_account">Account</h3>
-				<fieldset>
-					<p> <input id="share_session" name="account_type" selected="selected" type="radio" value="share_session" /> <label class="translate" for="share_session" id="options_share_session">Share browser's session</label> </p>
-					<p> <input id="separate_signin" name="account_type" type="radio" value="separate" /> <label class="translate" for="separate_signin" id="options_separate_signin">Sign in to another Google account:</label> </p>
-				</fieldset>
 				<div id="signin_pane">
 					<div id="main_signin">
 						<fieldset>
-							<p> <input id="email" name="email" type="text" /> <label class="translate" for="email" id="options_email">Email</label> </p>
-							<p> <input id="password" name="password" type="password" /> <label class="translate" for="password" id="options_password">Password</label> </p>
-							<p id="error_area"></p>
-							<p> <input class="translate" id="signin" name="signin" type="button" value="Sign In" /> </p>
+							<input class="translate" id="signin" name="signin" type="button" value="Sign In" />
 						</fieldset>
 					</div>
 					<div id="main_signout">
 						<fieldset>
-							<p class="translate" id="options_signed"> You are signed in with your Google account: </p>
-							<p> <label class="translate" for="useremail" id="options_user_email">Email:</label> <span id="useremail"></span> </p>
-							<p> <input id="signout" name="signout" type="button" value="Sign Out" /> </p>
+							<p class="translate" id="options_signed">You are signed in with your Google account</p>
 						</fieldset>
 					</div>
 				</div>
@@ -388,9 +379,8 @@
 					</p>
 					<p>
 						<select id="calendar_type">
-							<option class="translate" id="options_default_cal" value="single">Default (single calendar)</option>
-							<option class="translate" id="options_own_cals" value="own">Own calendars</option>
 							<option class="translate" id="options_all_cals" value="all">All calendars</option>
+							<option class="translate" id="options_own_cals" value="own">Own calendars</option>							
 							<option class="translate" id="options_selected_cals" value="selected">Selected calendars...</option>
 						</select>
 						<label class="translate" for="calendar_type" id="options_calendars">Calendar(s)</label> 

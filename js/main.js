@@ -7,11 +7,17 @@ function init() {
 	_gaq.push(['_trackEvent', 'Speed Dial', 'Shown']);
     loadLanguage();
     setSDTitle();
-    initCalendars();
     setupCSS();
-	if (getValue("calendar_type") !== 'selected') {
-		refreshFeeds();
-	}
+	refreshFeeds();
+	chrome.runtime.onMessage.addListener(function (request, sender) {
+		debugMessage("main message " + request.status);
+		if (request.status === "auth_required") {
+			displayNoAuth();
+		} else if (request.status === "auth_done") {
+			hideAuth();
+		}
+	});
+
 	chrome.alarms.create("sd-title", { periodInMinutes : 1 });
 	chrome.alarms.create("view-update", { periodInMinutes : 10 });
 	chrome.alarms.create("feeds-update", { periodInMinutes : parseInt(getValue("refresh_interval"), 10) });

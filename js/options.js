@@ -1,5 +1,3 @@
-var LOGIN_URL = 'https://www.google.com/accounts/ClientLogin';
-var LOGIN_ADDITIONAL_PARAMS = 'accountType=HOSTED_OR_GOOGLE&service=cl';
 var selected = {};
 
 function id(e) {
@@ -97,55 +95,37 @@ function resyncCalendars() {
 	debugMessage('select cals1...');
 	id('select_calendars').style.display = 'block';
 	id('list_of_cals').innerHTML = '<img src="/img/ajax-loader.gif" id="cal_list_loader" />';
-	chrome.extension.getBackgroundPage().refreshCalendars(chrome.extension.getBackgroundPage().ALL_FEEDS_URL, function () {});
+	chrome.extension.getBackgroundPage().refreshCalendars(chrome.extension.getBackgroundPage().CALENDAR_LIST_URL, function () {});
+}
+
+function hideOptionsAuth() {
+	$('#main_signin').hide();
+	$('#main_signout').show();
+	// a hack for going back to Speed Dial when clicking on SD with 'Sign In' displayed
+	if (window.location.search === '?signin') {
+		chrome.tabs.getCurrent(function(tab){
+			chrome.tabs.update(tab.id, {'url': 'chrome://newtab'});
+		});
+	}
+}
+
+function showOptionsAuth() {
+	$('#main_signin').show();
+	$('#main_signout').hide();
 }
 
 
 function initAccount() {
-	var userEmail = getValue("user_email");
-	if (userEmail) {
-		id('main_signin').style.display = 'none';
-		id('useremail').innerText = (userEmail.indexOf('@') != -1) ? userEmail : userEmail + '@gmail.com';
-	} else {
-		id('main_signout').style.display = 'none';
-	}
+	
 	var signInButton = id('signin');		
 	signInButton.onclick = function () {
-		tryLogIn(id('email').value, id('password').value);
+		chrome.extension.getBackgroundPage().requestInteractiveAuthToken(function() {
+			chrome.extension.getBackgroundPage().hideAuth();
+			hideOptionsAuth();
+			window.location.reload();
+		})
 	};
 	
-	var signOutButton = id('signout');		
-	signOutButton.onclick = function () {
-		dropAuth();
-		window.location.reload();
-	};
-	
-	id('email').onkeypress = id('password').onkeypress = function (e) {
-		if (e.which == 13)id('signin').onclick(e);
-	};
-	
-	var shareRadio = id('share_session');
-	shareRadio.onchange = function () {
-		id('signin_pane').style.display = 'none';
-		setValue("account_type", 'share');
-		chrome.extension.getBackgroundPage().refreshFeeds();
-	};
-	
-	var signinRadio = id('separate_signin');
-	signinRadio.onchange = function () {
-		id('signin_pane').style.display = 'block';
-		setValue("account_type", 'signin');
-		chrome.extension.getBackgroundPage().refreshFeeds();
-	};
-	if (getValue("account_type") === 'share') {
-		signinRadio.checked = false;
-		shareRadio.checked = true;
-	}
-	else {
-		shareRadio.checked = false;
-		signinRadio.checked = true;
-		id('signin_pane').style.display = 'block';
-	}
 }
 
 function initOptions() {
@@ -188,10 +168,6 @@ function initOptions() {
 		} else {
 			id('select_calendars').style.display = 'none';
 			bgPage.calendars = {};
-			if (getValue("calendar_type") === 'single') {
-				bgPage.calendars[bgPage.extractID(bgPage.SINGLE_FEED_URL)] = {
-					url : bgPage.SINGLE_FEED_URL, title : 'Default', color : '#' + getValue("font_color"), synced : false, shouldSync : true };
-			}
 			bgPage.refreshFeeds();
 		}
 	};
@@ -285,6 +261,7 @@ function initSimpleFields() {
 function init() {
 	installAnalytics();
 	_gaq.push(['_trackEvent', 'Options', 'Shown']);
+	hideOptionsAuth();
 
 	setText('widget_title', msg('options_title'));
 	setText('widget_name', chrome.app.getDetails().name + ' v' + chrome.app.getDetails().version);
@@ -299,74 +276,21 @@ function init() {
 		resyncCalendars();
 	}
 	chrome.runtime.onMessage.addListener(function (request, sender) {
-		//debugMessage("message " + request.status);
+		debugMessage("message " + request.status);
 		if (request.status === "refresh_end") {
 			document.getElementById('refresh_img').style.display = 'none';
 		} else if (request.status === "refresh_start") {
 			document.getElementById('refresh_img').style.display = 'inline';
+		} else if (request.status === "auth_required") {
+			showOptionsAuth();
+		} else if (request.status === "auth_done") {
+			hideOptionsAuth();
 		} else if (request.status === "calendars_updated" && getValue("calendar_type") === "selected") {
 			showSelectableCalendars();
 		}
 	});
-}
-
-function tryLogIn(email, passwd) {
-	var errorArea = id('error_area');
-	var signInButton = id('signin');
-	var passwordElement = id('password');
-	errorArea.style.display = 'none';
-	signInButton.value = msg('options_signing_in');
-	signInButton.disabled = true;
-	logIn(email, passwd, function () {
-		window.location.reload();
-	}
-	, function (err) {
-		signInButton.disabled = false;
-		signInButton.value = msg('options_login');
-		passwordElement.value = '';
-		errorArea.style.display = 'block';
-		errorArea.innerText = msg('options_error') + err;
-	});
-}
-
-function logIn(email, passwd, onSuccess, onError) {
-	debugMessage('Log in...');
-	var xhr =  new XMLHttpRequest();
-	function handleSuccess(responseText) {
-		debugMessage('Logged in as ' + email);
-		setValue("user_auth", responseText.match(/Auth=(.+)/)[1]);
-		setValue("user_email", email);
-		chrome.extension.getBackgroundPage().refreshFeeds();
-		onSuccess();
-	}
-	function handleError() {
-		debugMessage('Login error');
-		var err = xhr.status + '/' + xhr.statusText + '\n';
-		err += xhr.responseText.match(/Error=(.+)\n/)[1];
-		onError(err);
-	}
-	try {
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState != 4)return;
-			if (xhr.status >= 400) {
-				debugMessage('Error response code: ' + xhr.status + '/' + xhr.statusText);
-				handleError();
-			}
-			else if (xhr.responseText) {
-				debugMessage('responseText: ' + xhr.responseText.substring(0, 200) + '...');
-				handleSuccess(xhr.responseText);
-			}
-			else {
-				debugMessage('No responseText!');
-				handleError();
-			}
-		};
-		var url = LOGIN_URL + '?Email=' + encodeURIComponent(email) + '&Passwd=' + encodeURIComponent(passwd) + '&' + LOGIN_ADDITIONAL_PARAMS;
-		xhr.open("POST", url, true);
-		xhr.send(null);
-	} catch (e) {
-		debugMessage('XHR exception: ' + e);
-		handleError();
+	if (window.location.search === '?signin') {
+		chrome.extension.getBackgroundPage().requestInteractiveAuthToken(function() {});		
 	}
 }
 
