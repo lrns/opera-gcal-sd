@@ -69,7 +69,7 @@
     }, 
     "options_signed": {
         "description": "You are signed in with your Google account:", 
-        "message": "Esate prisijungę prie Google paskyros:"
+        "message": "Esate prisijungę prie Google paskyros"
     }, 
     "options_user_email": {
         "description": "Email:", 

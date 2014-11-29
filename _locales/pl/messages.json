@@ -73,7 +73,7 @@
     }, 
     "options_signed": {
         "description": "You are signed in with your Google account:", 
-        "message": "Jesteś zalogowany do konta Google:"
+        "message": "Jesteś zalogowany do konta Google"
     }, 
     "options_user_email": {
         "description": "Email:", 

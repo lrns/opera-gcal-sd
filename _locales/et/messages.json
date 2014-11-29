@@ -53,7 +53,7 @@
     }, 
     "options_separate_signin": {
         "description": "Sign in to another Google account:", 
-        "message": "Logi sisse teise kontoga:"
+        "message": "Logi sisse teise kontoga"
     }, 
     "options_email": {
         "description": "Email", 

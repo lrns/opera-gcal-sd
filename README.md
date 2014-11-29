@@ -13,12 +13,11 @@ To translate the extension to your language, please translate messages in  the f
 ## How to use it:
 
 1. Install extension
-2. Sign in using your Google calendar account normally (if not yet signed in) or sign in into your Google account inside the preferences of an extension
+2. Click on the Speed Dial or Sign in Options page, you will need to approve "Manager Calendars" permission for "Opera Google Calendar Extension" in the popup window
 3. Click 'Refresh calendars' button in options page if you are signed into your Goole account but extension still says 'Click to sign in...'
 4. (Optional) Select calendars you want to get entries from:
-    * Default - only entries from the default calendar are displayed
-	* Own calendars - entries from all user's calendars are displayed
 	* All calendars - all user's calendars as well as subscribed calendars, e.g. Holidays
+	* Own calendars - entries from all user's calendars are displayed
 	* Selected - you will be allowed to select calendars to sync. Also you will be able to set colours of calendars to your own preference
 
 5. Change other customisation options as you like!
@@ -44,6 +43,7 @@ Source code is available on github [https://github.com/lrns/opera-gcal-sd]. Cont
 * Syncing Tasks from Google Calendar is not possible because of limitations of Google Calendar Data API
 
 ## Changelog
+* 3.1 - Updated for the new Google Calendar API V3
 * 3.0 - Updated for Opera 15+, added Polish translation
 * 2.5 - Estonian, Italian and Russian translations
 * 2.4 - fixed time zone settings, added German and Japanese translations, 12h clock option

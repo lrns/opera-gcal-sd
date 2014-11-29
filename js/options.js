@@ -69,8 +69,8 @@ function showSelectableCalendars() {
 	var calendars = bgPage.calendars;
 	document.getElementById('list_of_cals').innerHTML = '';
 	for (var id in calendars) {
-		var checked = (id in selected) ? selected[id].shouldSync : false;
-		var color = (id in selected) ? selected[id].color : calendars[id].color;
+		var checked = (id in selected) ? selected[id].shouldSync : true;
+		var color = (id in selected) ? selected[id].color : calendars[id].backgroundColor;
 		bgPage.calendars[id].shouldSync = checked;
 		bgPage.calendars[id].color = color;
 		var line = '<p><input type="checkbox" class="check_calendars" name="' + id + '" id="cal_' + id + '" value="1"';
@@ -78,13 +78,13 @@ function showSelectableCalendars() {
 			line += 'checked="checked"';
 		}
 		line += '/>';
-		line += '<input type="text" class="color cal_color" name="color_' + id + '" id="color_' + id + '" value="' + color + '"';
-		line += '<label for="cal_' + id + '">' + calendars[id].title + '</label>';
+		line += '<input type="text" class="color cal_color" name="color_' + id + '" id="color_' + id + '" value="' + color + '" />';
+		line += '<label for="cal_' + id + '">' + calendars[id].summary + '</label>';
 		line += '</p>';
 		document.getElementById('list_of_cals').innerHTML += line;
 	}
 	for (var id in calendars) {
-		document.getElementById('cal_' + id).onchange= calendarChecked;
+		document.getElementById('cal_' + id).onchange = calendarChecked;
 		document.getElementById('color_' + id).onchange = calendarColorChanged;
 	}
 	bgPage.refreshFeeds();
@@ -92,10 +92,11 @@ function showSelectableCalendars() {
 }
 
 function resyncCalendars() {
-	debugMessage('select cals1...');
+	debugMessage('resync cals...');
 	id('select_calendars').style.display = 'block';
 	id('list_of_cals').innerHTML = '<img src="/img/ajax-loader.gif" id="cal_list_loader" />';
-	chrome.extension.getBackgroundPage().refreshCalendars(chrome.extension.getBackgroundPage().CALENDAR_LIST_URL, function () {});
+	chrome.extension.getBackgroundPage().refreshCalendars(function () {});
+	showSelectableCalendars();
 }
 
 function hideOptionsAuth() {
@@ -285,12 +286,17 @@ function init() {
 			showOptionsAuth();
 		} else if (request.status === "auth_done") {
 			hideOptionsAuth();
-		} else if (request.status === "calendars_updated" && getValue("calendar_type") === "selected") {
-			showSelectableCalendars();
 		}
+		// This leads to infinite loop, it is needed at all?
+		//} else if (request.status === "calendars_updated" && getValue("calendar_type") === "selected") {
+		//	showSelectableCalendars();
+		//}
 	});
 	if (window.location.search === '?signin') {
 		chrome.extension.getBackgroundPage().requestInteractiveAuthToken(function() {});		
+	}
+	if (!chrome.extension.getBackgroundPage().hasValidAuthToken()) {
+		showOptionsAuth();
 	}
 }
 

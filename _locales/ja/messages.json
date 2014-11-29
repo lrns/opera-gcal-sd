@@ -48,8 +48,8 @@
         "message": "ブラウザのセッションと共有"
     }, 
     "options_separate_signin": {
-        "description": "Sign in to another Google account:", 
-        "message": "別のGoogleアカウントでサインイン:"
+        "description": "Sign in to another Google account", 
+        "message": "別のGoogleアカウントでサインイン"
     }, 
     "options_email": {
         "description": "Email", 

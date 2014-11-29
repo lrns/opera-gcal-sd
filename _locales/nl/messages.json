@@ -68,8 +68,8 @@
         "message": "Afmelden"
     }, 
     "options_signed": {
-        "description": "You are signed in with your Google account:", 
-        "message": "Je bent aangemeld met je Google account:"
+        "description": "You are signed in with your Google account", 
+        "message": "Je bent aangemeld met je Google account"
     }, 
     "options_user_email": {
         "description": "Email:", 

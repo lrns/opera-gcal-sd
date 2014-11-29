@@ -52,8 +52,8 @@
         "message": "Share browser's session"
     }, 
     "options_separate_signin": {
-        "description": "Sign in to another Google account:", 
-        "message": "Sign in to another Google account:"
+        "description": "Sign in to another Google account", 
+        "message": "Sign in to another Google account"
     }, 
     "options_email": {
         "description": "Email", 

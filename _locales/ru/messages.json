@@ -68,7 +68,7 @@
         "message": "Выйти"
     }, 
     "options_signed": {
-        "description": "You are signed in with your Google account:", 
+        "description": "You are signed in with your Google account", 
         "message": "Вы вошли как"
     }, 
     "options_user_email": {

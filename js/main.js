@@ -15,6 +15,7 @@ function init() {
 			displayNoAuth();
 		} else if (request.status === "auth_done") {
 			hideAuth();
+			refreshFeeds();
 		}
 	});
 

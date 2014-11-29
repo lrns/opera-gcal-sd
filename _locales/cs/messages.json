@@ -48,8 +48,8 @@
         "message": "Sdílet přihlášení v prohlížeči (pomocí session)"
     }, 
     "options_separate_signin": {
-        "description": "Sign in to another Google account:", 
-        "message": "Přihlásit se k jinému Google účtu:"
+        "description": "Sign in to another Google account", 
+        "message": "Přihlásit se k jinému Google účtu"
     }, 
     "options_email": {
         "description": "Email", 

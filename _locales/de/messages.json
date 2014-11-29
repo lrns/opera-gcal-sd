@@ -31,6 +31,10 @@
         "description": "Google Calendar", 
         "message": "Google Kalender"
     }, 
+    "description": {
+        "description": "Google Calendar events in your Speed Dial.", 
+        "message": "Ereignisse aus dem Google Kalendar in Ihrer Speed Dial."
+    }, 
     "options_title": {
         "description": "Options of Google Calendar", 
         "message": "Optionen für Google Kalender"
@@ -45,7 +49,7 @@
     }, 
     "options_share_session": {
         "description": "Share browser's session", 
-        "message": "Share browser's session"
+        "message": "Browsersitzung verwenden"
     }, 
     "options_separate_signin": {
         "description": "Sign in to another Google account:", 
@@ -69,7 +73,7 @@
     }, 
     "options_signed": {
         "description": "You are signed in with your Google account:", 
-        "message": "Sie sind über ihr Google-Konto angenmeldet:"
+        "message": "Sie sind über Ihr Google-Konto angemeldet"
     }, 
     "options_user_email": {
         "description": "Email:", 
@@ -78,6 +82,14 @@
     "options_options": {
         "description": "Options", 
         "message": "Optionen"
+    }, 
+    "options_language": {
+        "description": "Language", 
+        "message": "Sprache"
+    },
+    "options_lang_auto": {
+        "description": "Auto", 
+        "message": "Automatisch"
     }, 
     "options_1_min": {
         "description": "1 minute", 
@@ -110,18 +122,6 @@
     "options_refresh_interval": {
         "description": "Refresh interval", 
         "message": "Aktualisierungsintervall"
-    },
-	"options_lang_auto": {
-        "description": "Auto", 
-        "message": "Automatisch"
-    }, 
-	"options_language": {
-        "description": "Language", 
-        "message": "Sprache"
-    }, 
-	"options_auto": {
-        "description": "Auto", 
-        "message": "Automatisch"
     }, 
     "options_auto": {
         "description": "Auto", 
@@ -157,7 +157,7 @@
     }, 
     "options_cals_to_use": {
         "description": "Calendars to use", 
-        "message": "genutzte Kalender"
+        "message": "Zu verwendende Kalender"
     }, 
     "options_appearance": {
         "description": "Appearance", 
@@ -173,19 +173,23 @@
     }, 
     "options_alt_font_color": {
         "description": "Alternative font color (for all day events)", 
-        "message": "Alternative Schriftfarbe (für alle Ereignisse)"
+        "message": "Alternative Schriftfarbe (für ganztägige Ereignisse)"
     }, 
     "options_mx_entries": {
         "description": "Max. entries to display", 
-        "message": "Maximale Zahl der Einträge"
+        "message": "Maximale Anzahl der Einträge"
     }, 
     "options_past_events": {
         "description": "Show all today's events (including passed events)", 
-        "message": "Zeige auch vergangene Ereignisse"
+        "message": "Alle Ereignisse des aktuellen Tages anzeigen (einschließlich vergangener Ereignisse)"
     }, 
     "options_end_time": {
         "description": "Show event end time", 
-        "message": "Zeige Endzeit der Ereignisse"
+        "message": "Endzeit der Ereignisse anzeigen"
+    }, 
+    "options_clock_12h": {
+        "description": "12h clock", 
+        "message": "12-Stunden-Format"
     }, 
     "options_date_format": {
         "description": "Date format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
@@ -193,7 +197,7 @@
     }, 
     "options_title_date": {
         "description": "Speed Dial title format, see <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">examples</a>", 
-        "message": "Speed Dial Titelformat, siehe <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">Beispiele</a>"
+        "message": "Titelformat für Speed Dial, siehe <a target=\"_blank\" href=\"http://www.javascripttoolbox.com/lib/date/documentation.php\">Beispiele</a>"
     }, 
     "options_font_size": {
         "description": "Font size: ", 
@@ -213,7 +217,7 @@
     }, 
     "options_footer": {
         "description": "All connections are done to Google servers via HTTPS protocol. Password is not saved anywhere, it is only used when signing in for the first time.", 
-        "message": "Alle Verbindungen zu den Google-Servern laufen über das HTTPS-Protokoll. Das Passwort wird nirgends gespeichert, es wird nur beim ersten anmelden genutzt."
+        "message": "Alle Verbindungen zu den Google-Servern laufen über das HTTPS-Protokoll. Das Passwort wird nirgends gespeichert, es wird nur beim ersten Anmelden verwendet."
     }, 
     "options_login": {
         "description": "Log In", 
@@ -231,6 +235,10 @@
         "description": "Are you sure to reset preferences?", 
         "message": "Wollen Sie die Einstellungen wirklich zurücksetzen?"
     }, 
+    "options_debug_data": {
+        "description": "Debug data", 
+        "message": "Debug-Daten"
+    }, 
     "view_unknown_error": {
         "description": "Unknown error!", 
         "message": "Unbekannter Fehler!"
@@ -241,10 +249,10 @@
     }, 
     "view_signin_prefs": {
         "description": "Please sign in inside extension preferences", 
-        "message": "Bitte melden Sie sich innerhalb der Erweiterungseinstellungen an"
+        "message": "Bitte melden Sie sich in den Optionen der Erweiterung an"
     }, 
     "view_no_events": {
         "description": "No events in your calendars", 
-        "message": "Eine Ereignisse in ihren Kalendern"
+        "message": "Keine Ereignisse in Ihren Kalendern"
     }
 }

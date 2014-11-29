@@ -27,17 +27,15 @@ function buildFeedURL(calendar) {
 function refreshFeeds() {
 	debugMessage("update feeds: " + getValue("calendar_type"));
 	chrome.runtime.sendMessage({ status : 'refresh_start' });
-	refreshCalendars(CALENDAR_LIST_URL, fetchAllEntries);
-	fetchAllEntries();
+	refreshCalendars(fetchAllEntries);
 }
 
-function refreshCalendars(url, handler) {
-	debugMessage('Refreshing calendar list ' + url);
-	getFeed(url, function (data) {
+function refreshCalendars(callback) {
+	debugMessage('Refreshing calendar list');
+	getFeed(CALENDAR_LIST_URL, function (data) {
 		parseCalendars(data);
-		handler();
-	}
-	);
+		callback();
+	});
 }
 
 
@@ -126,19 +124,23 @@ function parseEntries(data) {
 	debugMessage("Received: " + data.summary);
 	var calID = extractID(data.url);
 	var color = getValue("font_color");
-	if (calID in calendars) {
-		if (calendars[calID].synced) {
-			return {
-			};
-		}
-		color = calendars[calID].backgroundColor;
-		calendars[calID].synced = true;
+	if (!(calID in calendars)) {
+		// should never happen
+		return {}
 	}
+
+	var calendar = calendars[calID];
+	if (calendar.synced) {
+		return {};
+	}
+	color = calendar.color;
+	calendar.synced = true;
 	try {
 		var feedEntries = [];
 		for (var i = 0; i < data.items.length; i++) {
 			var entry = data.items[i];
 			entry.color = color;
+			entry.calendar = calID;
 			//non-full day entries have 'dateTime'
 			entry.fullday = 'date' in entry.start; 
 			// TODO review the logic and maybe use momentjs
@@ -179,13 +181,14 @@ function parseCalendars(data) {
         var cal = data.items[i];
         // use encoded ids everywhere to makes things easier
         cal.id = encodeURIComponent(cal.id);
+        cal.color = cal.backgroundColor;
         cal.shouldSync = true;
         if (calendarsToUse === 'own' && cal.accessRole !== 'owner') {
 			cal.shouldSync = false;
         } else if (calendarsToUse === 'selected') {
         	if (cal.id in selectedCalendars) {
-                calendars[id].shouldSync = selected[id].shouldSync;
-                calendars[id].color = selectedCalendars[id].color;
+                cal.shouldSync = selectedCalendars[cal.id].shouldSync;
+                cal.color = selectedCalendars[cal.id].color;
             }
             // let's display all calendars which are not in selected list in case that list is outdated
         }
@@ -268,7 +271,7 @@ function authURL() {
 
 function requestInteractiveAuthToken(callback) {
   debugMessage('requestInteractiveAuthToken()')
-  chrome.identity.launchWebAuthFlow({'url': authURL(), 'interactive': true}, function (redirect_url) {
+  chrome.identity.launchWebAuthFlow({url: authURL(), interactive: true}, function (redirect_url) {
     if (chrome.runtime.lastError) {
       _gaq.push(['_trackEvent', 'getAuthToken (interactive)', 'Failed', chrome.runtime.lastError.message]);
       debugMessage('getAuthToken (interactive):' + chrome.runtime.lastError.message);
@@ -282,7 +285,7 @@ function requestInteractiveAuthToken(callback) {
 
 function requestAuthTokenSilently(callback) {
   debugMessage('requestAuthTokenSilently()')
-  chrome.identity.launchWebAuthFlow({'url': authURL(), 'interactive': false}, function (redirect_url) {
+  chrome.identity.launchWebAuthFlow({url: authURL(), interactive: false}, function (redirect_url) {
     if (chrome.runtime.lastError) {
       _gaq.push(['_trackEvent', 'getAuthToken (silent)', 'Failed', chrome.runtime.lastError.message]);
       debugMessage('getAuthToken (silent):' + chrome.runtime.lastError.message);
@@ -305,9 +308,11 @@ function extractToken(token_url, callback) {
 	chrome.runtime.sendMessage({ status : 'auth_done' });
 	callback();
 }
-
+function hasValidAuthToken() {
+	return cachedToken && tokenExpiryDate && tokenExpiryDate > new Date()
+}
 function withAuthTokenDo(callback) {
-	if (cachedToken && tokenExpiryDate && tokenExpiryDate > new Date()) {
+	if (hasValidAuthToken()) {
 		// cached token valid
 		callback();
 	} else {

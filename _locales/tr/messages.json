@@ -68,8 +68,8 @@
         "message": ".Çıkış Yap"
     }, 
     "options_signed": {
-        "description": "You are signed in with your Google account:", 
-        "message": "Giriş yaptığınız Google hesabı:"
+        "description": "You are signed in with your Google account", 
+        "message": "Giriş yaptığınız Google hesabı"
     }, 
     "options_user_email": {
         "description": "Email:", 
